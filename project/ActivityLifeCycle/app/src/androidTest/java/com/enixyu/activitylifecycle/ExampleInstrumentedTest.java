@@ -1,4 +1,4 @@
-package com.enixyu.smarthome.activitylifecycle;
+package com.enixyu.activitylifecycle;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
   public void useAppContext() {
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-    assertEquals("com.enixyu.smarthome.activitylifecycle", appContext.getPackageName());
+    assertEquals("com.enixyu.activitylifecycle", appContext.getPackageName());
   }
 }
