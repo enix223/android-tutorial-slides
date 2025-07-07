@@ -15,7 +15,7 @@
     <activity
       android:exported="true"
       android:launchMode="standard"
-      android:name=".FirstActivity">
+      android:name=".StandardActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -24,16 +24,16 @@
 
     <activity
       android:launchMode="singleTop"
-      android:name=".SecondActivity" />
+      android:name=".SingleTopActivity" />
     <activity
       android:launchMode="singleTask"
-      android:name=".ThirdActivity" />
+      android:name=".SingleTaskActivity" />
     <activity
       android:launchMode="singleInstance"
-      android:name=".FourthActivity" />
+      android:name=".SingleInstanceActivity" />
     <activity
       android:launchMode="singleInstancePerTask"
-      android:name=".FifthActivity" />
+      android:name=".SingleInstancePerTaskActivity" />
   </application>
 
 </manifest>

@@ -1,8 +1,8 @@
 <resources>
   <string name="app_name">ActivityLaunchMode</string>
-  <string name="activity_first_label">第一个页面</string>
-  <string name="activity_second_label">第二个页面</string>
-  <string name="activity_third_label">第三个页面</string>
-  <string name="activity_fourth_label">第四个页面</string>
-  <string name="activity_fifth_label">第五个页面</string>
+  <string name="activity_standard_label">Standard</string>
+  <string name="activity_single_top_label">SingleTop</string>
+  <string name="activity_single_task_label">SingleTask</string>
+  <string name="activity_single_instance_label">Single Instance</string>
+  <string name="activity_single_instance_per_task_label">Single Instance per task</string>
 </resources>
