@@ -1,14 +1,11 @@
 package com.enixyu.activitylaunchmode;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
     super.onCreate(savedInstanceState);
     log("onCreate");
     setContentView(R.layout.activity_launch_mode);
-
-    Window window = getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.rgb(0, 0, 0));
 
     // 配置导航栏
     ActionBar actionBar = getSupportActionBar();
