@@ -1,0 +1,4 @@
+@ParametersAreNonnullByDefault
+package com.enixyu.widgetrecyclerview.model;
+
+import javax.annotation.ParametersAreNonnullByDefault;

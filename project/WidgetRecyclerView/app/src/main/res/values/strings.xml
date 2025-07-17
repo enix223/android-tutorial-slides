@@ -1,0 +1,4 @@
+<resources>
+  <string name="app_name">WidgetRecyclerView</string>
+  <string name="menu_add">创建</string>
+</resources>
