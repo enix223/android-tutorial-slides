@@ -4,7 +4,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +18,7 @@ import com.enixyu.widgetlistview.model.DataStore;
 import com.enixyu.widgetlistview.model.Movie;
 import com.enixyu.widgetlistview.model.MovieDataStore;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
   // private ListViewAdapter mAdapter;
   // private ListViewAdapterWithConvertView mAdapter;
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     // mAdapter = new ListViewAdapterWithConvertView(this, R.layout.list_item_movie, mDataStore);
     mAdapter = new ListViewAdapterWithViewHolder(this, R.layout.list_item_movie, mDataStore);
     listView.setAdapter(mAdapter);
+    listView.setOnItemClickListener(this);
   }
 
   @Override
@@ -53,5 +58,14 @@ public class MainActivity extends AppCompatActivity {
     var id = mDataStore.getNextId();
     mDataStore.add(new Movie(id, "movie " + id));
     mAdapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    var entity = mDataStore.getItem(i);
+    if (entity == null) {
+      return;
+    }
+    Toast.makeText(this, "点击了" + entity.getTitle(), Toast.LENGTH_SHORT).show();
   }
 }
