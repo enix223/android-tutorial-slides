@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +14,11 @@ import com.enixyu.widgetrecyclerview.R;
 import com.enixyu.widgetrecyclerview.model.MemoryProductRepository;
 import com.enixyu.widgetrecyclerview.model.Product;
 import com.enixyu.widgetrecyclerview.model.ProductRepository;
+import com.enixyu.widgetrecyclerview.ui.ProductListViewAdapter.OnItemClickListener;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
   private ProductRepository mProductRepository;
   private ProductListViewAdapter mAdapter;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(lm);
 
     mProductRepository = new MemoryProductRepository();
-    mAdapter = new ProductListViewAdapter(mProductRepository);
+    mAdapter = new ProductListViewAdapter(mProductRepository, this);
     recyclerView.setAdapter(mAdapter);
   }
 
@@ -53,5 +55,14 @@ public class MainActivity extends AppCompatActivity {
       return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  public void onClick(int position) {
+    var product = mProductRepository.getByIndex(position);
+    if (product == null) {
+      return;
+    }
+    Toast.makeText(this, "点击了" + product.getName(), Toast.LENGTH_SHORT).show();
   }
 }

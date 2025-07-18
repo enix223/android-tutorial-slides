@@ -2,6 +2,7 @@ package com.enixyu.widgetrecyclerview.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -16,8 +17,12 @@ public class ProductListViewAdapter extends
 
   private final ProductRepository productRepository;
 
-  public ProductListViewAdapter(ProductRepository productRepository) {
+  private final OnItemClickListener onItemClickListener;
+
+  public ProductListViewAdapter(ProductRepository productRepository,
+      OnItemClickListener onItemClickListener) {
     this.productRepository = productRepository;
+    this.onItemClickListener = onItemClickListener;
   }
 
   @NonNull
@@ -25,7 +30,7 @@ public class ProductListViewAdapter extends
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View itemView = LayoutInflater.from(parent.getContext())
         .inflate(R.layout.item_product, parent, false);
-    return new ViewHolder(itemView);
+    return new ViewHolder(itemView, this.onItemClickListener);
   }
 
   @Override
@@ -43,16 +48,30 @@ public class ProductListViewAdapter extends
     return productRepository.count();
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  public static class ViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
     private final TextView titleLabel;
 
     private final TextView priceLabel;
 
-    public ViewHolder(@NonNull View itemView) {
+    private final OnItemClickListener onItemClickListener;
+
+    public ViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
       super(itemView);
+      this.onItemClickListener = onItemClickListener;
+      itemView.setOnClickListener(this);
       titleLabel = itemView.findViewById(R.id.tv_product_title);
       priceLabel = itemView.findViewById(R.id.tv_product_price);
     }
+
+    @Override
+    public void onClick(View view) {
+      this.onItemClickListener.onClick(getAdapterPosition());
+    }
+  }
+
+  public interface OnItemClickListener {
+
+    void onClick(int position);
   }
 }
