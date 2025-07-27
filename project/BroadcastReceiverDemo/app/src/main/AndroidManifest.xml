@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <permission
+    android:name="com.enixyu.broadcastreceiverdemo.CUSTOM_STANDARD_BROADCAST"
+    android:protectionLevel="signature" />
+  <permission
+    android:name="com.enixyu.broadcastreceiverdemo.CUSTOM_ORDERED_BROADCAST"
+    android:protectionLevel="signature" />
+
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
   <application
     android:allowBackup="true"
@@ -10,6 +17,62 @@
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/Theme.BroadcastReceiverDemo" />
+    android:theme="@style/Theme.BroadcastReceiverDemo">
+
+    <activity
+      android:exported="true"
+      android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <receiver
+      android:enabled="true"
+      android:exported="true"
+      android:name=".LaunchReceiver"
+      android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </receiver>
+
+    <receiver
+      android:exported="true"
+      android:enabled="true"
+      android:name=".CustomBroadcastReceiver"
+      android:permission="com.enixyu.broadcastreceiverdemo.CUSTOM_STANDARD_BROADCAST">
+      <intent-filter>
+        <action android:name="com.enixyu.broadcastreceiverdemo.CUSTOM_STANDARD_BROADCAST" />
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </receiver>
+
+    <receiver
+      android:exported="true"
+      android:enabled="true"
+      android:name=".CustomHighOrderedBroadcastReceiver"
+      android:permission="com.enixyu.broadcastreceiverdemo.CUSTOM_ORDERED_BROADCAST">
+      <intent-filter android:priority="100">
+        <action android:name="com.enixyu.broadcastreceiverdemo.CUSTOM_ORDERED_BROADCAST" />
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </receiver>
+
+    <receiver
+      android:exported="true"
+      android:enabled="true"
+      android:name=".CustomLowOrderedBroadcastReceiver"
+      android:permission="com.enixyu.broadcastreceiverdemo.CUSTOM_ORDERED_BROADCAST">
+      <intent-filter android:priority="80">
+        <action android:name="com.enixyu.broadcastreceiverdemo.CUSTOM_ORDERED_BROADCAST" />
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </receiver>
+  </application>
 
 </manifest>
