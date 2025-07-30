@@ -1,0 +1,14 @@
+package com.enixyu.fileoperationdemo.db;
+
+public class SharedPrefDataProvider implements DataProvider {
+
+  @Override
+  public String read() {
+    return "";
+  }
+
+  @Override
+  public void write(String content) {
+
+  }
+}
