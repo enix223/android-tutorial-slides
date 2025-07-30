@@ -1,14 +1,16 @@
 package com.enixyu.fileoperationdemo.db;
 
+import java.util.List;
+
 public class SqliteDataProvider implements DataProvider {
 
   @Override
-  public String read() {
-    return "";
+  public List<Todo> read() {
+    return List.of();
   }
 
   @Override
-  public void write(String content) {
+  public void write(Todo item) {
 
   }
 }

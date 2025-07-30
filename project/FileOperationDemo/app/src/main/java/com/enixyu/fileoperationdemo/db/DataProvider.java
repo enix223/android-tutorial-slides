@@ -1,8 +1,11 @@
 package com.enixyu.fileoperationdemo.db;
 
+import java.io.IOException;
+import java.util.List;
+
 public interface DataProvider {
 
-  String read();
+  List<Todo> read() throws IOException;
 
-  void write(String content);
+  void write(Todo item) throws IOException;
 }
