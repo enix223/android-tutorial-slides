@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FileDataProvider implements DataProvider {
 
-  private final String DB_FILE = "file-db.json";
+  private final String DB_FILE = "db.fd";
   private final Context context;
 
   public FileDataProvider(Context context) {
