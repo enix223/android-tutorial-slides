@@ -19,6 +19,9 @@ public class SharedPrefDataProvider implements DataProvider {
     var pref = getSharedPreferences();
     var json = pref.getString("todo", null);
     var todo = JSON.parseObject(json, Todo.class);
+    if (todo == null) {
+      throw new RuntimeException("解析json失败");
+    }
     return List.of(todo);
   }
 
