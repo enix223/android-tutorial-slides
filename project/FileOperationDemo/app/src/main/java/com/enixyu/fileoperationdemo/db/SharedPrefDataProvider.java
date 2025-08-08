@@ -26,7 +26,12 @@ public class SharedPrefDataProvider implements DataProvider {
   }
 
   @Override
-  public void write(Todo item) throws IOException {
+  public void create(Todo item) throws IOException {
+
+  }
+
+  @Override
+  public void update(Todo item) throws IOException {
     var json = JSON.toJSONString(item);
     var pref = getSharedPreferences();
     var edit = pref.edit();

@@ -7,5 +7,7 @@ public interface DataProvider {
 
   List<Todo> read() throws IOException;
 
-  void write(Todo item) throws IOException;
+  void create(Todo item) throws IOException;
+
+  void update(Todo item) throws IOException;
 }

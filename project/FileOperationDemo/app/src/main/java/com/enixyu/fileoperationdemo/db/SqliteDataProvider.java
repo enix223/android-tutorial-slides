@@ -30,7 +30,12 @@ public class SqliteDataProvider extends SQLiteOpenHelper implements DataProvider
   }
 
   @Override
-  public void write(Todo item) {
+  public void create(Todo item) throws IOException {
+
+  }
+
+  @Override
+  public void update(Todo item) throws IOException {
 
   }
 
