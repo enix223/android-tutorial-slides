@@ -6,4 +6,11 @@
   <string name="label_write_to_file">写入文件</string>
   <string name="label_read">读取</string>
   <string name="label_write">写入</string>
+  <string name="btn_label_fileio">FileIO</string>
+  <string name="btn_label_sharedpref">SharedPref</string>
+  <string name="btn_label_sqlite">SQLite</string>
+  <string name="btn_label_sharepref_read">SharePref读取</string>
+  <string name="btn_label_sharepref_write">SharePref写入</string>
+  <string name="btn_label_sqlite_read">Sqlite读取</string>
+  <string name="btn_label_sqlite_write">Sqlite写入</string>
 </resources>

@@ -1,16 +1,17 @@
 package com.enixyu.fileoperationdemo.db;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.List;
 
 public class SqliteDataProvider extends SQLiteOpenHelper implements DataProvider {
 
@@ -24,19 +25,39 @@ public class SqliteDataProvider extends SQLiteOpenHelper implements DataProvider
     this.context = context;
   }
 
+  @Nullable
   @Override
-  public List<Todo> read() {
-    return List.of();
+  @SuppressLint("Range")
+  public Todo read() {
+    try (var db = getReadableDatabase(); var cursor = db.query("todo", null, null, null, null, null,
+        null)) {
+      if (!cursor.moveToFirst()) {
+        return null;
+      }
+      var title = cursor.getString(cursor.getColumnIndex("title"));
+      var done = cursor.getInt(cursor.getColumnIndex("done")) == 1;
+      return new Todo(title, done);
+    }
   }
 
   @Override
-  public void create(Todo item) throws IOException {
-
-  }
-
-  @Override
-  public void update(Todo item) throws IOException {
-
+  public void update(Todo item) {
+    ;
+    var values = new ContentValues();
+    values.put("title", item.getTitle());
+    values.put("done", item.isDone());
+    try (var db = getWritableDatabase(); var cursor = db.query("todo", null, null, null, null, null,
+        null)) {
+      if (cursor.getCount() == 0) {
+        // 创建记录
+        var inserted = db.insert("todo", null, values);
+        Log.d(TAG, String.format("插入记录数量: %d", inserted));
+      } else {
+        // 修改记录
+        var updated = db.update("todo", values, null, null);
+        Log.d(TAG, String.format("更新记录数量: %d", updated));
+      }
+    }
   }
 
   @Override

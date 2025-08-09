@@ -6,9 +6,6 @@ import androidx.annotation.NonNull;
 
 public class Todo implements Parcelable {
 
-  ///  记录ID
-  private int id;
-
   /// 代办事项
   private String title;
 
@@ -21,7 +18,6 @@ public class Todo implements Parcelable {
   }
 
   protected Todo(Parcel in) {
-    id = in.readInt();
     title = in.readString();
     done = in.readByte() != 0;
   }
@@ -37,14 +33,6 @@ public class Todo implements Parcelable {
       return new Todo[size];
     }
   };
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
 
   public String getTitle() {
     return title;
@@ -69,7 +57,6 @@ public class Todo implements Parcelable {
 
   @Override
   public void writeToParcel(@NonNull Parcel parcel, int i) {
-    parcel.writeInt(id);
     parcel.writeString(title);
     parcel.writeByte((byte) (done ? 1 : 0));
   }

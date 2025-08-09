@@ -37,14 +37,14 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="10dp"
-      android:text="@string/label_read"
+      android:text="@string/btn_label_sharepref_read"
       tools:ignore="ButtonStyle" />
     <Button
       android:id="@+id/btn_write_to_sp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="10dp"
-      android:text="@string/label_write"
+      android:text="@string/btn_label_sharepref_write"
       tools:ignore="ButtonStyle" />
   </LinearLayout>
 </LinearLayout>
