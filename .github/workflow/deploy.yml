@@ -1,0 +1,70 @@
+# This workflow will be triggered on pushes to the 'main' branch
+# or manually via the 'workflow_dispatch' event.
+name: Deploy Slidev to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Grant the necessary permissions for the workflow to create a Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ensure that only a single instance of this workflow runs at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # The 'build' job builds the Slidev project
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up a Node.js environment
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*' # Use the latest LTS version of Node.js
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the Slidev presentation as a static SPA
+      # The '--base' flag is crucial for GitHub Pages to correctly
+      # locate assets (e.g., images, scripts) under the repository's path.
+      - name: Build Slidev
+        run: npm run build -- --base /${{ github.event.repository.name }}/
+      
+      # Step 5: Upload the generated 'dist' folder as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # The 'deploy' job publishes the artifact to GitHub Pages
+  deploy:
+    # This job depends on the 'build' job completing successfully
+    needs: build
+
+    # The deployment environment for GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    # Run on the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 6: Deploy the artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
