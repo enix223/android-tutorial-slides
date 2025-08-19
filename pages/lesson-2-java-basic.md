@@ -1,3 +1,9 @@
+---
+theme: default
+colorSchema: light
+layout: center
+---
+
 # Java语言基础
 
 ---

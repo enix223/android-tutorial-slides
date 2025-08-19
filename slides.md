@@ -8,7 +8,7 @@ drawings:
 transition: slide-left
 mdc: true
 layout: cover
-background: https://sli.dev/demo-cover.png
+background: assets/cover.jpg
 ---
 
 # Android开发入门教程
@@ -17,4 +17,8 @@ background: https://sli.dev/demo-cover.png
 
 ---
 src: ./pages/lesson-1-android-brief.md
+---
+
+---
+src: ./pages/lesson-2-java-basic.md
 ---
