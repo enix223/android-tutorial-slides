@@ -8,7 +8,7 @@ drawings:
 transition: slide-left
 mdc: true
 layout: cover
-background: assets/cover.jpg
+background: public/cover.jpg
 ---
 
 # Android开发入门教程
