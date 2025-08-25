@@ -17,28 +17,32 @@ colorSchema: light
 </ul>
 
 
-<v-click>📖 推荐阅读</v-click>
+<div v-click class="mb-2">📖 推荐阅读</div>
 
 <div class="flex flex-row gap-2">
-  <div class="flex flex-col justify-center flex-1" v-click>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
+    <img src="/android-brief/android-book-dev-case.jpg" class="w-25 h-30 object-cover" />
+    <div class="text-xs text-center">Android应用开发案例教程（Android Studio版）(第2版）</div>
+  </div>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
     <img src="/android-brief/android-book-java-core.jpg" class="w-25 h-30" />
-    <div class="text-sm">Java核心技术（第11版）</div>
+    <div class="text-xs text-center">Java核心技术（第11版）</div>
   </div>
-  <div class="flex flex-col justify-center flex-1" v-click>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
     <img src="/android-brief/android-book-first-line-of-code.jpg" class="w-25 h-30" />
-    <div class="text-sm">第一行代码（第三版）</div>
+    <div class="text-xs text-center">第一行代码（第三版）</div>
   </div>
-  <div class="flex flex-col justify-center flex-1" v-click>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
     <img src="/android-brief/android-book-internal-deep.jpg" class="w-25 h-30" />
-    <div class="text-sm">深入理解Android内核设计思想（第2版 套装上下册）</div>
+    <div class="text-xs text-center">深入理解Android内核设计思想（第2版 套装上下册）</div>
   </div>
-  <div class="flex flex-col justify-center flex-1" v-click>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
     <img src="/android-brief/android-book-jetpack-compose.jpg" class="w-25 h-30" />
-    <div class="text-sm">Jetpack compose 从入门到实践</div>
+    <div class="text-xs text-center">Jetpack compose 从入门到实践</div>
   </div>
-  <div class="flex flex-col justify-center flex-1" v-click>
+  <div class="flex flex-col justify-center items-center flex-1" v-click>
     <img src="/android-brief/android-book-kotlin-in-action.jpg" class="w-25 h-30" />
-    <div class="text-sm">Kotlin实战</div>
+    <div class="text-xs text-center">Kotlin实战</div>
   </div>
 </div>
 ---
