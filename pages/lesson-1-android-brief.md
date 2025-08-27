@@ -3,6 +3,17 @@ theme: default
 colorSchema: light
 ---
 
+# 课程总览
+
+<div class="h-[90%]">
+  <ZoomableImage src="/android-brief/android-course-overview.png" />
+</div>
+
+---
+theme: default
+colorSchema: light
+---
+
 # 关于这门课程
 
 纸上得来终觉浅，绝知此事要躬行
