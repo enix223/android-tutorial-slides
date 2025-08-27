@@ -11,7 +11,7 @@ layout: cover
 background: cover.jpg
 ---
 
-# Android开发入门教程
+<h1 class="!text-white">Android开发入门教程</h1>
 
 从零开始，打造你的第一个 Android 应用
 

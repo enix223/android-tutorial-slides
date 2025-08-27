@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const props = defineProps<{
   /**
-   * The source URL of the image.
+   * The source URL of the image, relative to the project's public directory.
    */
   src: string;
   /**
@@ -17,6 +17,17 @@ const isZoomed = ref(false);
 const dragPosition = ref({ x: 0, y: 0 });
 const startDragPosition = ref({ x: 0, y: 0 });
 const isDragging = ref(false);
+
+// Use a computed property to handle the base URL prefix for the image path
+const imagePath = computed(() => {
+  console.log(import.meta.env.BASE_URL, props.src);
+  if (props.src.startsWith("/")) {
+    // If the path is absolute (starts with /), prefix it with the base URL
+    return import.meta.env.BASE_URL + props.src.substring(1);
+  }
+  // Otherwise, use the path as is
+  return props.src;
+});
 
 /**
  * Handles the mouse down or touch start event to begin panning the zoomed image.
@@ -93,7 +104,7 @@ function handleContextMenu(event: MouseEvent) {
     <!-- The normal image display -->
     <div class="cursor-pointer w-full h-full" @click="toggleZoom">
       <img
-        :src="props.src"
+        :src="imagePath"
         :alt="props.alt"
         class="rounded-lg object-scale-down w-full h-full"
       />
@@ -107,7 +118,7 @@ function handleContextMenu(event: MouseEvent) {
     >
       <div class="relative w-full h-full max-h-screen">
         <img
-          :src="props.src"
+          :src="imagePath"
           :alt="props.alt"
           class="block max-w-[90vw] max-h-[90vh] transition-transform duration-200 ease-out"
           :style="{
