@@ -289,3 +289,70 @@ class: bg-black text-white
 - Device Manager是一个管理安卓模拟器的工具，通过DM，我们可以创建多个不同版本的模拟器，查看模拟器内的文件等。
 - 创建android模拟器
   <img src="/android-brief/as-device-manager.png" class="w-[60%]" />
+
+---
+
+# 软件开发的工程问题 - 版本号
+
+<div class="flex items-center justify-center mb-5" v-click>
+  <img src="/public/android-brief/software-semantic-version.png" class="w-[80%] !border-0"  />
+</div>
+
+- X: <u class="text-red-500">大版本号，一般不向下兼容</u>
+- Y: <u class="text-orange-600">次版本号，功能扩展，且向后兼容</u>
+- Z: <u class="text-lime-700">修订版本号，修复bug，且向后兼容</u>
+
+---
+
+# 软件开发的工程问题 - 版本号
+
+## 参考 {v-click}
+
+<ol v-click>
+  <li>https://semantic-versioning.org/</li>
+  <li>https://zhuanlan.zhihu.com/p/508354840</li>
+  <li>https://www.baeldung.com/cs/semantic-versioning</li>
+</ol>
+
+---
+
+# 软件开发的工程问题 - 版本控制
+版本控制的王者::Git::
+
+## 🤔 思考如下问题: {v-click="1"}
+
+<div class="mb-5"></div>
+
+<ul>
+  <li v-click="2">
+    什么是软件版本控制？
+    <div class="text-red-800" v-click="4">版本控制软件用于记录代码的完整修改历史，记录修改了哪一行代码？谁修改了代码？修改代码的时间。</div>
+  </li>
+  <li v-click="3">
+    为什么需要使用版本控制？不使用版本控制，会带来什么问题？
+    <ol class="text-blue-800">
+      <li v-click="5">多人协作开发，互不干扰。</li>
+      <li v-click="6">错误恢复，随意在版本链条中回退或前进</li>
+      <li v-click="7">实现软件代码的可追踪，可溯源</li>
+      <li v-click="8">多功能/bug修复迭代开发，多分支管理</li>
+    </ol>
+  </li>
+</ul>
+
+---
+
+# 软件开发的工程问题 - 软件生命流程
+
+### 💦 瀑布开发流程 {v-click}
+
+<div v-click class="flex justify-center my-6">  
+需求分析 ➡ 系统设计 ➡ 开发实现 ➡ 软件测试与集成 ➡ 软件发布 ➡ 软件维护
+</div>
+
+### 👨‍🏫 Agile敏捷开发 {v-click}
+
+<ul class="my-6 ml-4">
+  <li v-click>把一个项目拆开为多个迭代或冲刺（sprint），特点是功能小，开发到发布要快</li>
+  <li v-click>增量交付，快速实现客户的需求</li>
+  <li v-click>强调客户深度参与，构建跨职能团队（开发人员、测试、设计师，产品负责人）</li>
+</ul>
