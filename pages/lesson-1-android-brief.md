@@ -10,6 +10,57 @@ colorSchema: light
 </div>
 
 ---
+
+<style>
+.slidev-layout th {
+  color: grey;
+}
+
+.slidev-layout td {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+</style>
+
+# 课时安排
+
+<div class="flex flex-row items-start gap-2">
+
+<div class="flex flex-1" v-click>
+
+| 知识点 | 课时 |
+|---|---|
+| 软件开发预备知识 | 3 | 
+| Java基础 | 6 | 
+| 设计模式与常用数据结构 | 1 |
+| Android开发环境搭建与IDE介绍 | 2 |
+| gradle工具介绍 | 1 |
+| Activity | 3 |
+| UI组件 | 6 |
+| Fragment | 3 |
+
+</div>
+
+<div class="flex flex-1" v-click>
+
+| 知识点 | 课时 |
+|---|---|
+| Service | 2 |
+| BroadcastReceiver | 2 |
+| ContentProvider | 1 |
+| 多媒体与动画 | 3 |
+| 数据持久化 | 3 | 
+| 网络访问 | 3 | 
+| Jetpack | 9 |
+| 综合实战项目 | 6 |
+
+</div>
+
+</div>
+
+<div v-click class="mt-6 text-teal-700 flex">总共54课时</div>
+
+---
 theme: default
 colorSchema: light
 ---
@@ -56,6 +107,15 @@ colorSchema: light
     <div class="text-xs text-center">Kotlin实战</div>
   </div>
 </div>
+
+---
+theme: default
+colorSchema: light
+layout: center
+---
+
+# 预备知识
+
 ---
 
 # Android的诞生
@@ -295,7 +355,7 @@ class: bg-black text-white
 # 软件开发的工程问题 - 版本号
 
 <div class="flex items-center justify-center mb-5" v-click>
-  <img src="/public/android-brief/software-semantic-version.png" class="w-[80%] !border-0"  />
+  <img src="/android-brief/software-semantic-version.png" class="w-[80%] !border-0"  />
 </div>
 
 - X: <u class="text-red-500">大版本号，一般不向下兼容</u>
