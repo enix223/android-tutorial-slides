@@ -1,6 +1,4 @@
-# This workflow will be triggered on pushes to the 'main' branch
-# or manually via the 'workflow_dispatch' event.
-name: Deploy Slidev to GitHub Pages
+name: Deploy Slidev Presentations
 
 on:
   push:
@@ -8,63 +6,66 @@ on:
       - main
   workflow_dispatch:
 
-# Grant the necessary permissions for the workflow to create a Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Ensure that only a single instance of this workflow runs at a time
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # The 'build' job builds the Slidev project
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out the repository code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up a Node.js environment
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*' # Use the latest LTS version of Node.js
+          node-version: 'lts/*'
+          cache: 'pnpm'
 
-      # Step 3: Install project dependencies
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
-      # Step 4: Build the Slidev presentation as a static SPA
-      # The '--base' flag is crucial for GitHub Pages to correctly
-      # locate assets (e.g., images, scripts) under the repository's path.
-      - name: Build Slidev
-        run: npm run build -- --base /${{ github.event.repository.name }}/
-      
-      # Step 5: Upload the generated 'dist' folder as an artifact
+      - name: Build and prepare for deployment
+        run: |
+          # Create a root dist directory
+          mkdir -p dist
+
+          # Loop through each slide directory and build it
+          for dir in slides/lesson-*; do
+            if [ -d "$dir" ]; then
+              slide_name=$(basename "$dir")
+              # The base URL must be set for each slide deck
+              pnpm --filter "$slide_name" run build --base /${{ github.event.repository.name }}/$slide_name/
+              
+              # Copy the built files to the single dist folder
+              mkdir -p dist/$slide_name
+              cp -r "$dir"/dist/* dist/$slide_name
+            fi
+          done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-
-  # The 'deploy' job publishes the artifact to GitHub Pages
-  deploy:
-    # This job depends on the 'build' job completing successfully
-    needs: build
-
-    # The deployment environment for GitHub Pages
+      
+  deploy-to-pages:
+    needs: build-and-deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
-    # Run on the latest Ubuntu runner
     runs-on: ubuntu-latest
-
     steps:
-      # Step 6: Deploy the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,17 +1,16 @@
 {
-  "name": "android-tutorial",
-  "type": "module",
-  "private": true,
+  "name": "android-tutorial-slides",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "dev:lesson01": "pnpm run --filter='lesson-01-*' dev",
+    "dev:lesson02": "pnpm run --filter='lesson-02-*' dev",
+    "dev:lesson03": "pnpm run --filter='lesson-03-*' dev",
+    "dev:lesson04": "pnpm run --filter='lesson-04-*' dev"
   },
-  "dependencies": {
-    "@slidev/cli": "^52.0.0",
-    "@slidev/theme-apple-basic": "^0.25.1",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.5.17"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.10.0"
 }

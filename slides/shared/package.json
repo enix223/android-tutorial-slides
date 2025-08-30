@@ -1,0 +1,12 @@
+{
+  "name": "shared",
+  "type": "module",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.5.18"
+  }
+}
