@@ -46,3 +46,7 @@ src: ./pages/git-basic.md
 ---
 src: ./pages/sdlc.md
 ---
+
+---
+src: ./pages/cybersecurity.md
+---

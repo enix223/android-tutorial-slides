@@ -44,7 +44,8 @@ jobs:
           # Loop through each slide directory and build it
           for dir in slides/lesson-*; do
             if [ -d "$dir" ]; then
-              slide_name=$(basename "$dir")
+              full_slide_name=$(basename "$dir")
+              slide_name=$(echo "$full_slide_name" | cut -d'-' -f1-2)
               # The base URL must be set for each slide deck
               pnpm --filter "$slide_name" run build --base /${{ github.event.repository.name }}/$slide_name/
               
