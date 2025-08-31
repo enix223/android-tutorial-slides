@@ -1,0 +1,64 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="Page-1" id="lJle9oSExNLc-oZREw7E">
+    <mxGraphModel dx="946" dy="679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PU8pVa3deHW5ER53lFNI-2" value="应用层&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;数据&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-3" value="应用层" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="675" y="175" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-4" value="应用层&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;数据&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-5" value="传输层头部&lt;div&gt;TCP/UDP&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-6" value="传输层" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="675" y="255" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-7" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-8" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-9" value="应用层&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;数据&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-10" value="传输层头部&lt;div&gt;TCP/UDP&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-11" value="IP层头部" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-12" value="网络层" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="655" y="335" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-13" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="380" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-17" value="应用层&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;数据&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-18" value="传输层头部&lt;div&gt;TCP/UDP&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="400" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-19" value="IP层头部" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-20" value="链路层帧头" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="400" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-21" value="链路层帧尾" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="480" y="400" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PU8pVa3deHW5ER53lFNI-22" value="数据链路层" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="650" y="415" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

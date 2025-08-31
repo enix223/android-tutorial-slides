@@ -50,3 +50,7 @@ src: ./pages/sdlc.md
 ---
 src: ./pages/cybersecurity.md
 ---
+
+---
+src: ./pages/network.md
+---
