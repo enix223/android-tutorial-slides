@@ -12,6 +12,33 @@ colorSchema: light
 ---
 
 <style>
+  .qrcode_container {
+    display: flex;
+    justify-content: center;
+  }
+</style>
+
+# 课程大作业
+从零开始构建一个食谱app
+
+<div class="flex flex-row gap-2">
+  <img src="/android-brief/android-final-project.png" class="flex flex-1 w-1/2" />
+  <div class="flex flex-1 flex-col items-cetner justify-center w-1/2 gap-2">
+    <div class="flex justify-center items-center text-gray-600">UI设计图</div>
+    <div class="flex break-all text-center text-gray-600">https://www.figma.com/design/5fxk2DPOpNYOzpGVsAyIK3/%E7%88%B1%E5%8E%A8%E6%88%BF?node-id=0-1&t=Iwidh2WjepqCAkcH-1</div>
+    <QRCode
+      value="https://www.figma.com/design/5fxk2DPOpNYOzpGVsAyIK3/%E7%88%B1%E5%8E%A8%E6%88%BF?node-id=0-1&t=Iwidh2WjepqCAkcH-1"
+      :width="180"
+      :height="180"
+      color=""
+      image=""
+    />
+  </div>
+</div>
+
+---
+
+<style>
 .slidev-layout th {
   color: grey;
 }

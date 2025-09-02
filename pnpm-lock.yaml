@@ -26,6 +26,9 @@ importers:
 
   slides/lesson-01-android-brief:
     dependencies:
+      '@katzumi/slidev-addon-qrcode':
+        specifier: ^0.0.17
+        version: 0.0.17
       '@slidev/cli':
         specifier: ^52.0.0
         version: 52.1.0(@babel/parser@7.28.3)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.20)(markdown-it-async@2.2.0)(postcss@8.5.6)
@@ -495,6 +498,10 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
+
+  '@katzumi/slidev-addon-qrcode@0.0.17':
+    resolution: {integrity: sha512-H2XFqwMJyafqA4B9VZsqx7jpuoTfu6Mo6X/r8Okk1H+OMZcIt0iTsWdQaGhRsuaRQPtv+zmQtiY1V3WLlcd7Ug==}
+    engines: {node: '>=18.0.0', slidev: '>=0.48.7'}
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
@@ -2297,6 +2304,9 @@ packages:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
     engines: {node: '>=6'}
 
+  qrcode-generator@1.5.2:
+    resolution: {integrity: sha512-pItrW0Z9HnDBnFmgiNrY1uxRdri32Uh9EjNYLPVC2zZ3ZRIIEqBoDgm4DkvDwNNDHTK7FNkmr8zAa77BYc9xNw==}
+
   quansync@0.2.10:
     resolution: {integrity: sha512-t41VRkMYbkHyCYmOvx/6URnN80H7k4X0lLdBMGsz+maAwrJQYB1djpV6vHrQIBE0WBSGqhtEHrK9U3DWWH8v7A==}
 
@@ -2479,6 +2489,9 @@ packages:
 
   style-value-types@5.1.2:
     resolution: {integrity: sha512-Vs9fNreYF9j6W2VvuDTP7kepALi7sk0xtk2Tu8Yxi9UoajJdEVpNpCov0HsLTqXvNGKX+Uv09pkozVITi1jf3Q==}
+
+  styled-qr-code@1.0.0:
+    resolution: {integrity: sha512-Tye/Omr8VYUUUCiBE+GNMeJ1Tt0cIsDkLXnQGG6/Xxegyd1021wQKFAFvx/hjaTUrfwpmukWTZfXs3uc/XXN0g==}
 
   stylis@4.3.6:
     resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
@@ -3233,6 +3246,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.2
+
+  '@katzumi/slidev-addon-qrcode@0.0.17':
+    dependencies:
+      styled-qr-code: 1.0.0
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -5550,6 +5567,8 @@ snapshots:
 
   punycode.js@2.3.1: {}
 
+  qrcode-generator@1.5.2: {}
+
   quansync@0.2.10: {}
 
   queue-microtask@1.2.3: {}
@@ -5747,6 +5766,10 @@ snapshots:
     dependencies:
       hey-listen: 1.0.8
       tslib: 2.4.0
+
+  styled-qr-code@1.0.0:
+    dependencies:
+      qrcode-generator: 1.5.2
 
   stylis@4.3.6: {}
 

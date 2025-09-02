@@ -1,7 +1,7 @@
 ---
 theme: android-theme
 colorSchema: light
-title: Android开发入门教程
+title: Android 应用开发
 class: text-center
 drawings:
   persist: false
@@ -11,7 +11,7 @@ layout: cover
 background: cover.jpg
 ---
 
-<h1 class="!text-white">Android开发入门教程</h1>
+<h1 class="!text-white">Android 应用开发</h1>
 
 从零开始，打造你的第一个 Android 应用
 
