@@ -7,6 +7,10 @@ layout: cover
 # Java基础知识 (上)
 
 ---
+src: ./pages/object-oriented.md
+---
+
+---
 src: ./pages/java-basic-menu.md
 ---
 
