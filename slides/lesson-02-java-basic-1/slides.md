@@ -11,6 +11,10 @@ src: ./pages/object-oriented.md
 ---
 
 ---
+src: ./pages/java-intro.md
+---
+
+---
 src: ./pages/java-basic-menu.md
 ---
 
