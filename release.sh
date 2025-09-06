@@ -14,3 +14,6 @@ if [ -d "$dir" ]; then
     cp -r "$dir"/dist/* dist/$slide_name
 fi
 done
+
+ossutil rm -rf oss://ey-course/android-tutorial-slides/
+ossutil cp -r dist/ oss://ey-course/android-tutorial-slides/
