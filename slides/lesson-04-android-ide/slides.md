@@ -4,4 +4,12 @@ colorSchema: light
 layout: cover
 ---
 
-# Android开发环境的搭建与IDE工具介绍
+# Android开发环境介绍
+
+---
+src: ./pages/idea-setup.md
+---
+
+---
+src: ./pages/idea-brief.md
+---
