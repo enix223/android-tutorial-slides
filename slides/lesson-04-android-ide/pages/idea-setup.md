@@ -1,13 +1,3 @@
----
-theme: default
-colorSchema: light
-layout: center
----
-
-# Android开发环境搭建介绍
-
----
-
 # Android开发环境的搭建 (1)
 
 ## 环境准备
