@@ -114,6 +114,27 @@ importers:
         specifier: ^3.5.18
         version: 3.5.20(typescript@5.8.3)
 
+  slides/lesson-05-android-activity:
+    dependencies:
+      '@slidev/cli':
+        specifier: ^52.1.0
+        version: 52.1.0(@babel/parser@7.28.3)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.20)(markdown-it-async@2.2.0)(postcss@8.5.6)
+      '@slidev/theme-default':
+        specifier: latest
+        version: 0.25.0
+      '@slidev/theme-seriph':
+        specifier: latest
+        version: 0.25.0
+      shared:
+        specifier: workspace:*
+        version: link:../shared
+      slidev-theme-android-theme:
+        specifier: workspace:*
+        version: link:../android-theme
+      vue:
+        specifier: ^3.5.18
+        version: 3.5.20(typescript@5.8.3)
+
   slides/shared:
     dependencies:
       '@slidev/cli':
