@@ -51,7 +51,7 @@ importers:
         specifier: ^3.5.17
         version: 3.5.20(typescript@5.8.3)
 
-  slides/lesson-02-java-basic-1:
+  slides/lesson-02-android-ide:
     dependencies:
       '@slidev/cli':
         specifier: ^52.1.0
@@ -72,7 +72,7 @@ importers:
         specifier: ^3.5.18
         version: 3.5.20(typescript@5.8.3)
 
-  slides/lesson-03-java-basic-2:
+  slides/lesson-03-java-basic-1:
     dependencies:
       '@slidev/cli':
         specifier: ^52.1.0
@@ -93,7 +93,7 @@ importers:
         specifier: ^3.5.18
         version: 3.5.20(typescript@5.8.3)
 
-  slides/lesson-04-android-ide:
+  slides/lesson-04-java-basic-2:
     dependencies:
       '@slidev/cli':
         specifier: ^52.1.0
