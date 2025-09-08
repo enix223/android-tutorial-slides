@@ -15,6 +15,10 @@ src: ./pages/java-intro.md
 ---
 
 ---
+src: ./pages/setup-env.md
+---
+
+---
 src: ./pages/java-basic-menu.md
 ---
 

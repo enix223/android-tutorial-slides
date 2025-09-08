@@ -4,8 +4,8 @@
 - 至少执行一次，再判断条件
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int i = 1;
         do {
             System.out.println(i);
@@ -22,8 +22,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int i = 2;
         do {
             System.out.println(i);

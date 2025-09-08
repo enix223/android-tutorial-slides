@@ -6,8 +6,8 @@
 - 三部分：初始化；条件；更新
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         for(int i=1; i<=5; i++) {
             System.out.println("第 " + i + " 次");
         }
@@ -22,8 +22,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args){
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int sum = 0;
         for(int i = 1; i <= 100; i++) {
             sum += i;

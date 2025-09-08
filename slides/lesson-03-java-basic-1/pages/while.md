@@ -4,8 +4,8 @@
 - 条件为 true 时一直执行
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int i = 1;
         while(i <= 5) {
             System.out.println(i);
@@ -22,8 +22,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int i = 1; // 从 1 开始
         while(i <= 10) {
             if(i % 2 == 0) {

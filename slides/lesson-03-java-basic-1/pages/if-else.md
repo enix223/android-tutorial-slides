@@ -5,8 +5,8 @@
 - 常用形式：单分支、双分支、多分支
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int age = 18;
         if(age >= 18) {
             System.out.println("成年人");
@@ -24,8 +24,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int num = 10;
         if(num % 2 == 0) {
             System.out.println("偶数");

@@ -6,8 +6,8 @@
 - 适用于 有限个固定值 的判断
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int day = 3;
         switch(day) {
             case 1:
@@ -36,8 +36,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         char grade = 'B'; // 可以直接指定等级
 
         switch(grade) {

@@ -20,8 +20,8 @@ class Student {
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         Student s = new Student("Alice", 20);
         s.sayHello();
     }
@@ -52,8 +52,8 @@ class Car {
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         Car car = new Car("Toyota", 20000);
         car.start();
     }

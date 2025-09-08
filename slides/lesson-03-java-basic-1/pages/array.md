@@ -8,8 +8,8 @@
 - 支持通过索引访问
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int[] nums = {1, 2, 3, 4};
         for(int n : nums) {
             System.out.println(n);
@@ -26,8 +26,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int[] scores = {80, 90, 75, 85, 95};
         int sum = 0;
         for(int s : scores) {

@@ -18,8 +18,8 @@
 # 示例代码
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         int age = 18;
         double price = 99.99;
         boolean isActive = true;
@@ -36,8 +36,8 @@ public class Main {
 ---
 
 ```java
-public class Main {
-    public static void main(String[] args) {
+public class MainActivity extends AppCompactActivity {
+    public void main() {
         char[] name = {'A','l','i','c','e'};
         int age = 20;
         boolean hasLearnedJava = true;
