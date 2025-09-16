@@ -2,6 +2,7 @@
 theme: android-theme
 colorSchema: light
 layout: cover
+routerMode: hash
 ---
 
 # Android开发环境介绍

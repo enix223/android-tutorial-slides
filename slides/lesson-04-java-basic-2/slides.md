@@ -2,6 +2,7 @@
 theme: android-theme
 colorSchema: light
 layout: cover
+routerMode: hash
 ---
 
 # Java基础知识 (下)

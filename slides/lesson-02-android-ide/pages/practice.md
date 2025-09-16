@@ -9,7 +9,7 @@
 
 <div class="mt-3">
     <QRCode
-        value="http://course.cloudesk.top/android-tutorial-slides/lesson-02/"
+        value="http://course.cloudesk.top"
         :width="180"
         :height="180"
         color=""
