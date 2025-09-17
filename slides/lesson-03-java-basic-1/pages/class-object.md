@@ -205,7 +205,7 @@ public class Car {
     private int numOfSeats;
     private int numOfDoors;
 
-    public Student(int numOfSeats, int numOfDoors) {
+    public Car(int numOfSeats, int numOfDoors) {
         this.numOfSeats = numOfSeats;
         this.numOfDoors = numOfDoors;
     }
