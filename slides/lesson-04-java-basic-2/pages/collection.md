@@ -1,43 +1,50 @@
 
 # 集合框架
 
-- 为什么需要集合框架？(早期的困境)
+<p></p>
 
-- 在 Java 早期版本中，存在一些独立的数据结构类：
+集合框架统一了如何访问一组数据。集合有如下优势
 
-  Vector - 动态数组、Hashtable - 哈希表
-
-  Stack - 栈结构、Properties - 配置存储
-
-  Dictionary - 抽象键值对存储
-
-- 存在的问题：
-
-  每个类都有自己独特的方法命名和 API 设计
-
-  学习成本高，需要记住不同类的不同方法
-
-  代码复用性差，难以在不同数据结构间转换
-
-  缺乏统一的编程接口和设计理念
+* 💦 简化我们开发人员的工作量，使用系统提供的集合类实现一组数据的管理
+* ⚡️ 提高复用性，更高的效率，更优化的算法
+* 🔌 统一了访问和修改的接口，例如获取列表获取统一使用`get`, 添加统一使用`add`
 
 ---
 
-- 集合框架的设计理念、核心目标
+# 集合框架
 
-  统一性 - 提供一套标准接口，让所有集合类遵循相同的规范
+```mermaid
+flowchart TD
+    I[Iterable&lt;E&gt;]
+    C[Collection&lt;E&gt;]
+    M[Map&lt;K,V&gt;]
 
-  高性能 - 确保基本数据结构的实现都是高效的
+    C --> L[List&lt;E&gt;]
+    C --> S[Set&lt;E&gt;]
+    C --> Q[Queue&lt;E&gt;]
 
-  互操作性 - 不同集合类型可以相互协作和转换
+    L --> AL[ArrayList&lt;E&gt;]
+    L --> LL[LinkedList&lt;E&gt;]
+    L --> V[Vector&lt;E&gt;]
 
-  扩展性 - 易于扩展和自定义新的集合实现
+    S --> HS[HashSet&lt;E&gt;]
+    S --> LHS[LinkedHashSet&lt;E&gt;]
+    S --> TS[TreeSet&lt;E&gt;]
 
----
+    Q --> PQ[PriorityQueue&lt;E&gt;]
+    Q --> DQ[Deque&lt;E&gt;]
+    DQ --> ArrayD[ArrayDeque&lt;E&gt;]
 
-# 集合接口
+    I --> C
+    M --> AH[AbstractMap&lt;K,V&gt;]
+    AH --> H[HashMap&lt;K,V&gt;]
+    H --> LH[LinkedHashMap&lt;K,V&gt;]
+```
 
-  <img src="/collection_interface.png"/>
+- 列表接口List，提供有序元素存储与访问的接口
+- 无序集合Set，提供访问无序且不能重复集合的接口
+- 队列Queue，提供有优先级的队列的访问接口，例如先进先出
+- 字典Map, 提供键值对访问的接口
 
 ---
 
@@ -65,17 +72,10 @@ public static void main(String[] args) {
 
         System.out.println("集合大小: " + collection.size());  // 其他操作
         System.out.println("包含Banana: " + collection.contains("Banana"));
-
+}
 ```
 
 ---
-
-```java
-        collection.remove("Orange");  // 删除元素
-        System.out.println("删除后大小: " + collection.size());
-    }
-}
-```
 
 <div v-click style="margin-top: 15px; border-left: 5px solid #3498db; background: #f0f8ff; padding: 10px 15px; border-radius: 4px; display: inline-block;width: 800px;">
 练习：创建一个Collection集合，添加5个数字，遍历并计算它们的总和
@@ -103,14 +103,27 @@ public class Main {
         System.out.println("总和: " + sum);
     }
 }
-
 ```
 
 ---
 
-# List 接口
+# List接口和ArrayList类
 
-- 常用实现类：ArrayList
+<div class="flex flex-row gap-4">
+    <img src="/java-list.png" class="w-[50%] flex" />
+    <div class="flex">
+    <ul>
+        <li>List接口，定义了访问集合内部元素的方法，例如添加元素add, 根据下标获取元素get</li>
+        <li>ArrayList是一个类，实现了List接口，需要实现List接口的所有方法</li>
+        <li>ArrayList有一个属性elementData，指向的是外部的一个数组，数组的长度是基于构造函数提供的。数组负责存储实际的元素数据。</li>
+        <li>ArrayList内部实现了自动根据实际元素的多少，自动重新创建新的底层数组。</li>
+    </ul>
+    </div>
+</div>
+
+---
+
+# ArrayList
 
 ```java
 import java.util.ArrayList;
@@ -134,19 +147,13 @@ public class ListExample {
         for (int i = 0; i < list.size(); i++) { // 遍历列表
             System.out.println((i + 1) + ". " + list.get(i));
         }
-
-```
-
----
-
-```java
-        List<String> subList = list.subList(1, 3); // 子列表
-        System.out.println("子列表: " + subList);
     }
 }
 ```
 
-<div v-click style="margin-top: 15px; border-left: 5px solid #3498db; background: #f0f8ff; padding: 10px 15px; border-radius: 4px; display: inline-block;width: 800px;">
+---
+
+<div style="margin-top: 15px; border-left: 5px solid #3498db; background: #f0f8ff; padding: 10px 15px; border-radius: 4px; display: inline-block;width: 800px;">
 练习：创建一个String类型的List，添加5个名字，找出最长的名字并打印
 </div>
 
@@ -253,9 +260,37 @@ public class Main {
 
 ---
 
-# Map 接口
+# Map接口和HashMap类
 
-- 常用实现类：HashMap
+<p></p>
+
+<div class="text-gray-600 my-1">
+📕 字典是一种类似我们英文词典的一种数据接口，例如我们需要查<span class="text-red-500">hello</span>这个英文单词的意思。
+</div>
+
+* 通过英文字典的目录查找hello这个单词，
+* 跳到目录指定的一页然后找到单词对应的一页
+* 并查看单词的详细解释。
+
+---
+
+# Map接口和HashMap类
+
+<div class="flex flex-row gap-4">
+    <img src="/java-hashmap.png" class="w-[50%] flex" />
+    <div class="flex">
+    <ul>
+        <li>🔌 Map接口，定义了基于键值对的访问和存储接口，如添加键值对put, 基于键获取值get</li>
+        <li>📚 HashMap类实现了Map接口，基于哈希计算+数组+链表数组实现字典。</li>
+        <li>🔍 例如查找hello单词，首先计算单词的哈希值8491，并把哈希值转成数组下标</li>
+        <li>🎉 找到链表的首个节点，返回“你好”</li>
+    </ul>
+    </div>
+</div>
+
+---
+
+# HashMap
 
 ```java
 import java.util.HashMap;
