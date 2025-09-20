@@ -1,0 +1,67 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp">
+
+  <TextView
+    android:id="@+id/tv2"
+    android:text="ConstraintLayout TextView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
+  <EditText
+    android:id="@+id/et2"
+    android:inputType="text"
+    android:hint="Enter text"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/tv2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="8dp"
+    android:minWidth="48dp"
+    android:minHeight="48dp"/>
+
+  <Button
+    android:id="@+id/btn2"
+    android:text="Click Me"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/et2"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="8dp"/>
+
+  <ImageView
+    android:id="@+id/img2"
+    android:src="@mipmap/ic_launcher"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:layout_constraintTop_toBottomOf="@id/btn2"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="8dp"/>
+
+  <SeekBar
+    android:id="@+id/seek2"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/img2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="8dp"/>
+
+  <Switch
+    android:id="@+id/switch2"
+    android:text="Enable feature"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/seek2"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="8dp"
+    android:minWidth="48dp"
+    android:minHeight="48dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,32 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.WidgetLayoutDemo">
-    <activity android:name=""></activity>
+    <activity
+      android:name=".MainActivity"
+      android:exported="true" >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:name=".SwitchActivity"
+      android:exported="true" />
+    <activity
+      android:name=".SeekBarActivity"
+      android:exported="true" />
+    <activity
+      android:name=".ImageViewActivity"
+      android:exported="true" />
+    <activity
+      android:name=".EditTextActivity"
+      android:exported="true" />
+    <activity
+      android:name=".TextViewActivity"
+      android:exported="true" />
+    <activity
+      android:name=".ButtonActivity"
+      android:exported="true"/>
   </application>
 
 </manifest>

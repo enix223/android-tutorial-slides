@@ -1,17 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:orientation="vertical">
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/list_layouts"
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
-  <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/fragment_container"
-    android:layout_width="0dp"
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     android:layout_weight="1"
-    android:layout_height="0dp" />
+    android:gravity="center">
+    <GridLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:alignmentMode="alignMargins"
+      android:columnCount="2"
+      android:rowCount="3"
+      android:rowOrderPreserved="false">
+
+      <!-- 第一行按钮 -->
+      <Button
+        android:id="@+id/btn_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="Button"
+        android:textSize="14sp" />
+
+      <Button
+        android:id="@+id/btn_textview"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="TextView"
+        android:textSize="14sp" />
+
+      <!-- 第二行按钮 -->
+      <Button
+        android:id="@+id/btn_edittext"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="EditText"
+        android:textSize="14sp" />
+
+      <Button
+        android:id="@+id/btn_imageview"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="ImageView"
+        android:textSize="14sp" />
+
+      <!-- 第三行按钮 -->
+      <Button
+        android:id="@+id/btn_seekbar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="SeekBar"
+        android:textSize="14sp" />
+
+      <Button
+        android:id="@+id/btn_switch"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="Switch"
+        android:textSize="14sp" />
+
+    </GridLayout>
+
+  </LinearLayout>
 </LinearLayout>

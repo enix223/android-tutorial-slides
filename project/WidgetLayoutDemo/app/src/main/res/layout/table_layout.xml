@@ -1,0 +1,28 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp"
+  android:stretchColumns="1">
+
+  <TableRow>
+    <TextView android:text="Table TextView"/>
+    <EditText android:hint="Enter text"
+      android:minWidth="48dp"
+      android:minHeight="48dp"/>
+  </TableRow>
+
+  <TableRow>
+    <Button android:text="Click Me"/>
+    <ImageView android:src="@mipmap/ic_launcher"
+      android:layout_width="50dp"
+      android:layout_height="50dp"/>
+  </TableRow>
+
+  <TableRow>
+    <SeekBar android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <Switch android:text="Enable feature"
+      android:minWidth="48dp"
+      android:minHeight="48dp"/>
+  </TableRow>
+
+</TableLayout>
