@@ -40,10 +40,27 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+
+---
+
+- 也可以通过下面这种方式创建布局文件
+
+<div class="flex flex-col items-center justify-center">
+    <img src="/constraint-layout-1.gif" />
+</div>
+
+---
+
+- 至少要指定两个方向，然后就能随意拖动控件位置
+
+<div class="flex flex-col items-center justify-center">
+    <img src="/constraint-layout-2.gif" width="500"/>
+</div>
+
 ---
 
 <div class="flex flex-col items-center justify-center">
-    <img src="/text-view-2.png" width="200"/>
+    <img src="/text-view-2.png"  width="200"/>
 </div>
 
 

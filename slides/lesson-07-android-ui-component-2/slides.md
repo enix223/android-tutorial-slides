@@ -12,29 +12,34 @@ src: ./pages/menu.md
 ---
 
 ---
-src: ./pages/text-view.md
+src: ./pages/view.md
 ---
 
 ---
-src: ./pages/button.md
+src: ./pages/frame-layout.md
 ---
 
 ---
-src: ./pages/image-view.md
+src: ./pages/linear-layout.md
 ---
 
 ---
-src: ./pages/edit-text.md
+src: ./pages/scroll-view.md
 ---
 
 ---
-src: ./pages/switch.md
+src: ./pages/relative-layout.md
 ---
 
 ---
-src: ./pages/seek-bar.md
+src: ./pages/constraint-layout.md
 ---
 
 ---
-src: ./pages/recycler-view.md
+src: ./pages/toolbar.md
 ---
+
+---
+src: ./pages/coordinator-layout.md
+---
+

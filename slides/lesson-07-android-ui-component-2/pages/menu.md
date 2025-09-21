@@ -11,13 +11,13 @@
   line-height: 2em;
 ">
 
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">TextView</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">Button</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">ImageView</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">EditText</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">Switch</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">SeekBar</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">RecyclerView</div>
-<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">Fragment</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">View</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">FrameLayout</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">LinearLayout</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">ScrollView</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">RelativeLayout</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">ConstraintLayout</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">Toolbar</div>
+<div style="background: #3498db; color: white; padding: 12px 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; ">CoordinatorLayout</div>
 
 </div>
