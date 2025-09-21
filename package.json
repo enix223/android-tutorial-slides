@@ -8,7 +8,9 @@
     "dev:lesson02": "pnpm run --filter='lesson-02-*' dev",
     "dev:lesson03": "pnpm run --filter='lesson-03-*' dev",
     "dev:lesson04": "pnpm run --filter='lesson-04-*' dev",
-    "dev:lesson05": "pnpm run --filter='lesson-05-*' dev"
+    "dev:lesson05": "pnpm run --filter='lesson-05-*' dev",
+    "dev:lesson06": "pnpm run --filter='lesson-06-*' dev",
+    "dev:lesson07": "pnpm run --filter='lesson-07-*' dev"
   },
   "keywords": [],
   "author": "",
