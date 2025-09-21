@@ -162,7 +162,7 @@ importers:
         specifier: ^3.5.21
         version: 3.5.21(typescript@5.9.2)
 
-  slides/lesson-06-ui-widget-2:
+  slides/lesson-07-ui-widget-2:
     dependencies:
       '@slidev/cli':
         specifier: ^52.2.4
