@@ -15,6 +15,6 @@ if [ -d "$dir" ]; then
 fi
 done
 
-# ossutil rm -rf oss://ey-course/android-tutorial-slides/
-# ossutil cp -r dist/ oss://ey-course/android-tutorial-slides/
-# ossutil cp -rf catalog.html oss://ey-course/index.html
+ossutil rm -rf oss://ey-course/android-tutorial-slides/
+ossutil cp -r dist/ oss://ey-course/android-tutorial-slides/
+ossutil cp -rf catalog.html oss://ey-course/index.html
