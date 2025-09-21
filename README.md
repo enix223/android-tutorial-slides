@@ -6,7 +6,7 @@
 
 ```sh
 cd slides
-pnpm create sldiev
+pnpm create slidev
 ```
 
 ### 1.2 添加依赖
