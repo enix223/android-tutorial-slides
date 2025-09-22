@@ -122,6 +122,9 @@ importers:
 
   slides/lesson-05-android-activity:
     dependencies:
+      '@katzumi/slidev-addon-qrcode':
+        specifier: ^0.0.17
+        version: 0.0.17
       '@slidev/cli':
         specifier: ^52.1.0
         version: 52.1.0(@babel/parser@7.28.4)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)

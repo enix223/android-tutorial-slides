@@ -19,6 +19,10 @@ src: ./pages/activity-overview.md
 ---
 
 ---
+src: ./pages/activity-create.md
+---
+
+---
 src: ./pages/activity-lifecycle-flowchart.md
 ---
 
@@ -32,6 +36,10 @@ src: ./pages/activity-lifecycle-1.md
 
 ---
 src: ./pages/activity-lifecycle-2.md
+---
+
+---
+src: ./pages/stack.md
 ---
 
 ---
@@ -72,4 +80,8 @@ src: ./pages/data-transmission.md
 
 ---
 src: ./pages/data-callback.md
+---
+
+---
+src: ./pages/practise.md
 ---

@@ -11,7 +11,14 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.ActivityLaunchMode">
-
+    <activity
+      android:exported="true"
+      android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
     <activity
       android:exported="true"
       android:launchMode="standard"
@@ -21,7 +28,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
     <activity
       android:launchMode="singleTop"
       android:name=".SingleTopActivity" />
