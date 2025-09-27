@@ -20,6 +20,26 @@
 
 ---
 
+# 课堂练习 - 1
+
+效果展示
+
+<div class="flex flex-row">
+    <div class="flex flex-1">
+        <img src="/homework-1.png" class="w-[40%]"/>
+    </div>
+    <div class="flex flex-1">
+        <ul>
+            <li>背景颜色(android:background)是: #FFFF7979</li>
+            <li>"你好"的字体颜色(android:textColor): #FFFFFFFF</li>
+            <li>"按钮"背景颜色(android:backgroundTint): #FFFFFFFF</li>
+            <li>"按钮"的文字颜色(android:textColor): #FFE7564F</li>
+        </ul>
+    </div>
+</div>
+
+---
+
 # 课堂练习 - 2
 练习activity之间的跳转
 
