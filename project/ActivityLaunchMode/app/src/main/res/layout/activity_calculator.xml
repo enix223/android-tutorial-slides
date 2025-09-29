@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:gravity="center"
-  android:orientation="vertical"
   android:id="@+id/main"
+  android:gravity="center"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".MainActivity">
+  android:orientation="vertical"
+  tools:context=".CalculatorActivity">
   <TextView
     android:id="@+id/result"
-    android:layout_gravity=""
+    android:layout_marginBottom="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
   <Button
-    android:text="跳转"
-    android:id="@+id/navigate_calculator_btn"
-    android:layout_width="wrap_content"
+    android:text="相加"
+    android:id="@+id/add_btn"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 </LinearLayout>

@@ -6,9 +6,12 @@ layout: cover
 
 # Android UI 组件 - 1
 
-
 ---
 src: ./pages/menu.md
+---
+
+---
+src: ./pages/widget-basic.md
 ---
 
 ---
