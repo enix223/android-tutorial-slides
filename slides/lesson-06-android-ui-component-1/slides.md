@@ -4,7 +4,7 @@ colorSchema: light
 layout: cover
 ---
 
-# Android UI 组件 - 1
+# Android组件 - 常用组件
 
 ---
 src: ./pages/menu.md
@@ -40,4 +40,8 @@ src: ./pages/seek-bar.md
 
 ---
 src: ./pages/recycler-view.md
+---
+
+---
+src: ./pages/practise.md
 ---

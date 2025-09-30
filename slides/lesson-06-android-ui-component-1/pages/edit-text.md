@@ -59,7 +59,3 @@ public class MainActivity extends AppCompatActivity {
 <div class="flex flex-col items-center justify-center">
     <img src="/edit-text-2.png"/>
 </div>
-
----
-
-<div v-click style="margin-top: 15px; border-left: 5px solid #3498db; background: #f0f8ff; padding: 10px 15px; border-radius: 4px; display: inline-block;width: 800px;"> 练习：制作一个可以输入账号密码登陆的页面，并实现功能（账号不为admin，密码不为123456时提示账号或密码出错） </div>
