@@ -1,5 +1,4 @@
-
-## SeekBar
+# SeekBar
 
 - SeekBar意思为拖动条，是ProgressBar的一个子类。
   在我们安卓的开发中也是应用非常的广泛。如音乐播放、音量条、播放进度条，等等。Android系统只提供了水平的，默认的样式，我们也可以根据自己需求自定义样式。
@@ -9,24 +8,21 @@
   onStartTrackingTouch：按住SeekBar时会触发
   onStopTrackingTouch：放开SeekBar时触发
 
-
-<div class="flex flex-col items-center justify-center">
-    <img src="/seek-bar-1.png" width="780"/>
-</div>
+| 属性 | 说明 |
+| :--- | :--- |
+| **android:max** | 进度条的最大值 |
+| **android:min** | 进度条的最小值 |
+| **android:progress** | 滑块初始位置或当前位置 |
+| **android:stepSize** | 设置滑块滑动步长 |
+| **android:progressDrawable** | 设置进度条的图片 |
+| **android:thumb** | 设置滑块的图片 |
+| **android:thumbTint** | 设置滑块颜色 |
 
 ---
-
+# SeekBar
 
 ```xml 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:layout_marginTop="20dp"
-  android:orientation="vertical"
-  android:gravity="top">
-
-
-  <SeekBar
+<SeekBar
     android:id="@+id/sb_normal"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
@@ -36,20 +32,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:thumb = "@mipmap/ic_launcher"/>
-
-  <TextView
-    android:id="@+id/txt_cur"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp"
-    android:text="Hello, World!"
-    android:textSize="20sp"
-    android:textColor= "@color/black"/>
-
-</LinearLayout>
 ```
 
 ---
+# SeekBar
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -81,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ---
+# SeekBar
 
 <div class="flex flex-col items-center justify-center">
     <img src="/seek-bar-2.gif" width="200"/>
