@@ -89,4 +89,75 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
   </LinearLayout>
+
+  <LinearLayout
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+      android:text="Checkbox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <CheckBox
+        android:id="@+id/checkbox_1"
+        android:checked="true"
+        android:text="选项一"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+      <CheckBox
+        android:checked="false"
+        android:text="选项二"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+      <CheckBox
+        android:checked="true"
+        android:text="选项三"
+        android:enabled="false"
+        android:buttonTint="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+      android:text="RadioGroup &amp; RadioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <RadioGroup
+      android:id="@+id/radio_group"
+      android:orientation="horizontal"
+      android:checkedButton="@id/radio_button_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+      <RadioButton
+        android:id="@+id/radio_button_1"
+        android:text="选项一"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+      <RadioButton
+        android:id="@+id/radio_button_2"
+        android:text="选项二"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+      <RadioButton
+        android:buttonTint="@android:color/holo_red_dark"
+        android:enabled="false"
+        android:id="@+id/radio_button_3"
+        android:text="选项三"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RadioGroup>
+  </LinearLayout>
 </LinearLayout>

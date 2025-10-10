@@ -39,6 +39,14 @@ src: ./pages/seek-bar.md
 ---
 
 ---
+src: ./pages/checkbox.md
+---
+
+---
+src: ./pages/radio.md
+---
+
+---
 src: ./pages/recycler-view.md
 ---
 
