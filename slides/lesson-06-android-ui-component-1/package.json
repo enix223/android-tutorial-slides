@@ -5,11 +5,11 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../dist/lesson-06/slides.pdf"
   },
   "dependencies": {
     "@katzumi/slidev-addon-qrcode": "^0.0.17",
-    "@slidev/cli": "^52.1.0",
+    "@slidev/cli": "52.1.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "shared": "workspace:*",
@@ -20,5 +20,8 @@
     "addons": [
       "@katzumi/slidev-addon-qrcode"
     ]
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.56.0"
   }
 }

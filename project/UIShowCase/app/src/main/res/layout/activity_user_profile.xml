@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:padding="15dp"
+  android:id="@+id/main"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".UserProfileActivity">
+
+  <!-- name -->
+  <TextView
+    android:text="名字"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <EditText
+    android:id="@+id/edittext_name"
+    android:layout_marginTop="10dp"
+    android:background="@color/grey"
+    android:padding="10dp"
+    android:text="123"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <!-- gender -->
+  <TextView
+    android:text="性别"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <RadioGroup
+    android:id="@+id/radio_group_gender"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RadioButton
+      android:id="@+id/radio_gender_male"
+      android:text="男"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <RadioButton
+      android:text="女"
+      android:id="@+id/radio_gender_female"
+      android:layout_marginStart="10dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+  </RadioGroup>
+
+  <!-- 年龄 -->
+  <TextView
+    android:text="年龄"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <SeekBar
+    android:min="1"
+    android:max="100"
+    android:progress="18"
+    android:progressTint="@color/purple_500"
+    android:thumbTint="@color/purple_700"
+    android:id="@+id/seekbar_age"
+    android:layout_width="match_parent"
+    android:layout_height="40dp" />
+  
+  <!-- 爱好 -->
+  <TextView
+    android:text="爱好"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+      android:text="运动"
+      android:id="@+id/checkbox_sport"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <CheckBox
+      android:text="看书"
+      android:id="@+id/checkbox_reading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <CheckBox
+      android:text="吃"
+      android:id="@+id/checkbox_eating"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
+
+  <Button
+    android:text="提交"
+    android:layout_marginTop="20dp"
+    android:id="@+id/button_submit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>

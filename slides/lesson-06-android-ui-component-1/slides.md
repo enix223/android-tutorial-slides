@@ -2,6 +2,7 @@
 theme: android-theme
 colorSchema: light
 layout: cover
+routerMode: hash
 ---
 
 # Android组件 - 常用组件
