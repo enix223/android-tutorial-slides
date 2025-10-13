@@ -1,19 +1,43 @@
+# LinearLayout
 
-## LinearLayout
+| 属性 | 作用 | 说明 |
+|-|-|-|
+| android:orientation | 布局方向 | 垂直排列是`vertical`，水平排列是`horizontal` |
+| android:gravity | 父组件对齐方式 | 控制子组件的对齐方式，垂直方向（`top`、`center_vertical`、`bottom`）水平方向（`left`、`right`、`center_horizontal`），水平和垂直方向 (`center`) |
 
-- android:orientation 垂直排列是vertical，水平排列是horizontal
+<p />
 
-- android:layout_gravity 对齐方式，垂直方向（top、center_vertical、bottom）水平方向（left、right、center_horizontal）
+* 当父组件位LinearLayout时，子组件新增的属性:
 
-- android:layout_weight 来指定控件的大小，此时可以将宽度设定为0dp
-
-- 注意：如果LinearLayout的排列方向是horizontal，控件宽度不能为match_parent，否则单独一个控件就会将整个水平方向占满，如果LinearLayout的排列方向是vertical，控件高度不能为为match_parent
-
-- 注意：当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效，同理，是vertical时，只有 水平方向上的对齐方式才会生效
+| 属性 | 作用 | 说明 |
+|-|-|-|
+| android:layout_gravity | 子组件对齐方式 | 取值跟android:gravity一致 |
+| android:layout_weight | 控制子组件的比例 | 例如子组件A的`layout_weight=1`, 子组件B的`layout_weight=2`，则A与B的比例为1比2 |
 
 ---
 
-## 控件对齐方式举例：
+# gravity的使用 - 上对齐
+orientation=veritcal, gravity = top
+
+<img src="/linearlayout-gravity-top.drawio.png" class="h-[80%]" />
+
+---
+
+# gravity的使用 - 垂直居中
+orientation=vertical, gravity = center_vertical
+
+<img src="/linearlayout-gravity-center-vertical.drawio.png" class="h-[80%]" />
+
+---
+
+# gravity的使用 - 下对齐
+orientation=vertical, gravity = bottom
+
+<img src="/linearlayout-gravity-bottom.drawio.png" class="h-[80%]" />
+
+---
+
+# 控件对齐方式举例
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,14 +67,15 @@
 
 --- 
 
-## 以上按钮效果如图：
+# 以上按钮效果如图：
+
 <div class="flex flex-col items-center justify-center">
     <img src="/linear-layout-1.png" width="700"/>
 </div>
 
 ---
 
-## 设置控件大小比重weight举例：
+# 设置控件大小比重weight举例
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -77,7 +102,8 @@
 
 --- 
 
-## 效果如图所示：
+# 效果如图所示
+
 <div class="flex flex-col items-center justify-center">
     <img src="/linear-layout-2.png" width="700"/>
 </div>

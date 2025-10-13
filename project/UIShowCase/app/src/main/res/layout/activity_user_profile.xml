@@ -3,8 +3,9 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:orientation="vertical"
   xmlns:tools="http://schemas.android.com/tools"
-  android:padding="15dp"
+  android:paddingHorizontal="15dp"
   android:id="@+id/main"
+  android:gravity="bottom"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".UserProfileActivity">
@@ -19,7 +20,6 @@
     android:layout_marginTop="10dp"
     android:background="@color/grey"
     android:padding="10dp"
-    android:text="123"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
@@ -94,6 +94,11 @@
     android:text="提交"
     android:layout_marginTop="20dp"
     android:id="@+id/button_submit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <TextView
+    android:id="@+id/result"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 </LinearLayout>

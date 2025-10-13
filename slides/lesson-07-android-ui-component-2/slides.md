@@ -5,23 +5,18 @@ layout: cover
 routerMode: hash
 ---
 
-# Android UI 组件 - 2
-
+# Android UI组件 - 容器组件
 
 ---
 src: ./pages/menu.md
 ---
 
 ---
-src: ./pages/view.md
+src: ./pages/linear-layout.md
 ---
 
 ---
 src: ./pages/frame-layout.md
----
-
----
-src: ./pages/linear-layout.md
 ---
 
 ---
