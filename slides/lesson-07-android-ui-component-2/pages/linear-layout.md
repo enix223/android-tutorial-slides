@@ -3,7 +3,7 @@
 | 属性 | 作用 | 说明 |
 |-|-|-|
 | android:orientation | 布局方向 | 垂直排列是`vertical`，水平排列是`horizontal` |
-| android:gravity | 父组件对齐方式 | 控制子组件的对齐方式，垂直方向（`top`、`center_vertical`、`bottom`）水平方向（`left`、`right`、`center_horizontal`），水平和垂直方向 (`center`) |
+| android:gravity | 父组件对齐方式 | 控制子组件的对齐方式，垂直方向（`top`、`center_vertical`、`bottom`）水平方向（`left`、`right`、`center_horizontal`），水平和垂直方向 (`center`)，gravity默认是`top` + `left` |
 
 <p />
 
@@ -16,24 +16,45 @@
 
 ---
 
-# gravity的使用 - 上对齐
-orientation=veritcal, gravity = top
+# gravity的使用 - 垂直排列 + 上对齐
+orientation=veritcal, gravity = top|...
 
 <img src="/linearlayout-gravity-top.drawio.png" class="h-[80%]" />
 
 ---
 
-# gravity的使用 - 垂直居中
-orientation=vertical, gravity = center_vertical
+# gravity的使用 - 垂直排列 + 垂直居中
+orientation=vertical, gravity = center_vertical|...
 
 <img src="/linearlayout-gravity-center-vertical.drawio.png" class="h-[80%]" />
 
 ---
 
-# gravity的使用 - 下对齐
-orientation=vertical, gravity = bottom
+# gravity的使用 - 垂直排列 + 下对齐
+orientation=vertical, gravity = bottom|...
 
 <img src="/linearlayout-gravity-bottom.drawio.png" class="h-[80%]" />
+
+---
+
+# gravity的使用 - 水平排列 + 左对齐
+orientation=vertical, gravity = left|...
+
+<img src="/linearlayout-gravity-left.drawio.png" class="h-[80%]" />
+
+---
+
+# gravity的使用 - 水平排列 + 右对齐
+orientation=vertical, gravity = right|...
+
+<img src="/linearlayout-gravity-right.drawio.png" class="h-[80%]" />
+
+---
+
+# gravity的使用 - 水平排列 + 水平居中对齐
+orientation=vertical, gravity = center_horizontal|...
+
+<img src="/linearlayout-gravity-center-horizontal.drawio.png" class="h-[80%]" />
 
 ---
 
