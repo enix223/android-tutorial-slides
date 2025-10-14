@@ -20,10 +20,6 @@ src: ./pages/frame-layout.md
 ---
 
 ---
-src: ./pages/scroll-view.md
----
-
----
 src: ./pages/relative-layout.md
 ---
 
@@ -36,6 +32,5 @@ src: ./pages/toolbar.md
 ---
 
 ---
-src: ./pages/coordinator-layout.md
+src: /pages/practise.md
 ---
-

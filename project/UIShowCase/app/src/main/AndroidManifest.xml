@@ -13,6 +13,12 @@
     android:theme="@style/Theme.UIShowCase">
     <activity
       android:exported="false"
+      android:name=".FrameLayoutActivity" />
+    <activity
+      android:exported="false"
+      android:name=".LinearLayoutWeightActivity" />
+    <activity
+      android:exported="false"
       android:name=".LinearLayoutGravityActvity" />
     <activity
       android:exported="true"
@@ -25,7 +31,7 @@
     </activity>
     <activity
       android:exported="true"
-      android:name=".MainActivity"></activity>
+      android:name=".MainActivity" />
   </application>
 
 </manifest>
