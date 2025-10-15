@@ -214,3 +214,46 @@ submit.setOnClickListener(new OnClickListener() {
     }
 });
 ```
+
+---
+
+# 课堂练习2
+练习使用FrameLayout和ImageView
+
+* 使用上一堂课的项目或新建一个项目。
+* 通过Android Studio创建一个`New -> Activity -> Empty Views Activity`创建一个Activity，并命名为<span class="text-blue-700">FrameLayoutActivity</span>
+* 把新建的布局文件中的ConstraintLayout修改为FrameLayout。
+* 创建4个ImageView，2个ImageView显示一张猫的图片，2个ImageView一张狗的图片
+
+<div class="text-2xl mt-5">课堂PPT</div>
+<div class="mt-3">
+    <QRCode
+        value="http://course.cloudesk.top"
+        :width="180"
+        :height="180"
+        color=""
+        image=""
+    />
+</div>
+
+---
+
+# 课堂练习2
+效果展示
+
+<div class="flex flex-row">
+    <div class="flex flex-1">
+        <img src="/homework-2.png" class="w-[55%]"/>
+    </div>
+    <div class="flex flex-1 flex-col">
+      <ul>
+        <li>猫图片的ImageView，长度为<span class="text-blue-600">300dp</span>，高度为<span class="text-blue-600">200dp</span></li>
+        <li>狗狗图片的ImageView，长度为<span class="text-blue-600">200dp</span>，高度为<span class="text-blue-600">200dp</span></li>
+        <li>顶部的猫图片遮挡住顶部的狗狗图片，且狗狗图片在<span class="text-blue-600">右上角显示</span></li>
+        <li>底部的狗狗图片遮挡住顶部的猫图片，且狗狗图片在<span class="text-blue-600">右下角显示</span></li>
+        <li>FrameLayoutActivity需要移除顶部的导航栏，在AndroidManifest.xml文件中FrameLayoutActivity的属性增加：<span class="text-blue-600">android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"</span></li>
+        <li>猫图片下载地址: <span class="text-blue-600">http://course.cloudesk.top/android-tutorial-slides/lesson-07/cat.jpg</span></li>
+        <li>狗图片下载地址: <span class="text-blue-600">http://course.cloudesk.top/android-tutorial-slides/lesson-07/dog.jpg</span></li>
+      </ul>
+    </div>
+</div>
