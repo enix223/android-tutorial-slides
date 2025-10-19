@@ -1,16 +1,11 @@
 ---
 theme: android-theme
 colorSchema: light
-class: text-center
-drawings:
-  persist: false
-transition: slide-left
-mdc: true
 layout: cover
-background: cover.jpg
+routerMode: hash
 ---
 
-<h1 class="!text-white">Android 用户交互组件</h1>
+# Android 用户交互组件
 
 ---
 src: ./pages/alert-dialog-introduction.md
