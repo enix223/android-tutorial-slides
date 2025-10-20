@@ -15,10 +15,6 @@
       android:exported="true"
       android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
       android:name=".FrameLayoutActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
     </activity>
     <activity
       android:exported="false"
@@ -29,6 +25,10 @@
     <activity
       android:exported="true"
       android:name=".UserProfileActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
     </activity>
     <activity
       android:exported="true"

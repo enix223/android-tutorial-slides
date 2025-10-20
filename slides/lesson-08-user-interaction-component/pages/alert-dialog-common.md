@@ -7,97 +7,94 @@
     2. 普通列表对话框
 
     3. 单选列表对话框
-    
 
 ---
 
-1. 创建一个 空的 Android 项目 cn.twle.android.AlertDialog
-
-2. 下载 /static/i/android/info.png 并放到 res/drawable 目录下 (或者直接用原有的ic_launcher)
-
-3. 修改 MainActivity.java 创建一个普通的对话框
+# 创建AlertDialog
+定义标题和内容
 
 ```java
-public class MainActivity extends AppCompatActivity  {
+// 创建一个AlertDialog Builder
+AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+// 设置图标
+builder.setIcon(com.google.android.material.R.drawable.abc_ic_star_black_16dp)
+
+// 设置提示标题
+builder.setTitle("提示");
+
+// 设置提示语
+builder.setMessage("是否确定提交?");
+```
+---
+
+# 创建AlertDialog
+定义取消和确定按钮
+
+```java
+// 定义取消按钮和响应事件
+builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onClick(DialogInterface dialogInterface, int i) {
+        Toast.makeText(UserProfileActivity.this, "点击了取消按钮", Toast.LENGTH_LONG).show();
+    }
+});
 
-        final Context ctx = MainActivity.this;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-        builder.setIcon(R.drawable.info)
-            .setTitle("系统提示")
-            .setMessage("这是一个最普通的 AlertDialog,\n带有三个按钮，分别是取消，普通和确定");
-
-        // 取消按钮
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ctx, "你点击了取消按钮~", Toast.LENGTH_SHORT).show();
+// 定义确定按钮和响应事件
+builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {
+        Toast.makeText(UserProfileActivity.this, "点击了确定", Toast.LENGTH_LONG).show();
+    }
+});
 ```
 
 ---
+
+# 创建AlertDialog
+基于构造器Builder的配置，创建AlertDialog
 
 ```java
-            }
-        });
+// 创建alert dialog
+AlertDialog alertDialog = builder.create();
 
-        // 确定按钮
-        builder. setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ctx, "你点击了确定按钮~", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // 普通按钮
-        builder.setNeutralButton("普通按钮", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ctx, "你点击了普通按钮~", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        AlertDialog alert = builder.create();  // 创建 AlertDialog 对象
-        alert.show();    // 显示对话框
-    }
-}
+// 显示对话框
+alertDialog.show();
 ```
 
-
 ---
+
+# AlertDialog效果
 
 <div class="flex flex-col items-center justify-center">
-    <img src="/android-alertdialog-3.png" width="280"/>
+    <img src="/android-alertdialog-3.png" class="w-[20%]"/> 
 </div>
 
 ---
 
+# AlertDialog列表选择
+
 ```java
 public class MainActivity extends AppCompatActivity  {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] lang = new String[]{"Kotlin", "Java", "Python", "PHP", "C#", "Ruby", "Perl"};
-
+        // 设置选项
+        final String[] hobbies = new String[]{"篮球", "足球", "美食", "旅游", "摄影"};
+        // 创建构造器
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-        builder.setIcon(R.drawable.info).setTitle("选择你喜欢的开发语言");
-
-        builder.setItems(lang, new DialogInterface.OnClickListener() {
+        // 设置标题
+        builder.setIcon(R.drawable.info).setTitle("选择你爱好");
+        // 设置选择事件处理器
+        builder.setItems(hobbies, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "你选择了" + lang[which], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "你选择了" + hobbies[which], Toast.LENGTH_SHORT).show();
             }
         });
-
+        // 显示对话框
         AlertDialog alert = builder.create();
         alert.show();
     }
@@ -106,11 +103,15 @@ public class MainActivity extends AppCompatActivity  {
 
 ---
 
+# AlertDialog列表选择
+
 <div class="flex flex-col items-center justify-center">
-    <img src="/android-alertdialog-4.png" width="280"/>
+    <img src="/android-alertdialog-4.png" class="w-[20%]"/>
 </div>
 
 ---
+
+# AlertDialog单选列表
 
 ```java
 public class MainActivity extends AppCompatActivity  {
@@ -141,6 +142,8 @@ public class MainActivity extends AppCompatActivity  {
 
 ---
 
+# AlertDialog单选列表效果
+
 <div class="flex flex-col items-center justify-center">
-    <img src="/android-alertdialog-5.png" width="280"/>
+    <img src="/android-alertdialog-5.png" class="w-[20%]"/>
 </div>

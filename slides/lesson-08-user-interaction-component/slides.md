@@ -34,3 +34,7 @@ src: ./pages/menu-basic.md
 ---
 src: ./pages/menu-common.md
 ---
+
+---
+src: ./pages/practise.md
+---
