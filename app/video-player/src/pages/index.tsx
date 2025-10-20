@@ -1,44 +1,57 @@
-import "./assets/main.css";
+import "../assets/main.css";
 import "./index.less";
-import logo from "./assets/logo.jpg";
 import Aliplayer from "aliyun-aliplayer";
-import ThePlayer from "../components/player/Player";
+import ThePlayer from "../components/thePlayer/ThePlayer";
+import VideoList from "../components/videoList/VideoList";
 import { useState, useEffect } from "react";
 import "aliyun-aliplayer/build/skins/default/aliplayer-min.css";
-import type { PlayInfo } from "../components/types";
+import type { PlayInfo } from "../types";
+import { useSharedContext } from "@/service/context";
 
 export default function HomePage() {
-  const [player, setPlayer] = useState<typeof Aliplayer>(null); // 播放器实例
+  const [player, setPlayer] = useState<typeof Aliplayer>(null);
   const [playObj, setPlayObj] = useState<PlayInfo>({
-    VideoId: "123",
+    VideoId: "",
+    Description: "",
+    Title: "",
+    Duration: "",
+    CoverURL: "",
   });
+  const [videoList, setVideoList] = useState<PlayInfo[]>([]);
+  const { vodService } = useSharedContext();
 
   useEffect(() => {
-    createPlayer(playObj.Source, playObj.CoverURL);
-  }, [playObj.VideoId]);
+    vodService.getVideoList().then((res) => {
+      setVideoList(res);
+      if (res.length === 0) {
+        return;
+      }
 
-  const createPlayer = (source?: string, cover?: string) => {
+      const item = res[0];
+      setPlayObj(item);
+      vodService.getPlayAuth(item.VideoId).then((playAuth) => {
+        createPlayer(item.VideoId, playAuth, item.CoverURL);
+      });
+    });
+  }, [vodService]);
+
+  const createPlayer = (vid: string, playauth: string, cover: string) => {
     if (player) {
       player.dispose();
     }
     const playerInstance = new Aliplayer(
       {
+        vid,
+        playauth,
         id: "container",
         width: "100%",
         height: "485px",
-        source: source, // 如果是私有加密播放请传入 vid/playauth/encryptType
         cover: cover,
-        from: "reactdemo", // 仅在demo使用，正式环境请删除
+        license: {
+          domain: "course.cloudesk.top",
+          key: "SPpuvPIFUBZX3Du3Y04184d51ddd34a5fb364c03ee03c4b51",
+        },
         components: [
-          {
-            name: "StartADComponent",
-            type: window.AliPlayerComponent.StartADComponent,
-            args: [
-              "https://img.alicdn.com/tfs/TB1byi8afDH8KJjy1XcXXcpdXXa-1920-514.jpg",
-              "https://www.aliyun.com/product/vod",
-              3,
-            ],
-          },
           {
             name: "MemoryPlayComponent",
             type: window.AliPlayerComponent.MemoryPlayComponent,
@@ -50,7 +63,7 @@ export default function HomePage() {
         //播放下一个视频
         _player.on("ended", () => {
           let index = videoList.findIndex(
-            (item) => item.VideoId === playObj.VideoId
+            (item) => item.VideoId === playObj?.VideoId
           );
           if (index === -1 || index === videoList.length - 1) {
             return;
@@ -62,23 +75,27 @@ export default function HomePage() {
 
     setPlayer(playerInstance);
   };
+
   //点击右侧列表视频切换
   const update = (video: PlayInfo) => {
     setPlayObj(video);
   };
+
   // 存储当前播放时间
   const saveTime = function (memoryVideo: string, currentTime: string) {
     localStorage.setItem(memoryVideo, currentTime);
   };
+
   // 获取此视频上次播放时间
   const getTime = function (memoryVideo: string): string | null {
     return localStorage.getItem(memoryVideo);
   };
+
   return (
     <div>
       <header>
-        <div className="main-content">
-          <img className="logo" src={logo} alt="" />
+        <div className="main-content flex items-center">
+          <div>Android应用开发</div>
         </div>
       </header>
       <main>
@@ -86,6 +103,10 @@ export default function HomePage() {
           {/* left */}
           <div className="left-area">
             <ThePlayer playingVideo={playObj} />
+          </div>
+          {/* right */}
+          <div className="right-area">
+            <VideoList update={update} videoList={videoList} />
           </div>
         </div>
       </main>

@@ -16,8 +16,6 @@ public boolean onPrepareOptionsMenu(Menu menu)：选项菜单显示前会调用�
 public boolean onMenuOpened(int featureId, Menu menu)：选项菜单打开以后会调用这个方法
 ```
 
-
-
 ---
 
 

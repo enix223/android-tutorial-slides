@@ -8,6 +8,10 @@ routerMode: hash
 # Android 用户交互组件
 
 ---
+src: ./pages/toast.md
+---
+
+---
 src: ./pages/alert-dialog-introduction.md
 ---
 

@@ -1,6 +1,5 @@
 export interface PlayInfo {
-  VideoId: number;
-  Source: string;
+  VideoId: string;
   CoverURL: string;
   Title: string;
   Duration: string;
