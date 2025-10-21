@@ -28,10 +28,7 @@ export default function HomePage() {
       }
 
       const item = res[0];
-      setPlayObj(item);
-      vodService.getPlayAuth(item.VideoId).then((playAuth) => {
-        createPlayer(item.VideoId, playAuth, item.CoverURL);
-      });
+      update(item);
     });
   }, [vodService]);
 
@@ -79,6 +76,9 @@ export default function HomePage() {
   //点击右侧列表视频切换
   const update = (video: PlayInfo) => {
     setPlayObj(video);
+    vodService.getPlayAuth(video.VideoId).then((playAuth) => {
+      createPlayer(video.VideoId, playAuth, video.CoverURL);
+    });
   };
 
   // 存储当前播放时间

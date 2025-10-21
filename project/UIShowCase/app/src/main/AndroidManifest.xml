@@ -13,9 +13,16 @@
     android:theme="@style/Theme.UIShowCase">
     <activity
       android:exported="true"
-      android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-      android:name=".FrameLayoutActivity">
+      android:name=".ListViewActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
     </activity>
+    <activity
+      android:exported="true"
+      android:name=".FrameLayoutActivity"
+      android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     <activity
       android:exported="false"
       android:name=".LinearLayoutWeightActivity" />
@@ -24,12 +31,7 @@
       android:name=".LinearLayoutGravityActvity" />
     <activity
       android:exported="true"
-      android:name=".UserProfileActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
+      android:name=".UserProfileActivity" />
     <activity
       android:exported="true"
       android:name=".MainActivity" />
