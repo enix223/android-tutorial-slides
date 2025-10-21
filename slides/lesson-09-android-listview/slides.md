@@ -1,16 +1,11 @@
 ---
 theme: android-theme
 colorSchema: light
-class: text-center
-drawings:
-  persist: false
-transition: slide-left
-mdc: true
 layout: cover
-background: cover.jpg
+routerMode: hash
 ---
 
-<h1 class="!text-white">Android ListView</h1>
+# Android UI组件 - 列表组件
 
 ---
 src: ./pages/listview-introduction.md

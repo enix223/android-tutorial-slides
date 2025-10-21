@@ -1,11 +1,11 @@
 {
-  "name": "lesson-09-android-listview",
+  "name": "lesson-00-faq",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export --output ../../dist/lesson-09/slides.pdf"
+    "export": "slidev export --output ../../dist/lesson-00/slides.pdf"
   },
   "dependencies": {
     "@katzumi/slidev-addon-qrcode": "^0.0.17",

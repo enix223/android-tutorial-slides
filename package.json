@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:lesson00": "pnpm run --filter='lesson-00-*' dev",
     "dev:lesson01": "pnpm run --filter='lesson-01-*' dev",
     "dev:lesson02": "pnpm run --filter='lesson-02-*' dev",
     "dev:lesson03": "pnpm run --filter='lesson-03-*' dev",
@@ -11,7 +12,8 @@
     "dev:lesson05": "pnpm run --filter='lesson-05-*' dev",
     "dev:lesson06": "pnpm run --filter='lesson-06-*' dev",
     "dev:lesson07": "pnpm run --filter='lesson-07-*' dev",
-    "dev:lesson08": "pnpm run --filter='lesson-08-*' dev"
+    "dev:lesson08": "pnpm run --filter='lesson-08-*' dev",
+    "dev:lesson09": "pnpm run --filter='lesson-09-*' dev"
   },
   "keywords": [],
   "author": "",

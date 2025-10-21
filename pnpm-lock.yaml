@@ -52,6 +52,34 @@ importers:
         specifier: ^52.1.0
         version: 52.1.0(@babel/parser@7.28.4)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.21)(less@4.4.2)(lightningcss@1.22.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.0)(postcss@8.5.6)(react@18.3.1)(terser@5.44.0)
 
+  slides/lesson-00-FAQ:
+    dependencies:
+      '@katzumi/slidev-addon-qrcode':
+        specifier: ^0.0.17
+        version: 0.0.17
+      '@slidev/cli':
+        specifier: 52.1.0
+        version: 52.1.0(@babel/parser@7.28.4)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.21)(less@4.4.2)(lightningcss@1.22.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.0)(postcss@8.5.6)(react@18.3.1)(terser@5.44.0)
+      '@slidev/theme-default':
+        specifier: latest
+        version: 0.25.0
+      '@slidev/theme-seriph':
+        specifier: latest
+        version: 0.25.0
+      shared:
+        specifier: workspace:*
+        version: link:../shared
+      slidev-theme-android-theme:
+        specifier: workspace:*
+        version: link:../android-theme
+      vue:
+        specifier: ^3.5.18
+        version: 3.5.21(typescript@5.9.2)
+    devDependencies:
+      playwright-chromium:
+        specifier: ^1.56.0
+        version: 1.56.0
+
   slides/lesson-01-android-brief:
     dependencies:
       '@katzumi/slidev-addon-qrcode':
@@ -278,8 +306,11 @@ importers:
 
   slides/lesson-09-android-listview:
     dependencies:
+      '@katzumi/slidev-addon-qrcode':
+        specifier: ^0.0.17
+        version: 0.0.17
       '@slidev/cli':
-        specifier: ^52.1.0
+        specifier: 52.1.0
         version: 52.1.0(@babel/parser@7.28.4)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.21)(less@4.4.2)(lightningcss@1.22.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.0)(postcss@8.5.6)(react@18.3.1)(terser@5.44.0)
       '@slidev/theme-default':
         specifier: latest
@@ -296,6 +327,10 @@ importers:
       vue:
         specifier: ^3.5.18
         version: 3.5.21(typescript@5.9.2)
+    devDependencies:
+      playwright-chromium:
+        specifier: ^1.56.0
+        version: 1.56.0
 
   slides/shared:
     dependencies:
@@ -9749,7 +9784,7 @@ snapshots:
       '@babel/parser': 7.28.4
       '@babel/template': 7.27.2
       '@babel/types': 7.27.7
-      debug: 4.4.1
+      debug: 4.4.3
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -9762,7 +9797,7 @@ snapshots:
       '@babel/parser': 7.28.4
       '@babel/template': 7.27.2
       '@babel/types': 7.28.4
-      debug: 4.4.1
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -10277,11 +10312,11 @@ snapshots:
       '@antfu/install-pkg': 1.1.0
       '@antfu/utils': 9.2.0
       '@iconify/types': 2.0.0
-      debug: 4.4.1
+      debug: 4.4.3
       globals: 15.15.0
       kolorist: 1.8.0
-      local-pkg: 1.1.1
-      mlly: 1.7.4
+      local-pkg: 1.1.2
+      mlly: 1.8.0
     transitivePeerDependencies:
       - supports-color
 
@@ -10353,7 +10388,7 @@ snapshots:
 
   '@jridgewell/gen-mapping@0.3.10':
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.2
+      '@jridgewell/sourcemap-codec': 1.5.5
       '@jridgewell/trace-mapping': 0.3.27
 
   '@jridgewell/gen-mapping@0.3.13':
@@ -10380,7 +10415,7 @@ snapshots:
   '@jridgewell/trace-mapping@0.3.27':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.2
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   '@jridgewell/trace-mapping@0.3.30':
     dependencies:
@@ -12183,7 +12218,7 @@ snapshots:
       '@unocss/rule-utils': 66.4.2
       colorette: 2.0.20
       gzip-size: 6.0.0
-      sirv: 3.0.1
+      sirv: 3.0.2
       vue-flow-layout: 0.2.0
 
   '@unocss/inspector@66.5.1':
@@ -16768,7 +16803,7 @@ snapshots:
   ofetch@1.4.1:
     dependencies:
       destr: 2.0.5
-      node-fetch-native: 1.6.6
+      node-fetch-native: 1.6.7
       ufo: 1.6.1
 
   ohash@2.0.11: {}
@@ -17022,7 +17057,7 @@ snapshots:
   pkg-types@1.3.1:
     dependencies:
       confbox: 0.1.8
-      mlly: 1.7.4
+      mlly: 1.8.0
       pathe: 2.0.3
 
   pkg-types@2.1.1:
@@ -19256,7 +19291,7 @@ snapshots:
       '@quansync/fs': 0.1.3
       defu: 6.1.4
       jiti: 2.5.1
-      quansync: 0.2.10
+      quansync: 0.2.11
 
   unconfig@7.3.3:
     dependencies:
