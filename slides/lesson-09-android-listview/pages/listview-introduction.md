@@ -14,6 +14,44 @@
 
 ---
 
+# ListView例子
+
+<div class="flex flex-row justify-center gap-2">
+  <img src="/listview-showcase.jpg" class="flex w-[13vw]" />
+  <div class="flex flex-1">
+    <ul>
+      <li>实现数据列表的显示</li>
+      <li>实现长列表的滚动展示</li>
+      <li>减少重复编码</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+# ListView的架构
+
+<div class="flex flex-row justify-center gap-2">
+  <img src="/listview-arch.drawio.png" class="flex w-[35vw]" />
+  <div class="flex flex-1 flex-col">
+    <div class="text-red-600">ListView组成元素</div>
+    <ol>
+      <li>针对要显示的数据设计一个<span class="text-blue-600">数据类</span>，并确认其内部包含的属性</li>
+      <li>创建一个包含ListView的<span class="text-blue-600">页面布局</span></li>
+      <li>设计一个每一行显示的<span class="text-blue-600">行布局</span></li>
+      <li>创建一个<span class="text-blue-600">适配器Adapter</span>并继承ArrayAdapter</li>
+    </ol>
+    <div class="text-red-600 mt-5">工作原理</div>
+    <ol>
+      <li>Adapter适配器遍历数据列表，并提取其中一行出来</li>
+      <li>填充数据行中的属性到行布局中</li>
+      <li>展示到列表布局ListView中</li>
+      <li>直到所有行都渲染完毕</li>
+    </ol>
+  </div>
+</div>
+
+---
 
 # ListView 常用属性
 
@@ -89,12 +127,9 @@
 ---
 
 
-# 为什么要自定义适配器？
+# 数据适配器Adapter
 
-- 原因在于，当我们想用一些其他的展现方式。
-
-1. 我们定义一个自定义适配器 MyAdapter继承ArrayAdapter。
-
-2. 自定义适配器中常用的方法：getCount、getView、getItem、getItemId。
-
-
+1. 串联数据源和要渲染的行视图 (承上启下的作用)
+2. 完成从数据列表中显示的数据行，并填充至行视图中。
+3. 我们定义一个自定义适配器，并继承ArrayAdapter。
+4. 自定义适配器中常用的方法：getCount、getView、getItem、getItemId。
