@@ -13,12 +13,7 @@
     android:theme="@style/Theme.UIShowCase">
     <activity
       android:exported="true"
-      android:name=".ListViewActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
+      android:name=".ListViewActivity" />
     <activity
       android:exported="true"
       android:name=".FrameLayoutActivity"
@@ -35,6 +30,15 @@
     <activity
       android:exported="true"
       android:name=".MainActivity" />
+    <activity
+      android:exported="true"
+      android:name=".RecipeListActivity"
+      android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>

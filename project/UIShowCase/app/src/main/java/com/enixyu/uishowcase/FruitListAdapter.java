@@ -14,22 +14,31 @@ import java.util.List;
 public class FruitListAdapter extends ArrayAdapter<Fruit> {
 
   private final List<Fruit> fruits;
+  private int mItemViewId;
 
   public FruitListAdapter(@NonNull Context context, int resource, @NonNull List<Fruit> objects) {
     super(context, resource, objects);
     this.fruits = objects;
+    this.mItemViewId = resource;
   }
 
   @NonNull
   @Override
   public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-    View item = LayoutInflater.from(getContext()).inflate(R.layout.item_fruit, parent);
-    TextView nameTextView = item.findViewById(R.id.tv_name);
-    TextView iconTextView = item.findViewById(R.id.tv_icon);
-    Fruit fruit = getItem(position);
-    nameTextView.setText(fruit.getName());
-    iconTextView.setText(fruit.getIcon());
-    return item;
+    ViewHolder viewHolder;
+    if (convertView == null) {
+      convertView = LayoutInflater.from(getContext()).inflate(mItemViewId, parent, false);
+      TextView nameTextView = convertView.findViewById(R.id.tv_name);
+      TextView iconTextView = convertView.findViewById(R.id.tv_icon);
+      viewHolder = new ViewHolder(nameTextView, iconTextView);
+      convertView.setTag(viewHolder);
+    } else {
+      viewHolder = (ViewHolder) convertView.getTag();
+    }
+    Fruit fruit = fruits.get(position);
+    viewHolder.name.setText(fruit.getName());
+    viewHolder.icon.setText(fruit.getIcon());
+    return convertView;
   }
 
   @Override
@@ -43,8 +52,13 @@ public class FruitListAdapter extends ArrayAdapter<Fruit> {
     return fruits.get(position);
   }
 
-  @Override
-  public long getItemId(int position) {
-    return getItem(position).getId();
+  private static class ViewHolder {
+    private TextView name;
+    private TextView icon;
+
+    public ViewHolder(TextView name, TextView icon) {
+      this.name = name;
+      this.icon = icon;
+    }
   }
 }

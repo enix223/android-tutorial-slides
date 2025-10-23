@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="150dp">
+  <ImageView
+    android:id="@+id/img_bg"
+    android:src="@drawable/salad"
+    android:scaleType="centerCrop"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+  <TextView
+    android:id="@+id/tv_title"
+    android:textColor="#ffffffff"
+    android:text="水果沙拉"
+    android:shadowColor="@color/black"
+    android:shadowRadius="50"
+    android:layout_marginTop="35dp"
+    android:paddingHorizontal="5dp"
+    android:textSize="36sp"
+    android:textStyle="bold"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+  <TextView
+    android:id="@+id/tv_desc"
+    android:layout_below="@id/tv_title"
+    android:layout_centerHorizontal="true"
+    android:textColor="#ffffffff"
+    android:shadowColor="@color/black"
+    android:shadowRadius="50"
+    android:text="水果沙拉有助于减肥"
+    android:paddingHorizontal="5dp"
+    android:textSize="18sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+</RelativeLayout>
