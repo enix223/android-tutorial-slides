@@ -1,15 +1,15 @@
 # 如何使用ListView 
 以下将以建立一个菜谱列表的界面为例说明ListView的使用
 
-<img src="/listview-showcase.jpg" class="flex w-[13vw]" />
+<img src="/listview-showcase.jpg" class="flex w-[10vw]" />
 
 ---
 
 # 数据建模
-分析食谱需要用到的属性
+Recipe.java
 
 <div class="flex flex-row justify-center gap-2">
-    <img src="/homework-code-0.png" class="flex w-[40vw] border border-solid" />
+    <img src="/homework-code-0.png" class="flex w-[32vw] border border-solid" />
     <div class="flex flex-1">
         <ul>
             <li>菜谱的唯一ID: <span class="text-blue-600">id</span>, 类型使用整型int</li>
@@ -23,26 +23,30 @@
 ---
 
 # 创建一个菜谱列表Activity
+RecipeListActivity.java
 
-<img src="/homework-code-2.png" class="flex w-[50vw] border border-solid" />
+<img src="/homework-code-2.png" class="flex w-[35vw] border border-solid" />
 
 ---
 
 # 菜谱列表布局
+activity_recipe_list.xml
 
-<img src="/homework-code-3.png" class="flex w-[50vw] border border-solid" />
+<img src="/homework-code-3.png" class="flex w-[40vw] border border-solid" />
 
 ---
 
 # 菜谱元素行布局
+item_recipe.xml
 
-<img src="/homework-code-4.png" class="flex w-[29vw] border border-solid" />
+<img src="/homework-code-4.png" class="flex w-[20vw] border border-solid" />
 
 ---
 
 # 菜谱列表适配器Adapter
+RecipeListAdapter.java
 
-<img src="/homework-code-1.png" class="flex h-[60vh] border border-solid" />
+<img src="/homework-code-1.png" class="flex h-[45vh] border border-solid" />
 
 ---
 

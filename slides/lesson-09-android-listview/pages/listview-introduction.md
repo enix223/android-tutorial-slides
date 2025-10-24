@@ -1,4 +1,3 @@
-
 # 什么是 ListView
 
 - ListView 是 Android 中最常用的**列表控件**之一，用于显示**可滚动的数据集合**。
@@ -17,7 +16,7 @@
 # ListView例子
 
 <div class="flex flex-row justify-center gap-2">
-  <img src="/listview-showcase.jpg" class="flex w-[13vw]" />
+  <img src="/listview-showcase.jpg" class="flex w-[10vw]" />
   <div class="flex flex-1">
     <ul>
       <li>实现数据列表的显示</li>
@@ -31,9 +30,9 @@
 
 # ListView的架构
 
-<div class="flex flex-row justify-center gap-2">
-  <img src="/listview-arch.drawio.png" class="flex w-[35vw]" />
-  <div class="flex flex-1 flex-col">
+<div class="flex flex-row justify-center gap-3">
+  <img src="/listview-arch.drawio.png" class="flex w-[25vw]" />
+  <div class="flex flex-col">
     <div class="text-red-600">ListView组成元素</div>
     <ol>
       <li>针对要显示的数据设计一个<span class="text-blue-600">数据类</span>，并确认其内部包含的属性</li>
