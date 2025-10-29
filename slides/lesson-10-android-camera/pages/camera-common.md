@@ -1,4 +1,4 @@
-- 权限与清单配置
+# 权限与清单配置
 
 ```xml
 <manifest ...>
@@ -10,32 +10,32 @@
 </manifest>
 ```
 
-- Android 6.0（API 23）起，权限需在运行时动态请求。
+---
+
+# 动态申请权限
+Android 6.0（API 23）起，权限需在运行时动态请求。
 
 ---
 
-- activity_main
+# 布局文件
+activity_main.xml
 
 
 ```xml 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-  
   <TextureView
     android:id="@+id/textureView"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    />
-    
+    android:layout_height="300dp" />
   <ImageView
     android:id="@+id/imageView"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_below="@id/textureView"
     android:layout_centerInParent="true"
-    android:scaleType="fitCenter"/>
-    
+    android:scaleType="fitCenter" />
   <Button
     android:id="@+id/takePictureButton"
     android:layout_width="wrap_content"
@@ -51,24 +51,6 @@
 
 
 ```java
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.SurfaceTexture;
-import android.hardware.camera2.*;
-import android.os.Bundle;
-import android.view.Surface;
-import android.view.TextureView;
-import android.widget.Button;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import java.util.Collections;
-
 public class MainActivity extends AppCompatActivity {
 
   private static final int REQUEST_CAMERA_PERMISSION = 200; // 动态权限请求码
