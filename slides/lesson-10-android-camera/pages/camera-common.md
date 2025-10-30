@@ -15,6 +15,63 @@
 # 动态申请权限
 Android 6.0（API 23）起，权限需在运行时动态请求。
 
+1. 定义请求代码
+
+```java
+private final int REQUEST_CAMERA_PERMISSION = 1;
+```
+
+2. 定义请求函数
+
+```java
+private void requestCameraPermission() {
+  // 检查app是否已经拥有权限
+  int grantResult = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+  boolean hasPermission = grantResult == PackageManager.PERMISSION_GRANTED;
+  if (hasPermission) {
+    // 已授权，可以直接打开摄像头
+    initCamera();
+    return;
+  }
+
+  // 未授权，请求app授权
+  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+      REQUEST_CAMERA_PERMISSION);
+}
+```
+
+---
+
+# 动态申请权限
+
+3. 检查授权结果
+
+```java
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+    @NonNull int[] grantResults) {
+  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+  if (requestCode != REQUEST_CAMERA_PERMISSION || grantResults.length == 0) {
+    return;
+  }
+  if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+    Toast.makeText(this, "未授权使用摄像头", Toast.LENGTH_LONG).show();
+    return;
+  }
+  // 授权成功，初始化摄像头
+  initCamera();
+}
+```
+
+4. 发起检查摄像头权限
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  ...
+  requestCameraPermission();
+}
+```
 ---
 
 # 布局文件
@@ -22,187 +79,214 @@ activity_main.xml
 
 
 ```xml 
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main"
+  android:background="@color/black"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
-  <TextureView
-    android:id="@+id/textureView"
+  android:layout_height="match_parent"
+  tools:context=".TakePhotoActivity">
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="300dp" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- 拍照结果 -->
+    <ImageView
+      android:id="@+id/img_result"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+```
+
+---
+
+# 布局文件
+activity_main.xml（续）
+
+```xml
+    <!-- 实时预览 -->
+    <TextureView
+      android:id="@+id/texture_preview"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+  </LinearLayout>
+  <!-- 拍照按钮 -->
   <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_below="@id/textureView"
-    android:layout_centerInParent="true"
-    android:scaleType="fitCenter" />
-  <Button
-    android:id="@+id/takePictureButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="拍照"
+    android:id="@+id/img_take_photo"
+    android:src="@drawable/icon_take_photo"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginBottom="50dp"
     android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true"
-    android:layout_marginBottom="20dp"/>
+    android:layout_centerHorizontal="true" />
 </RelativeLayout>
 ```
 
 ---
 
+# 初始化摄像头
 
 ```java
 public class MainActivity extends AppCompatActivity {
 
-  private static final int REQUEST_CAMERA_PERMISSION = 200; // 动态权限请求码
+  private final String TAG = getClass().getSimpleName();
+  private final int REQUEST_CAMERA_PERMISSION = 1;
 
-  private TextureView textureView;  // 用于显示相机预览
-  private ImageView imageView;      // 用于显示拍照后的图片
-  private Button takePictureButton;
+  private ImageView mTakePhotoButton;
+  private ImageView mResultImage;
+  private TextureView mPreview;
 
-  private CameraDevice cameraDevice;             // 摄像头设备对象
-  private CameraCaptureSession captureSession;  // 摄像头捕获会话
-```
-
----
-
-```java
-
-  private CaptureRequest.Builder previewRequestBuilder; // 预览请求构建器
+  private CameraDevice mCameraDevice;
+  private CameraCaptureSession mCaptureSession;
+  private CaptureRequest.Builder mPreviewRequestBuilder;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_take_photo);
 
-    textureView = findViewById(R.id.textureView);
-    imageView = findViewById(R.id.imageView);
-    takePictureButton = findViewById(R.id.takePictureButton);
+    mTakePhotoButton = findViewById(R.id.img_take_photo);
+    mResultImage = findViewById(R.id.img_result);
+    mPreview = findViewById(R.id.texture_preview);
 
-    // 权限检查
-    if (checkCameraPermission()) {
-      startPreview();  // 有权限直接开启预览
-    } else {
-      requestCameraPermission(); // 否则请求权限
-    }
-
-    takePictureButton.setOnClickListener(v -> takePicture()); // 拍照按钮点击事件
+    // 检查摄像头权限
+    requestCameraPermission();
   }
-
-  private boolean checkCameraPermission() {   // 检查是否已经获取相机权限
-    return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-        == PackageManager.PERMISSION_GRANTED;
-  }
-
 ```
 
 ---
 
+# 初始化摄像头
+
 ```java
-
-  private void requestCameraPermission() { // 动态请求相机权限
-    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-  }
-
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-      @NonNull int[] grantResults) {  // 权限请求回调
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    if (requestCode == REQUEST_CAMERA_PERMISSION) {
-      if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        startPreview(); // 权限授予，开启预览
-      } else {
-        finish();  // 权限拒绝，关闭应用
-      }
-    }
-  }
-
-  private void startPreview() {
-    textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {   // 给 TextureView 设置监听器
+  private void initCamera() {
+    Log.d(TAG, "初始化摄像头");
+    mPreview.setSurfaceTextureListener(new SurfaceTextureListener() {
       @Override
-      public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surface, int width, int height) {  // 当 TextureView 准备好时调用
-        openCamera();
+      @RequiresPermission(permission.CAMERA)
+      public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) { openCamera(); }
+
+      @Override
+      public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surfaceTexture) { return true; }
+
+      @Override
+      public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {}
+
+      @Override
+      public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surfaceTexture) {}
+    });
+
+    mTakePhotoButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        captureStillImage();
       }
-      @Override public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surface, int width, int height) {}
-      @Override public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surface) { return true; }
-      @Override public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surface) {}
     });
   }
+
 ```
 
 ---
 
+# 打开摄像头
+
 ```java
-
-  private void openCamera() { // 打开摄像头
-    CameraManager manager = (CameraManager) getSystemService(CAMERA_SERVICE);
+  @RequiresPermission(permission.CAMERA)
+  private void openCamera() {
+    CameraManager cameraManager = getSystemService(CameraManager.class);
     try {
-      String cameraId = manager.getCameraIdList()[0]; // 默认选择后置摄像头
-      if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) return;
-
-      manager.openCamera(cameraId, new CameraDevice.StateCallback() {
+      String cameraId = cameraManager.getCameraIdList()[0];
+      cameraManager.openCamera(cameraId, new StateCallback() {
         @Override
-        public void onOpened(@NonNull CameraDevice camera) {
-          cameraDevice = camera; // 保存摄像头对象
-          createCameraPreviewSession();  // 创建预览会话
+        public void onDisconnected(@NonNull CameraDevice cameraDevice) {
+          cameraDevice.close();
         }
 
         @Override
-        public void onDisconnected(@NonNull CameraDevice camera) { camera.close(); }
-        @Override
-        public void onError(@NonNull CameraDevice camera, int error) { camera.close(); }
-      }, null);
-    } catch (Exception e) { e.printStackTrace(); }
-  }
+        public void onError(@NonNull CameraDevice cameraDevice, int i) {
+          cameraDevice.close();
+        }
 
+        @Override
+        public void onOpened(@NonNull CameraDevice cameraDevice) {
+          mCameraDevice = cameraDevice;
+          createCameraPreviewSession();
+        }
+      }, null);
+    } catch (CameraAccessException e) {
+      Log.e(TAG, "打开摄像头失败");
+    }
+  }
+```
+
+---
+
+# 绘制预览图片
+
+```java
   private void createCameraPreviewSession() {
     try {
-      SurfaceTexture texture = textureView.getSurfaceTexture();
+      SurfaceTexture texture = mPreview.getSurfaceTexture();
       texture.setDefaultBufferSize(640, 480);
-      Surface surface = new Surface(texture); // 创建 Surface
+      Surface surface = new Surface(texture);
+      mPreviewRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+      mPreviewRequestBuilder.addTarget(surface);
+      mCameraDevice.createCaptureSession(List.of(surface), new CameraCaptureSession.StateCallback() {
+        @Override
+        public void onConfigureFailed(@NonNull CameraCaptureSession cameraCaptureSession) {
 
+        }
+
+        @Override
+        public void onConfigured(@NonNull CameraCaptureSession cameraCaptureSession) {
+          mCaptureSession = cameraCaptureSession;
+          try {
+            cameraCaptureSession.setRepeatingRequest(mPreviewRequestBuilder.build(), null, null);
+          } catch (CameraAccessException e) {
+            Log.e(TAG, "创建预览会话失败", e);
+          }
+        }
+      }, null);
+    } catch (Exception e) {
+      Log.e(TAG, "创建预览会话失败", e);
+    }
+  }
 ```
 
 ---
 
+# 拍照
+
 ```java
+  private void captureStillImage() {
+    if (mCameraDevice == null) {
+      return;
+    }
 
-      previewRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);   // 创建预览请求
-      previewRequestBuilder.addTarget(surface); // 设置输出目标为 TextureView
-
-      cameraDevice.createCaptureSession(Collections.singletonList(surface),
-          new CameraCaptureSession.StateCallback() { // 创建捕获会话
-            @Override
-            public void onConfigured(@NonNull CameraCaptureSession session) {
-              captureSession = session;
-              try {
-                captureSession.setRepeatingRequest(previewRequestBuilder.build(), null, null);  // 设置重复请求，实现连续预览
-              } catch (CameraAccessException e) { e.printStackTrace(); }
-            }
-
-            @Override
-            public void onConfigureFailed(@NonNull CameraCaptureSession session) {}
-          }, null);
-    } catch (CameraAccessException e) { e.printStackTrace(); }
+    Bitmap image = mPreview.getBitmap();
+    mResultImage.setImageBitmap(image);
   }
-
-  private void takePicture() {
-    if (cameraDevice == null) return;
-
-    // 获取当前 TextureView 画面
-    Bitmap bitmap = textureView.getBitmap();
-    imageView.setImageBitmap(bitmap);
-  }
-
 ```
 
 ---
 
-```java
+# 回收资源
 
+```java
   @Override
   protected void onDestroy() {
+    if (mCameraDevice != null) {
+      mCameraDevice.close();
+    }
     super.onDestroy();
-    if (cameraDevice != null) cameraDevice.close();
   }
 }
 ```
+
+---
+
+# 效果图
+
+<img src="/android-camera.jpg" class="h-[40vh]" />
