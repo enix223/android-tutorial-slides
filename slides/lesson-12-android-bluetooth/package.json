@@ -1,11 +1,11 @@
 {
-  "name": "lesson-11-android-media-player",
+  "name": "lesson-12-android-bluetooth",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export --output ../../dist/lesson-11/slides.pdf"
+    "export": "slidev export --output ../../dist/lesson-12/slides.pdf"
   },
   "dependencies": {
     "@slidev/cli": "52.1.0",
