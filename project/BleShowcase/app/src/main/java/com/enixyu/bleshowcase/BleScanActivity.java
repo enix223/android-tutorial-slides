@@ -23,7 +23,7 @@ public class BleScanActivity extends AppCompatActivity implements OnScanResult {
     setContentView(R.layout.activity_ble_scan);
     ListView mListView = findViewById(R.id.list_view);
     mBlePermit = PermissionHelper.checkPermission(this, PERMISSION_REQUEST_CODE);
-    mScanResultAdapter = new ScanResultAdapter(this, R.layout.item_scan_result);
+    mScanResultAdapter = new ScanResultAdapter(this);
     mListView.setAdapter(mScanResultAdapter);
   }
 
@@ -35,7 +35,7 @@ public class BleScanActivity extends AppCompatActivity implements OnScanResult {
     if (requestCode != PERMISSION_REQUEST_CODE) {
       return;
     }
-    mBlePermit = PermissionHelper.onRequestPermissionsResult(requestCode, permissions,
+    mBlePermit = PermissionHelper.onRequestPermissionsResult(permissions,
         grantResults);
     if (!mBlePermit) {
       AlertHelper.showMessage(this, "APP未授权使用蓝牙");
@@ -59,15 +59,25 @@ public class BleScanActivity extends AppCompatActivity implements OnScanResult {
   @SuppressLint("MissingPermission")
   private void onScanClick(MenuItem item) {
     if (!mBlePermit) {
+      // 检查是否有权限
       AlertHelper.showMessage(this, "APP未授权使用蓝牙");
       return;
     }
     BluetoothHelper bleHelper = getBleHelper();
+    if (!bleHelper.isBluetoothEnable()) {
+      // 检查蓝牙是否已开启
+      AlertHelper.showMessage(this, "请先打开蓝牙");
+      return;
+    }
     if (bleHelper.isScanning()) {
       bleHelper.stopScan();
       item.setTitle("扫描");
     } else {
-      bleHelper.startScan(this);
+      mScanResultAdapter.clear();
+      if (!bleHelper.startScan(this)) {
+        AlertHelper.showMessage(this, "扫描蓝牙设备失败");
+        return;
+      }
       item.setTitle("停止");
     }
   }

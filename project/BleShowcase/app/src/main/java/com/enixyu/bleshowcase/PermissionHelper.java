@@ -2,7 +2,6 @@ package com.enixyu.bleshowcase;
 
 import android.Manifest.permission;
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -27,25 +26,25 @@ public class PermissionHelper {
       if (res == PackageManager.PERMISSION_DENIED) {
         requiredPermissions.add(permission.BLUETOOTH_CONNECT);
       }
-    } else {
-      // 请求定位权限
-      var res = ContextCompat.checkSelfPermission(context, permission.ACCESS_FINE_LOCATION);
-      if (res == PackageManager.PERMISSION_DENIED) {
-        requiredPermissions.add(permission.ACCESS_FINE_LOCATION);
-      }
+    }
+    // 请求定位权限
+    var res = ContextCompat.checkSelfPermission(context, permission.ACCESS_FINE_LOCATION);
+    if (res == PackageManager.PERMISSION_DENIED) {
+      requiredPermissions.add(permission.ACCESS_FINE_LOCATION);
     }
     if (requiredPermissions.isEmpty()) {
       return true;
     }
 
-    ActivityCompat.requestPermissions(context, requiredPermissions.toArray(new String[0]), requestCode);
+    ActivityCompat.requestPermissions(context, requiredPermissions.toArray(new String[0]),
+        requestCode);
     return false;
   }
 
-  public static boolean onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+  public static boolean onRequestPermissionsResult(@NonNull String[] permissions,
       @NonNull int[] grantResults) {
     String missingPermission = null;
-    for (var i = 0; i < permissions.length; i ++) {
+    for (var i = 0; i < permissions.length; i++) {
       if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
         missingPermission = permissions[i];
         break;
