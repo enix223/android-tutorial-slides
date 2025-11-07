@@ -14,3 +14,7 @@ src: ./pages/media-player-introduction.md
 ---
 src: ./pages/media-player-common.md
 ---
+
+---
+src: ./pages/practise.md
+---
