@@ -90,6 +90,11 @@
       android:text="美食" />
   </LinearLayout>
 
+  <RatingBar
+    android:max="5"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
   <Button
     android:text="提交"
     android:layout_marginTop="20dp"
