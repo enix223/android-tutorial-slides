@@ -5,21 +5,27 @@ import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import androidx.annotation.NonNull;
 
+/**
+ * @noinspection unused
+ */
 public class ColorRingView extends View {
+
   private Paint colorRingPaint;
   private Paint selectorPaint;
-  private Shader colorRingShader;
   private float centerX, centerY;
   private float radius;
-  private float selectorRadius = 20f;
+  private final float selectorRadius = 20f;
   private float currentAngle = 0f;
   private float saturation = 1.0f;
   private OnColorChangedListener colorListener;
 
   public interface OnColorChangedListener {
-    void onColorChanged(int color);
-    void onColorSelected(int color);
+
+    void onColorChanged(Color color);
+
+    void onColorSelected(Color color);
   }
 
   public ColorRingView(Context context) {
@@ -62,13 +68,13 @@ public class ColorRingView extends View {
         Color.RED            // 360°
     };
 
-    float[] positions = {0f, 1f/6f, 2f/6f, 3f/6f, 4f/6f, 5f/6f, 1f};
-    colorRingShader = new SweepGradient(centerX, centerY, colors, positions);
+    float[] positions = {0f, 1f / 6f, 2f / 6f, 3f / 6f, 4f / 6f, 5f / 6f, 1f};
+    Shader colorRingShader = new SweepGradient(centerX, centerY, colors, positions);
     colorRingPaint.setShader(colorRingShader);
   }
 
   @Override
-  protected void onDraw(Canvas canvas) {
+  protected void onDraw(@NonNull Canvas canvas) {
     super.onDraw(canvas);
 
     // Draw the color ring
@@ -95,7 +101,7 @@ public class ColorRingView extends View {
     // Draw current color inside selector
     Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     fillPaint.setStyle(Paint.Style.FILL);
-    fillPaint.setColor(getCurrentColor());
+    fillPaint.setColor(getCurrentColor().toArgb());
     canvas.drawCircle(selectorX, selectorY, selectorRadius - 4, fillPaint);
   }
 
@@ -142,18 +148,19 @@ public class ColorRingView extends View {
     }
   }
 
-  public int getCurrentColor() {
+  public Color getCurrentColor() {
     return angleToColor(currentAngle, saturation);
   }
 
-  private int angleToColor(float angle, float saturation) {
+  private Color angleToColor(float angle, float saturation) {
     // Convert angle to HSV (Hue should be in 0-360 range)
     float[] hsv = {angle, saturation, 1.0f};
     int color = Color.HSVToColor(hsv);
     int red = Color.red(color);
     int green = Color.green(color);
     int blue = Color.blue(color);
-    return Color.rgb(red, blue, green);
+    int alpha = Color.alpha(color);
+    return Color.valueOf(Color.argb(alpha, red, blue, green));
   }
 
   // ... rest of the methods remain the same
@@ -182,21 +189,9 @@ public class ColorRingView extends View {
     return saturation;
   }
 
-  public int getRed() {
-    return Color.red(getCurrentColor());
-  }
-
-  public int getGreen() {
-    return Color.green(getCurrentColor());
-  }
-
-  public int getBlue() {
-    return Color.blue(getCurrentColor());
-  }
-
   public float[] getHSV() {
     float[] hsv = new float[3];
-    Color.colorToHSV(getCurrentColor(), hsv);
+    Color.colorToHSV(getCurrentColor().toArgb(), hsv);
     return hsv;
   }
 }

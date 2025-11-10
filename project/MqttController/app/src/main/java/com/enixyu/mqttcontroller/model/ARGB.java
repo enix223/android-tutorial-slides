@@ -2,16 +2,16 @@ package com.enixyu.mqttcontroller.model;
 
 import android.graphics.Color;
 
-public class RGB {
+public class ARGB {
 
   private short red;
   private short green;
   private short blue;
 
-  public RGB() {
+  public ARGB() {
   }
 
-  public RGB(short red, short green, short blue) {
+  public ARGB(short red, short green, short blue) {
     this.red = red;
     this.green = green;
     this.blue = blue;
@@ -41,8 +41,8 @@ public class RGB {
     this.blue = blue;
   }
 
-  public static RGB fromInt(int value) {
-    return new RGB((short) Color.red(value), (short) Color.green(value), (short) Color.blue(value));
+  public static ARGB fromInt(int value) {
+    return new ARGB((short) Color.red(value), (short) Color.green(value), (short) Color.blue(value));
   }
 
   public String toHexFormat() {

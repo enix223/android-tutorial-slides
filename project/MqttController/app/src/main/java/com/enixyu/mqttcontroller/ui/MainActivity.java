@@ -1,6 +1,7 @@
 package com.enixyu.mqttcontroller.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,7 +17,7 @@ import com.enixyu.mqttcontroller.controller.OnDevicePropertiesChangedListener;
 import com.enixyu.mqttcontroller.controller.RemoteControlException;
 import com.enixyu.mqttcontroller.controller.RemoteController;
 import com.enixyu.mqttcontroller.model.MqttSettingModel;
-import com.enixyu.mqttcontroller.model.RGB;
+import com.enixyu.mqttcontroller.model.ARGB;
 import com.enixyu.mqttcontroller.store.MqttSettingStore;
 import com.enixyu.mqttcontroller.ui.ColorRingView.OnColorChangedListener;
 import java.util.Map;
@@ -40,12 +41,12 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     ColorRingView mColorPicker = findViewById(R.id.color_picker);
     mColorPicker.setOnColorChangedListener(new OnColorChangedListener() {
       @Override
-      public void onColorChanged(int color) {
+      public void onColorChanged(Color color) {
       }
 
       @Override
-      public void onColorSelected(int color) {
-        Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color)));
+      public void onColorSelected(Color color) {
+        Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color.toArgb())));
         setLightColor(color);
       }
     });
@@ -126,15 +127,19 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     }
   }
 
-  private void setLightColor(int color) {
+  private void setLightColor(Color color) {
     if (!mConnected) {
       AlertHelper.showToast(this, R.string.mqtt_not_connect);
       return;
     }
-    RGB rgb = RGB.fromInt(color & 0xffffff);
     try {
-      mRemoteController.setProperties(mSetting.getDeviceId(),
-          Map.of("r", rgb.getRed(), "g", rgb.getGreen(), "b", rgb.getBlue()));
+      mRemoteController.setProperties(mSetting.getDeviceId(), Map.of(
+          "i", 0,
+          "a", (int) (color.alpha() * 255),
+          "r", (int) (color.red() * 255),
+          "g", (int) (color.green() * 255),
+          "b", (int) (color.blue() * 255))
+      );
     } catch (RemoteControlException e) {
       AlertHelper.showToast(this, e.getMessage());
     }
