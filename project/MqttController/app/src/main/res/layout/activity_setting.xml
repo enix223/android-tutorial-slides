@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.appcompat.widget.Toolbar
+    app:navigationIcon="@drawable/ic_back"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <LinearLayout
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.enixyu.mqttcontroller.ui.TextFieldView
+      app:label="MQTT服务器地址"
+      android:id="@+id/field_broker_url"
+      app:placeholder="tcp://broker.emqx.io:1883"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+    <com.enixyu.mqttcontroller.ui.TextFieldView
+      app:label="MQTT用户名"
+      app:required="false"
+      android:layout_marginTop="10dp"
+      android:id="@+id/field_username"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+    <com.enixyu.mqttcontroller.ui.TextFieldView
+      app:label="MQTT密码"
+      app:required="false"
+      android:layout_marginTop="10dp"
+      android:id="@+id/field_password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+    <com.enixyu.mqttcontroller.ui.TextFieldView
+      app:label="设备ID"
+      app:required="false"
+      android:layout_marginTop="10dp"
+      android:id="@+id/field_device_id"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
+
+  <Button
+    android:id="@+id/btn_save"
+    android:text="@string/save"
+    android:layout_margin="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+  <string name="app_name">掌上遥控器</string>
+  <string name="setting">设置</string>
+  <string name="asterisk">*</string>
+  <string name="save">保存</string>
+  <string name="mqtt_broker_missing">请填写MQTT broker地址</string>
+  <string name="save_failed">保存失败</string>
+  <string name="save_success">保存成功</string>
+  <string name="serialize_failed">序列化失败</string>
+  <string name="upload_properties_failed">上报属性失败</string>
+  <string name="mqtt_not_connect">mqtt未连接</string>
+  <string name="mqtt_subscribe_failed">订阅失败</string>
+  <string name="mqtt_server_disconnect_failed">断开服务器失败</string>
+  <string name="mqtt_server_connect_failed">连接服务器失败</string>
+  <string name="connect">连接</string>
+  <string name="mqtt_device_id_missing">设备ID缺失</string>
+</resources>
