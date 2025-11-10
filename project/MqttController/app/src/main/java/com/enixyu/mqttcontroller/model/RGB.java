@@ -1,47 +1,48 @@
 package com.enixyu.mqttcontroller.model;
 
+import android.graphics.Color;
+
 public class RGB {
 
-  private byte red;
-  private byte green;
-  private byte blue;
+  private short red;
+  private short green;
+  private short blue;
 
   public RGB() {
   }
 
-  public RGB(byte red, byte green, byte blue) {
+  public RGB(short red, short green, short blue) {
     this.red = red;
     this.green = green;
     this.blue = blue;
   }
 
-  public byte getRed() {
+  public short getRed() {
     return red;
   }
 
-  public void setRed(byte red) {
+  public void setRed(short red) {
     this.red = red;
   }
 
-  public byte getGreen() {
+  public short getGreen() {
     return green;
   }
 
-  public void setGreen(byte green) {
+  public void setGreen(short green) {
     this.green = green;
   }
 
-  public byte getBlue() {
+  public short getBlue() {
     return blue;
   }
 
-  public void setBlue(byte blue) {
+  public void setBlue(short blue) {
     this.blue = blue;
   }
 
   public static RGB fromInt(int value) {
-    return new RGB((byte) ((value >> 16) & 0xff), (byte) ((value >> 8) & 0xff),
-        (byte) (value & 0xff));
+    return new RGB((short) Color.red(value), (short) Color.green(value), (short) Color.blue(value));
   }
 
   public String toHexFormat() {

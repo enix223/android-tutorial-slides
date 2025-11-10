@@ -149,7 +149,11 @@ public class ColorRingView extends View {
   private int angleToColor(float angle, float saturation) {
     // Convert angle to HSV (Hue should be in 0-360 range)
     float[] hsv = {angle, saturation, 1.0f};
-    return Color.HSVToColor(hsv);
+    int color = Color.HSVToColor(hsv);
+    int red = Color.red(color);
+    int green = Color.green(color);
+    int blue = Color.blue(color);
+    return Color.rgb(red, blue, green);
   }
 
   // ... rest of the methods remain the same

@@ -26,7 +26,7 @@ public class MqttRemoteController implements RemoteController {
   private final String TAG = getClass().getSimpleName();
   private final String UPSTREAM_TOPIC = "eiot/%s/properties/upstream";
   private final String DOWNSTREAM_TOPIC = "eiot/%s/properties/downstream";
-  private final String DOWNSTREAM_TOPIC_REGEXP = "^eiot/(\\w+)/properties/downstream$";
+  private final String UPSTREAM_TOPIC_REGEXP = "^eiot/(\\w+)/properties/upstream";
   private Context mContext;
 
   private OnDevicePropertiesChangedListener mOnDevicePropertiesChangedListener;
@@ -94,8 +94,9 @@ public class MqttRemoteController implements RemoteController {
     if (mClient == null) {
       throw new RemoteControlException(mContext.getString(R.string.mqtt_not_connect));
     }
+    String subscribeTopic = getUpstreamTopic(deviceId);
     mClient.subscribeWith()
-        .topicFilter(getDownstreamTopic(deviceId))
+        .topicFilter(subscribeTopic)
         .qos(MqttQos.AT_LEAST_ONCE)
         .callback(mqtt3Publish -> {
           MqttTopic topic = mqtt3Publish.getTopic();
@@ -109,7 +110,7 @@ public class MqttRemoteController implements RemoteController {
           }
 
           String topicString = StandardCharsets.UTF_8.decode(topic.toByteBuffer()).toString();
-          Pattern pattern = Pattern.compile(DOWNSTREAM_TOPIC_REGEXP);
+          Pattern pattern = Pattern.compile(UPSTREAM_TOPIC_REGEXP);
           Matcher matcher = pattern.matcher(topicString);
           if (!matcher.matches()) {
             return;
@@ -126,7 +127,8 @@ public class MqttRemoteController implements RemoteController {
         })
         .send()
         .whenComplete((mqtt3SubAck, throwable) -> {
-          Log.d(TAG, String.format("订阅结果: %s", throwable == null ? "成功" : "失败"));
+          Log.d(TAG, String.format("订阅结果: %s, topic = %s", throwable == null ? "成功" : "失败",
+              subscribeTopic));
         });
   }
 
@@ -139,12 +141,14 @@ public class MqttRemoteController implements RemoteController {
     PropertiesChangeRequest request = new PropertiesChangeRequest(Command.SET_PROPERTIES,
         properties);
     byte[] payload = JSON.toJSONBytes(request);
+    String topic = getDownstreamTopic(deviceId);
     mClient.publishWith()
-        .topic(getUpstreamTopic(deviceId))
+        .topic(topic)
         .payload(payload)
         .qos(MqttQos.AT_LEAST_ONCE)
         .send()
-        .thenAccept(mqtt3Publish -> Log.e(TAG, "上报属性成功"));
+        .thenAccept(mqtt3Publish -> Log.d(TAG,
+            String.format("下发属性成功: topic = %s, payload = %s", topic, new String(payload))));
   }
 
   private String getClientId() {
