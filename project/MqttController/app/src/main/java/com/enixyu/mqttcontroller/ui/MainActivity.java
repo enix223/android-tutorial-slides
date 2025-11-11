@@ -7,8 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSeekBar;
 import com.enixyu.mqttcontroller.R;
 import com.enixyu.mqttcontroller.ServiceProvider;
 import com.enixyu.mqttcontroller.controller.ConnectOptions;
@@ -17,7 +20,6 @@ import com.enixyu.mqttcontroller.controller.OnDevicePropertiesChangedListener;
 import com.enixyu.mqttcontroller.controller.RemoteControlException;
 import com.enixyu.mqttcontroller.controller.RemoteController;
 import com.enixyu.mqttcontroller.model.MqttSettingModel;
-import com.enixyu.mqttcontroller.model.ARGB;
 import com.enixyu.mqttcontroller.store.MqttSettingStore;
 import com.enixyu.mqttcontroller.ui.ColorRingView.OnColorChangedListener;
 import java.util.Map;
@@ -28,6 +30,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
   private RemoteController mRemoteController;
   private MqttSettingStore mSettingStore;
   private MqttSettingModel mSetting;
+  private MenuItem mConnectMenuItem;
   private boolean mConnected = false;
 
   @Override
@@ -39,6 +42,8 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     mSettingStore = ServiceProvider.INSTANCE.mqttSettingStore;
 
     ColorRingView mColorPicker = findViewById(R.id.color_picker);
+    AppCompatSeekBar seekBar = findViewById(R.id.brightness);
+
     mColorPicker.setOnColorChangedListener(new OnColorChangedListener() {
       @Override
       public void onColorChanged(Color color) {
@@ -47,7 +52,24 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       @Override
       public void onColorSelected(Color color) {
         Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color.toArgb())));
-        setLightColor(color);
+        setLightColor(color, seekBar.getProgress());
+      }
+    });
+
+    seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+      @Override
+      public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+      }
+
+      @Override
+      public void onStartTrackingTouch(SeekBar seekBar) {
+
+      }
+
+      @Override
+      public void onStopTrackingTouch(SeekBar seekBar) {
+        Log.d(TAG, String.format("修改亮度: %d", seekBar.getProgress()));
+        setLightColor(mColorPicker.getCurrentColor(), seekBar.getProgress());
       }
     });
   }
@@ -61,6 +83,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_main, menu);
+    mConnectMenuItem = menu.findItem(R.id.connect);
     return super.onCreateOptionsMenu(menu);
   }
 
@@ -85,6 +108,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       } catch (RemoteControlException ignored) {
       }
     }
+    mConnectMenuItem.setIcon(connected ? R.drawable.ic_connect : R.drawable.ic_disconnect);
   }
 
   @Override
@@ -127,7 +151,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     }
   }
 
-  private void setLightColor(Color color) {
+  private void setLightColor(Color color, int brightness) {
     if (!mConnected) {
       AlertHelper.showToast(this, R.string.mqtt_not_connect);
       return;
@@ -135,7 +159,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     try {
       mRemoteController.setProperties(mSetting.getDeviceId(), Map.of(
           "i", 0,
-          "a", (int) (color.alpha() * 255),
+          "a", brightness,
           "r", (int) (color.red() * 255),
           "g", (int) (color.green() * 255),
           "b", (int) (color.blue() * 255))
