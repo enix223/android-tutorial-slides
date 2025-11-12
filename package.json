@@ -16,7 +16,9 @@
     "dev:lesson09": "pnpm run --filter='lesson-09-*' dev",
     "dev:lesson10": "pnpm run --filter='lesson-10-*' dev",
     "dev:lesson11": "pnpm run --filter='lesson-11-*' dev",
-    "dev:lesson12": "pnpm run --filter='lesson-12-*' dev"
+    "dev:lesson12": "pnpm run --filter='lesson-12-*' dev",
+    "dev:lesson13": "pnpm run --filter='lesson-13-*' dev",
+    "dev:lesson14": "pnpm run --filter='lesson-14-*' dev"
   },
   "keywords": [],
   "author": "",
