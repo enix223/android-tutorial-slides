@@ -1,18 +1,21 @@
 {
-  "name": "lesson-12-android-broadcast-receivers",
+  "name": "lesson-13-android-broadcast-receivers",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../dist/lesson-13/slides.pdf"
   },
   "dependencies": {
-    "@slidev/cli": "^52.1.0",
+    "@slidev/cli": "52.1.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "shared": "workspace:*",
     "slidev-theme-android-theme": "workspace:*",
     "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.56.0"
   }
 }

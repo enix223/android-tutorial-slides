@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+  font-size: 0.9em !important;
+}
+
+th {
+  color: #000 !important;
+  padding: 0.3rem !important;
+}
+
+td {
+  padding: 0.3rem !important;
+  border-bottom: 1px solid #ddd !important;
+}
