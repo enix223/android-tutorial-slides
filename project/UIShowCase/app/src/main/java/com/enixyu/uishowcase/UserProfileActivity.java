@@ -1,6 +1,7 @@
 package com.enixyu.uishowcase;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -24,7 +25,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -41,6 +45,33 @@ public class UserProfileActivity extends AppCompatActivity {
     CheckBox checkboxHobbyEating = findViewById(R.id.checkbox_eating);
     Button submit = findViewById(R.id.button_submit);
     TextView result = findViewById(R.id.result);
+
+    // 从文件读取学生信息
+    SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+    // 名字读取
+    editTextName.setText(sharedPreferences.getString("name", ""));
+    // 年龄读取
+    seekBarAge.setProgress(sharedPreferences.getInt("age", 1));
+    // 性别读取
+    String gender = sharedPreferences.getString("gender", "");
+    if (gender.equals("男")) {
+      radioGroupGender.check(R.id.radio_gender_male);
+    } else {
+      radioGroupGender.check(R.id.radio_gender_female);
+    }
+    // 兴趣读取
+    Set<String> hobbies = sharedPreferences.getStringSet("hobbies", new HashSet<>());
+    for (String hobby : hobbies) {
+      if (hobby.equals("运动")) {
+        checkboxHobbySport.setChecked(true);
+      }
+      if (hobby.equals("看书")) {
+        checkboxHobbyReading.setChecked(true);
+      }
+      if (hobby.equals("吃")) {
+        checkboxHobbyEating.setChecked(true);
+      }
+    }
 
     submit.setOnClickListener(new OnClickListener() {
       @Override
@@ -63,8 +94,18 @@ public class UserProfileActivity extends AppCompatActivity {
         if (checkboxHobbyEating.isChecked()) {
           hobbies.add("吃");
         }
+
+        // 保存到文件
+        sharedPreferences.edit()
+            .putString("name", name)
+            .putString("gender", gender)
+            .putInt("age", age)
+            .putStringSet("hobbies", new HashSet<>(hobbies))
+            .apply();
         Toast.makeText(UserProfileActivity.this, "保存成功", Toast.LENGTH_LONG).show();
-        result.setText(String.format("名字:%s,性别: %s,年龄: %d爱好: %s", name, gender, age, hobbies));
+        result.setText(
+            String.format(Locale.getDefault(), "名字:%s,性别: %s,年龄: %d爱好: %s", name, gender,
+                age, hobbies));
       }
     });
   }
@@ -101,7 +142,8 @@ public class UserProfileActivity extends AppCompatActivity {
     builder.setItems(hobbies, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
-        Toast.makeText(getApplicationContext(), "你选择了" + hobbies[which], Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "你选择了" + hobbies[which], Toast.LENGTH_SHORT)
+            .show();
       }
     });
     // 显示对话框
@@ -119,7 +161,8 @@ public class UserProfileActivity extends AppCompatActivity {
     builder.setSingleChoiceItems(city, 0, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
-        Toast.makeText(getApplicationContext(), "你选择了" + city[which], Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "你选择了" + city[which], Toast.LENGTH_SHORT)
+            .show();
       }
     });
 

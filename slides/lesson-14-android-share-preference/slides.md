@@ -5,7 +5,7 @@ layout: cover
 routerMode: hash
 ---
 
-# Android Sharepreferences
+# Android SharePreferences
 
 ---
 src: ./pages/json-intro.md
@@ -16,5 +16,5 @@ src: ./pages/share-preferences-intro.md
 ---
 
 ---
-src: ./pages/share-preferences-common.md
+src: ./pages/practise.md
 ---
