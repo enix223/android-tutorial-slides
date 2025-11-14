@@ -15,3 +15,7 @@ src: ./pages/broadcast-receiver-introduction.md
 ---
 src: ./pages/broadcast-receiver-common.md
 ---
+
+---
+src: ./pages/practise.md
+---

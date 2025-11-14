@@ -28,10 +28,11 @@
       </intent-filter>
     </activity>
 
+    <!-- 注册系统广播 -->
     <receiver
       android:enabled="true"
       android:exported="true"
-      android:name=".LaunchReceiver"
+      android:name=".MyBroadcastReceiver"
       android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -41,6 +42,7 @@
       </intent-filter>
     </receiver>
 
+    <!-- 注册自定义标准广播 -->
     <receiver
       android:exported="true"
       android:enabled="true"
@@ -52,6 +54,7 @@
       </intent-filter>
     </receiver>
 
+    <!-- 注册自定义有序广播 (高优先级) -->
     <receiver
       android:exported="true"
       android:enabled="true"
@@ -63,6 +66,7 @@
       </intent-filter>
     </receiver>
 
+    <!-- 注册自定义有序广播 (低优先级) -->
     <receiver
       android:exported="true"
       android:enabled="true"
