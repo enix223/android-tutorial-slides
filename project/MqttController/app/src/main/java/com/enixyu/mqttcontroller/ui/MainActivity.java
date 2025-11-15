@@ -7,7 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.annotation.NonNull;
@@ -15,14 +19,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSeekBar;
 import com.enixyu.mqttcontroller.R;
 import com.enixyu.mqttcontroller.ServiceProvider;
+import com.enixyu.mqttcontroller.adapter.LightArrayAdapter;
 import com.enixyu.mqttcontroller.controller.ConnectOptions;
 import com.enixyu.mqttcontroller.controller.OnConnectionChangedListener;
 import com.enixyu.mqttcontroller.controller.OnDevicePropertiesChangedListener;
 import com.enixyu.mqttcontroller.controller.RemoteControlException;
 import com.enixyu.mqttcontroller.controller.RemoteController;
+import com.enixyu.mqttcontroller.model.LED;
 import com.enixyu.mqttcontroller.model.MqttSettingModel;
 import com.enixyu.mqttcontroller.store.MqttSettingStore;
 import com.enixyu.mqttcontroller.ui.ColorRingView.OnColorChangedListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity implements OnDevicePropertiesChangedListener,
@@ -33,6 +41,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
   private MqttSettingModel mSetting;
   private MenuItem mConnectMenuItem;
   private boolean mConnected = false;
+  private int mSelectedLedIndex = 0;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +53,25 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
 
     ColorRingView mColorPicker = findViewById(R.id.color_picker);
     AppCompatSeekBar seekBar = findViewById(R.id.brightness);
-    EditText lightId = findViewById(R.id.light_id);
+    GridView mGridView = findViewById(R.id.grid_view);
+
+    List<LED> ledLists = new ArrayList<>();
+    int row = 8;
+    int col = 8;
+    for (int i = 1; i <= row; i++) {
+      for (int j = 1; j <= col; j++) {
+        ledLists.add(new LED(i, j, Color.BLACK));
+      }
+    }
+    LightArrayAdapter adapter = new LightArrayAdapter(this, ledLists);
+    mGridView.setAdapter(adapter);
+    mGridView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        mSelectedLedIndex = i;
+        AlertHelper.showToast(MainActivity.this, String.valueOf(i + 1));
+      }
+    });
 
     mColorPicker.setOnColorChangedListener(new OnColorChangedListener() {
       @Override
@@ -54,7 +81,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       @Override
       public void onColorSelected(Color color) {
         Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color.toArgb())));
-        setLightColor(color, seekBar.getProgress(), getId(lightId));
+        setLightColor(color, seekBar.getProgress(), mSelectedLedIndex);
       }
     });
 
@@ -71,7 +98,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       @Override
       public void onStopTrackingTouch(SeekBar seekBar) {
         Log.d(TAG, String.format("修改亮度: %d", seekBar.getProgress()));
-        setLightColor(mColorPicker.getCurrentColor(), seekBar.getProgress(), getId(lightId));
+        setLightColor(mColorPicker.getCurrentColor(), seekBar.getProgress(), mSelectedLedIndex);
       }
     });
   }
@@ -169,16 +196,5 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     } catch (RemoteControlException e) {
       AlertHelper.showToast(this, e.getMessage());
     }
-  }
-
-  private int getId(EditText editText) {
-    String id = editText.getText().toString();
-    if (!id.isBlank()) {
-      try {
-        return Integer.parseInt(id);
-      } catch (NumberFormatException ignored) {
-      }
-    }
-    return 0;
   }
 }

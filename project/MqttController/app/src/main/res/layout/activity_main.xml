@@ -6,20 +6,21 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <EditText
-    android:text="0"
-    android:inputType="number"
-    android:id="@+id/light_id"
-    android:background="#333"
-    android:textAlignment="center"
-    android:textColor="@color/white"
-    android:layout_marginHorizontal="20dp"
-    android:layout_width="100dp"
-    android:layout_height="50dp" />
+  <GridView
+    android:id="@+id/grid_view"
+    android:numColumns="8"
+    android:padding="1dp"
+    android:background="@color/white"
+    android:verticalSpacing="2dp"
+    android:horizontalSpacing="2dp"
+    android:gravity="center"
+    android:stretchMode="columnWidth"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
   <com.enixyu.mqttcontroller.ui.ColorRingView
     android:id="@+id/color_picker"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="20dp"
     android:layout_width="300dp"
     android:layout_height="300dp" />
 
@@ -30,7 +31,7 @@
     android:minHeight="4dp"
     android:maxHeight="4dp"
     android:id="@+id/brightness"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="20dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:progressDrawable="@drawable/seekbar_track"
