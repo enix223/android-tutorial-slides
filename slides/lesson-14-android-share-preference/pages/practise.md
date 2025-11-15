@@ -52,13 +52,13 @@ if (gender.equals("男")) {
 Set<String> hobbies = sharedPreferences.getStringSet("hobbies", new HashSet<>());
 for (String hobby : hobbies) {
     if (hobby.equals("运动")) {
-    checkboxHobbySport.setSelected(true);
+    checkboxHobbySport.setChecked(true);
     }
     if (hobby.equals("看书")) {
-    checkboxHobbyReading.setSelected(true);
+    checkboxHobbyReading.setChecked(true);
     }
     if (hobby.equals("吃")) {
-    checkboxHobbyEating.setSelected(true);
+    checkboxHobbyEating.setChecked(true);
     }
 }
 ```

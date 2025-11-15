@@ -110,26 +110,27 @@ JSON语法规则介绍
 
 * 序列化, 把一个java对象转换为JSON文本
 
-    ```json
-    {"name": "张三", "age": 18}
+    ```java
+    new Person("张三", 18)
     ```
 
     转换为
 
-    ```java
-    new Person("张三", 18)
+    ```json
+    {"name": "张三", "age": 18}
     ```
+
 
 * 反序列化，把一个JSON文本转换为一个java对象
-    
-    ```java
-    new Person("张三", 18)
+
+    ```json
+    {"name": "张三", "age": 18}
     ```
 
     转换为
 
-    ```json
-    {"name": "张三", "age": 18}
+    ```java
+    new Person("张三", 18)
     ```
 
 ---
