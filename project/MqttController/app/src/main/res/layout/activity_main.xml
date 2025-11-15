@@ -6,8 +6,20 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <EditText
+    android:text="0"
+    android:inputType="number"
+    android:id="@+id/light_id"
+    android:background="#333"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:layout_marginHorizontal="20dp"
+    android:layout_width="100dp"
+    android:layout_height="50dp" />
+
   <com.enixyu.mqttcontroller.ui.ColorRingView
     android:id="@+id/color_picker"
+    android:layout_marginTop="50dp"
     android:layout_width="300dp"
     android:layout_height="300dp" />
 

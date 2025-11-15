@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
 
     ColorRingView mColorPicker = findViewById(R.id.color_picker);
     AppCompatSeekBar seekBar = findViewById(R.id.brightness);
+    EditText lightId = findViewById(R.id.light_id);
 
     mColorPicker.setOnColorChangedListener(new OnColorChangedListener() {
       @Override
@@ -52,7 +54,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       @Override
       public void onColorSelected(Color color) {
         Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color.toArgb())));
-        setLightColor(color, seekBar.getProgress());
+        setLightColor(color, seekBar.getProgress(), getId(lightId));
       }
     });
 
@@ -69,7 +71,7 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
       @Override
       public void onStopTrackingTouch(SeekBar seekBar) {
         Log.d(TAG, String.format("修改亮度: %d", seekBar.getProgress()));
-        setLightColor(mColorPicker.getCurrentColor(), seekBar.getProgress());
+        setLightColor(mColorPicker.getCurrentColor(), seekBar.getProgress(), getId(lightId));
       }
     });
   }
@@ -151,14 +153,14 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     }
   }
 
-  private void setLightColor(Color color, int brightness) {
+  private void setLightColor(Color color, int brightness, int id) {
     if (!mConnected) {
       AlertHelper.showToast(this, R.string.mqtt_not_connect);
       return;
     }
     try {
       mRemoteController.setProperties(mSetting.getDeviceId(), Map.of(
-          "i", 0,
+          "i", id,
           "a", brightness,
           "r", (int) (color.red() * 255),
           "g", (int) (color.green() * 255),
@@ -167,5 +169,16 @@ public class MainActivity extends BaseActivity implements OnDevicePropertiesChan
     } catch (RemoteControlException e) {
       AlertHelper.showToast(this, e.getMessage());
     }
+  }
+
+  private int getId(EditText editText) {
+    String id = editText.getText().toString();
+    if (!id.isBlank()) {
+      try {
+        return Integer.parseInt(id);
+      } catch (NumberFormatException ignored) {
+      }
+    }
+    return 0;
   }
 }
