@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:gravity="center"
+  android:padding="20dp"
+  android:background="@color/grey_800"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <TextView
+    android:text="@string/set_color"
+    android:textSize="24sp"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <com.enixyu.mqttcontroller.ui.ColorRingView
+    android:id="@+id/color_picker"
+    android:layout_marginTop="20dp"
+    android:layout_width="300dp"
+    android:layout_height="300dp" />
+
+  <androidx.appcompat.widget.AppCompatSeekBar
+    android:min="0"
+    android:max="255"
+    android:progress="100"
+    android:minHeight="4dp"
+    android:maxHeight="4dp"
+    android:id="@+id/brightness"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:progressDrawable="@drawable/seekbar_track"
+    android:layout_marginHorizontal="20dp" />
+</LinearLayout>

@@ -163,7 +163,44 @@ public class ColorRingView extends View {
     return Color.valueOf(Color.argb(alpha, red, blue, green));
   }
 
-  // ... rest of the methods remain the same
+  /**
+   * Set color using HSV values
+   *
+   * @param h Hue (0-360)
+   * @param s Saturation (0-1)
+   * @param v Value/Brightness (0-1)
+   */
+  public void setColorHSV(float h, float s, float v) {
+    this.currentAngle = h % 360;
+    this.saturation = Math.max(0f, Math.min(1f, s));
+    invalidate();
+    if (colorListener != null) {
+      colorListener.onColorChanged(getCurrentColor());
+    }
+  }
+
+  /**
+   * Set color using RGB values
+   *
+   * @param r Red (0-255)
+   * @param g Green (0-255)
+   * @param b Blue (0-255)
+   */
+  public void setColorRGB(int r, int g, int b) {
+    float[] hsv = new float[3];
+    Color.RGBToHSV(r, g, b, hsv);
+    setColorHSV(hsv[0], hsv[1], hsv[2]);
+  }
+
+  /**
+   * Set color using Android Color value
+   *
+   * @param color Android Color value
+   */
+  public void setColor(Color color) {
+    setColorRGB(Color.red(color.toArgb()), Color.green(color.toArgb()), Color.blue(color.toArgb()));
+  }
+
   public void setSaturation(float saturation) {
     this.saturation = Math.max(0f, Math.min(1f, saturation));
     invalidate();

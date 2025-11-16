@@ -14,4 +14,5 @@
   <string name="mqtt_server_connect_failed">连接服务器失败</string>
   <string name="connect">连接</string>
   <string name="mqtt_device_id_missing">设备ID缺失</string>
+  <string name="set_color">设置颜色</string>
 </resources>
