@@ -45,7 +45,7 @@ public class ColorSettingDialog extends DialogFragment implements
     disposables.add(mViewModel.getBrightness()
         .subscribe(brightness -> mBrightnessSeekbar.setProgress(brightness)));
 
-    AlertDialog.Builder builder = new Builder(getActivity(), R.style.ColorSettingDialog);
+    AlertDialog.Builder builder = new Builder(getActivity());
     builder.setView(view);
     return builder.create();
   }
