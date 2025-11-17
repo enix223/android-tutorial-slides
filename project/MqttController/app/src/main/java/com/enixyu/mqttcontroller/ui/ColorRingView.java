@@ -59,13 +59,13 @@ public class ColorRingView extends View {
 
     // Create color ring shader
     int[] colors = {
-        Color.RED,           // 0°
-        Color.MAGENTA,       // 60°
-        Color.BLUE,          // 120°
-        Color.CYAN,          // 180°
-        Color.GREEN,         // 240°
-        Color.YELLOW,        // 300°
-        Color.RED            // 360°
+        Color.RED,      // 0° - Red
+        Color.YELLOW,   // 60° - Yellow
+        Color.GREEN,    // 120° - Green
+        Color.CYAN,     // 180° - Cyan
+        Color.BLUE,     // 240° - Blue
+        Color.MAGENTA,  // 300° - Magenta
+        Color.RED       // 360° - Red
     };
 
     float[] positions = {0f, 1f / 6f, 2f / 6f, 3f / 6f, 4f / 6f, 5f / 6f, 1f};
@@ -160,7 +160,7 @@ public class ColorRingView extends View {
     int green = Color.green(color);
     int blue = Color.blue(color);
     int alpha = Color.alpha(color);
-    return Color.valueOf(Color.argb(alpha, red, blue, green));
+    return Color.valueOf(Color.argb(alpha, red, green, blue));
   }
 
   /**

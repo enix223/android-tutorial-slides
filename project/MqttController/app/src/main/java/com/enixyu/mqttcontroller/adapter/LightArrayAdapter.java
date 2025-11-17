@@ -1,6 +1,7 @@
 package com.enixyu.mqttcontroller.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +44,16 @@ public class LightArrayAdapter extends ArrayAdapter<LED> {
       viewHolder = (ViewHolder) convertView.getTag();
     }
     LED item = ledList.get(position);
-    viewHolder.ledLabel.setText(String.valueOf(item.getId()));
-    viewHolder.ledBg.setBackgroundColor(item.getColor());
+    viewHolder.ledLabel.setText(String.valueOf(item.getIndex()));
+    viewHolder.ledBg.setBackgroundColor(item.getColor().toArgb());
+    viewHolder.ledBg.setAlpha(item.getBrightness() / 255f);
     return convertView;
+  }
+
+  public void updateLed(LED led) {
+    LED origin = ledList.get(led.getIndex());
+    origin.setColor(led.getColor());
+    notifyDataSetChanged();
   }
 
   static class ViewHolder {

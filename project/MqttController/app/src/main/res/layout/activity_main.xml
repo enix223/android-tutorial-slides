@@ -10,6 +10,7 @@
     android:id="@+id/grid_view"
     android:numColumns="8"
     android:padding="1dp"
+    android:layout_margin="10dp"
     android:background="@color/grey_800"
     android:verticalSpacing="2dp"
     android:horizontalSpacing="2dp"

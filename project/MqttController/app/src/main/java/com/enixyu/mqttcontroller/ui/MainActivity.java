@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.enixyu.mqttcontroller.R;
 import com.enixyu.mqttcontroller.adapter.LightArrayAdapter;
+import com.enixyu.mqttcontroller.model.LED;
 import com.enixyu.mqttcontroller.viewmodel.HomeViewModel;
+import io.reactivex.Observable;
 
 public class MainActivity extends BaseActivity {
 
@@ -31,6 +33,13 @@ public class MainActivity extends BaseActivity {
       ColorSettingDialog dialog = new ColorSettingDialog(viewModel);
       dialog.show(getSupportFragmentManager(), "setting-dialog");
     });
+
+    addDisposable(Observable.combineLatest(
+            viewModel.getColor(),
+            viewModel.getBrightness(),
+            viewModel.getSelectedLight(),
+            (color, brightness, index) -> new LED(index, brightness, color))
+        .subscribe(adapter::updateLed));
   }
 
   @Override

@@ -1,44 +1,42 @@
 package com.enixyu.mqttcontroller.model;
 
+import android.graphics.Color;
+
 public class LED {
 
-  private int row;
+  private int index;
 
-  private int column;
+  private int brightness;
 
-  private int color;
+  private Color color;
 
-  public LED(int row, int column, int color) {
-    this.row = row;
-    this.column = column;
+  public LED(int index, int brightness, Color color) {
+    this.index = index;
+    this.brightness = brightness;
     this.color = color;
   }
 
-  public int getRow() {
-    return row;
+  public int getIndex() {
+    return index;
   }
 
-  public void setRow(int row) {
-    this.row = row;
+  public void setIndex(int index) {
+    this.index = index;
   }
 
-  public int getColumn() {
-    return column;
+  public int getBrightness() {
+    return brightness;
   }
 
-  public void setColumn(int column) {
-    this.column = column;
+  public void setBrightness(int brightness) {
+    this.brightness = brightness;
   }
 
-  public int getColor() {
+  public Color getColor() {
     return color;
   }
 
-  public void setColor(int color) {
+  public void setColor(Color color) {
     this.color = color;
-  }
-
-  public int getId() {
-    return row * column;
   }
 }

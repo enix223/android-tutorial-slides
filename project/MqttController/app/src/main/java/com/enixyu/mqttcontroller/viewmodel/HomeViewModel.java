@@ -44,10 +44,8 @@ public class HomeViewModel implements OnDevicePropertiesChangedListener,
     this.mqttSettingStore = ServiceProvider.INSTANCE.mqttSettingStore;
     int row = 8;
     int col = 8;
-    for (int i = 1; i <= row; i++) {
-      for (int j = 1; j <= col; j++) {
-        ledLists.add(new LED(i, j, Color.BLACK));
-      }
+    for (int i = 0; i < row * col; i++) {
+      ledLists.add(new LED(i, 100, Color.valueOf(Color.RED)));
     }
   }
 
@@ -109,11 +107,13 @@ public class HomeViewModel implements OnDevicePropertiesChangedListener,
   public void setLightColor(Color color) {
     Log.d(TAG, String.format("选择颜色变化: %s", String.format("%8x", color.toArgb())));
     setLightColor(color, mBrightness.getValue(), mSelectedLight.getValue());
+    mColor.onNext(color);
   }
 
   public void setBrightness(int value) {
     Log.d(TAG, String.format("修改亮度: %d", value));
     setLightColor(mColor.getValue(), value, mSelectedLight.getValue());
+    mBrightness.onNext(value);
   }
 
   private void setLightColor(Color color, int brightness, int id) {
