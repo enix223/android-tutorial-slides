@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- 插入数据按钮 -->
+    <Button
+        android:id="@+id/btn_insert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="插入测试数据"
+        android:textSize="18sp"
+        android:background="@color/purple_500"
+        android:textColor="@android:color/white" />
+
+    <!-- 查询数据按钮 -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/btn_query"
+        android:text="查询所有数据"
+        android:textSize="18sp"
+        android:background="@color/teal_700"
+        android:textColor="@android:color/white" />
+
+    <!-- 修改数据按钮 -->
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="修改第一条数据"
+        android:textSize="16sp"
+        android:textColor="@android:color/white" />
+
+    <!-- 清空数据按钮 -->
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="清空所有数据"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
+
+    <!-- 查看数据库信息按钮 -->
+    <Button
+        android:id="@+id/btn_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看数据库信息"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
+
+    <!-- 结果显示区域 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:text="操作结果将显示在这里..." />
+
+    </ScrollView>
+
+</LinearLayout>

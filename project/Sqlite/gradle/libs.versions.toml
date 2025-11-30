@@ -1,0 +1,28 @@
+[versions]
+agp = "8.11.1"
+annotation = "1.9.1"
+annotations = "24.0.1"
+commonsLang3 = "3.12.0"
+jsr305 = "3.0.2"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+lombokVersion = "1.18.38"
+material = "1.10.0"
+
+[libraries]
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
+commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commonsLang3" }
+jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+projectlombok-lombok = { module = "org.projectlombok:lombok", version.ref = "lombokVersion" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

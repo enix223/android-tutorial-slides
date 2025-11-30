@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_raw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取raw"
+        android:onClick="onRawClick"
+        android:padding="12dp"
+        android:layout_marginRight="40dp" />
+
+    <Button
+        android:id="@+id/btn_assets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取assets"
+        android:onClick="onAssetsClick"
+        android:padding="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_data_write_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="写入data(新)"
+            android:onClick="onDataNewWriteClick"
+            android:layout_marginRight="20dp"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btn_data_write_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="写入data(旧)"
+            android:onClick="onDataOldWriteClick"
+            android:padding="12dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+    <Button
+        android:id="@+id/btn_data_read_old"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取data(新)"
+        android:onClick="onDataNewReadClick"
+        android:layout_marginRight="20dp"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btn_data_read_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取data(旧)"
+        android:onClick="onDataOldReadClick"
+        android:padding="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="写入 SD 卡"
+        android:onClick="onWriteClick"
+        android:layout_marginRight="20dp"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取 SD 卡"
+        android:onClick="onReadClick"
+        android:padding="12dp" />
+    </LinearLayout>
+</LinearLayout>
