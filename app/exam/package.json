@@ -2,13 +2,16 @@
   "private": true,
   "author": "Enix Yu <enix223@163.com>",
   "scripts": {
-    "dev": "umi dev",
+    "dev": "cross-env PORT=9999 umi dev",
     "build": "umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
     "start": "npm run dev"
   },
   "dependencies": {
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1",
+    "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "umi": "^4.6.4"
   },
@@ -16,6 +19,7 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "@umijs/plugins": "^4.6.4",
+    "cross-env": "^10.1.0",
     "tailwindcss": "^3",
     "typescript": "^5.0.3"
   }
