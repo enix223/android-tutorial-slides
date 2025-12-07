@@ -1,4 +1,5 @@
 {
+  "name": "exam",
   "private": true,
   "author": "Enix Yu <enix223@163.com>",
   "scripts": {
@@ -13,11 +14,13 @@
     "mobx-react-lite": "^4.1.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
+    "sprintf-js": "^1.1.3",
     "umi": "^4.6.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "@types/sprintf-js": "^1.1.4",
     "@umijs/plugins": "^4.6.4",
     "cross-env": "^10.1.0",
     "tailwindcss": "^3",

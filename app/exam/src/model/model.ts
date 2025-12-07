@@ -1,5 +1,11 @@
 export type Question = {
   title: string;
   answers: string[];
-  correctAnswer: string;
+  correctAnswer: number;
+  score: number;
+  myAnswer?: number;
+};
+
+export type ExamResult = {
+  totalScore: number;
 };

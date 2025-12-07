@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:exam": "pnpm run --filter='exam' dev",
     "dev:lesson00": "pnpm run --filter='lesson-00-*' dev",
     "dev:lesson01": "pnpm run --filter='lesson-01-*' dev",
     "dev:lesson02": "pnpm run --filter='lesson-02-*' dev",
