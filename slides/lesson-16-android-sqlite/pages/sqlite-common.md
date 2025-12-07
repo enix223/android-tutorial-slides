@@ -28,97 +28,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 ---
 
-- 创建实体Student 类“完整版”
-
-```java
-public class Student {
-  private String name;
-  private int age;
-  private String grade;
-  private String sex;
-  private String store;
-
-  public String getStore() {
-    return store;
-  }
-
-  public void setStore(String store) {
-    this.store = store;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getAge() {
-    return age;
-  }
-
-```
-
----
-
-```java
-
-  public void setAge(int age) {
-    this.age = age;
-  }
-
-  public String getGrade() {
-    return grade;
-  }
-
-  public void setGrade(String grade) {
-    this.grade = grade;
-  }
-
-  public String getSex() {
-    return sex;
-  }
-
-  public void setSex(String sex) {
-    this.sex = sex;
-  }
-
-  public Student() {
-
-  }
-
-
-```
-
----
-
-```java
-
-  public Student(String name, int age, String grade, String sex,String store) {
-    this.name = name;
-    this.age = age;
-    this.grade = grade;
-    this.sex = sex;
-    this.store=store;
-  }
-
-  @NonNull
-  @Override
-  public String toString() {
-    return "Student{" +
-        "name='" + name + '\'' +
-        ", age=" + age +
-        ", grade='" + grade + '\'' +
-        ", sex='" + sex + '\'' +
-        ", store='" + store + '\'' +
-        '}';
-  }
-}
-```
-
----
-
 - 建表和对数据库实现增删改查
 
 ```java
@@ -142,30 +51,32 @@ public class DBDao {
             STORE + " TEXT" +
             ")";
 
-    private static DBDao instance;
+    private static volatile DBDao instance;  // ✅ 加volatile防止指令重排
     private DBHelper dbHelper;
-
-    /** 获取单例实例，第一次调用需传入 Context */
-    public static synchronized DBDao getInstance(Context context) {
-        if (instance == null) {
+    
+    /** 双重检查锁定 */
+    public static DBDao getInstance(Context context) {
+         if (instance == null) {                     // 第一次检查（不加锁）
 
 ```
 
 ---
 
 ```java
-            instance = new DBDao(context.getApplicationContext());
+            synchronized (DBDao.class) {            // 加锁
+                if (instance == null) {             // 第二次检查（加锁后）
+                    instance = new DBDao(context.getApplicationContext());
+                }
+            }
         }
         return instance;
     }
-
-    /** 私有构造函数 */
     private DBDao(Context context) {
         dbHelper = new DBHelper(context);
     }
 
     /** 插入数据 */
-    public synchronized void insert(Student student) {
+    public void insert(Student student) {
         if (student == null) return;
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
@@ -176,24 +87,23 @@ public class DBDao {
             cv.put(SEX, student.getSex());
             cv.put(GRADE, student.getGrade());
             cv.put(STORE, student.getStore());
-
             db.insert(TABLE_NAME, null, cv);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
 ```
 
 ---
 
 ```java
+        } finally {
             db.endTransaction();
             db.close();
         }
     }
 
     /** 删除表中所有数据 */
-    public synchronized void clearAll() {
+    public void clearAll() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
         try {
@@ -209,7 +119,7 @@ public class DBDao {
 
     /** 查询所有数据 */
     @SuppressLint("Range")
-    public synchronized List<Student> query() {
+    public List<Student> query() {
         List<Student> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = null;
@@ -266,6 +176,13 @@ public class DBDao {
     /** 获取数据库文件列表 */
     public String[] databaseList(Context context) {
         return context.databaseList();
+    }
+    
+    /** 关闭数据库连接（在App退出时调用） */
+    public void close() {
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
     }
 }
 
