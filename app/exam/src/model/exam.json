@@ -7,7 +7,7 @@
       "C .可以实现界面间的切换，可以包含动作和动作数据，连接四大组件的纽带",
       "D .处理一个应用程序整体性的工作"
     ],
-    "correctAnswer": 3,
+    "correctAnswer": 2,
     "score": 2
   },
   {
@@ -18,7 +18,18 @@
       "C. onStart",
       "D. onResume"
     ],
-    "correctAnswer": 3,
+    "correctAnswer": 1,
+    "score": 2
+  },
+  {
+    "title": "关于适配器的说法正确的有",
+    "answers": [
+      "A. 它主要是用来存储数据",
+      "B. 它主要用来把数据绑定到组件上",
+      "C. 它主要用来解析数据",
+      "D. 它主要用来存储 xml 数据"
+    ],
+    "correctAnswer": 1,
     "score": 2
   }
 ]

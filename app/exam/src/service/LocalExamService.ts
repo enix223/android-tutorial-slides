@@ -65,7 +65,12 @@ export const useLocalExamService = () => {
     async stopExam(): Promise<void> {
       if (this.timer_) {
         clearInterval(this.timer_);
+        this.timer_ = null;
       }
+      this.currentIndex_ = -1;
+      this.elapsed_ = 0;
+      this.score = 0;
+      this.setQuestions([]);
     },
 
     async resetExam(): Promise<void> {

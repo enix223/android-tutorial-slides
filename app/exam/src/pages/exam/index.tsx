@@ -3,16 +3,17 @@ import { PrimeIcons } from "primereact/api";
 import { Button } from "primereact/button";
 import { RadioButton } from "primereact/radiobutton";
 import { useExamPageVm } from "./vm";
+import Navbar from "@/components/Navbar";
 
 const ExamPage = observer(() => {
   const vm = useExamPageVm();
   return (
-    <div className="w-full h-full bg-slate-50 flex flex-col">
+    <div className="w-full h-full bg-slate-200 flex flex-col">
       {/* header */}
-      <div className="flexw-full p-4 px-6 bg-white drop-shadow-sm mb-2 flex flex-row justify-between text-xl">
-        <div>{vm.headerTitle}</div>
-        <div className="text-red-500 text-bold">{vm.remainTime}</div>
-      </div>
+      <Navbar
+        leading={vm.headerTitle}
+        trailing={<div className="text-red-500 text-bold">{vm.remainTime}</div>}
+      />
 
       {/* body */}
       <div className="flex flex-col flex-1 bg-white p-5 drop-shadow-sm gap-10">
@@ -39,7 +40,6 @@ const ExamPage = observer(() => {
             visible={vm.showPrev}
             severity="secondary"
             label="上一题"
-            className="w-full"
             icon={PrimeIcons.CARET_LEFT}
             onClick={() => vm.prev()}
           />
@@ -47,7 +47,6 @@ const ExamPage = observer(() => {
             visible={vm.showNext}
             severity="secondary"
             label="下一题"
-            className="w-full"
             icon={PrimeIcons.CARET_RIGHT}
             onClick={() => vm.next()}
           />

@@ -82,10 +82,18 @@ export const useExamPageVm = () => {
       await examService.startExam();
       await this.next();
     },
+
+    async stop() {
+      examService.stopExam();
+    },
   }));
 
   useEffect(() => {
     vm.start();
+
+    return () => {
+      vm.stop();
+    };
   }, []);
 
   return vm;
