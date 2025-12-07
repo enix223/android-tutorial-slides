@@ -31,13 +31,17 @@ public class DBDao {
             STORE + " TEXT" +
             ")";
 
-    private static DBDao instance;
+    private static volatile DBDao instance;  // ✅ 加volatile防止指令重排
     private DBHelper dbHelper;
 
-    /** 获取单例实例，第一次调用需传入 Context */
-    public static synchronized DBDao getInstance(Context context) {
-        if (instance == null) {
-            instance = new DBDao(context.getApplicationContext());
+    /** 双重检查锁定 */
+    public static DBDao getInstance(Context context) {
+        if (instance == null) {                     // 第一次检查（不加锁）
+            synchronized (DBDao.class) {            // 加锁
+                if (instance == null) {             // 第二次检查（加锁后）
+                    instance = new DBDao(context.getApplicationContext());
+                }
+            }
         }
         return instance;
     }
@@ -48,7 +52,7 @@ public class DBDao {
     }
 
     /** 插入数据 */
-    public synchronized void insert(Student student) {
+    public void insert(Student student) {
         if (student == null) return;
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
@@ -71,7 +75,7 @@ public class DBDao {
     }
 
     /** 删除表中所有数据 */
-    public synchronized void clearAll() {
+    public void clearAll() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
         try {
@@ -87,7 +91,7 @@ public class DBDao {
 
     /** 查询所有数据 */
     @SuppressLint("Range")
-    public synchronized List<Student> query() {
+    public List<Student> query() {
         List<Student> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = null;
@@ -114,7 +118,8 @@ public class DBDao {
 
 
     /** 获取第一条数据的ID */
-    public synchronized int getFirstStudentId() {
+    @SuppressLint("Range")
+    public int getFirstStudentId() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = null;
         try {
@@ -134,7 +139,7 @@ public class DBDao {
 
     /** 根据ID查询学生 */
     @SuppressLint("Range")
-    public synchronized Student getStudentById(int id) {
+    public Student getStudentById(int id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = null;
         try {
@@ -159,7 +164,7 @@ public class DBDao {
     }
 
     /** 修改学生数据 */
-    public synchronized boolean updateStudent(Student student) {
+    public boolean updateStudent(Student student) {
         if (student == null) return false;
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -210,5 +215,12 @@ public class DBDao {
     /** 获取数据库文件列表 */
     public String[] databaseList(Context context) {
         return context.databaseList();
+    }
+
+    /** 关闭数据库连接（在App退出时调用） */
+    public void close() {
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
     }
 }

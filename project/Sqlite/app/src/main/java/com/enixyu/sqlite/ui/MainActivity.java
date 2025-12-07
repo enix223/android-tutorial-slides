@@ -30,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
         setupClickListeners();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 如果是App的最后一个Activity，可以关闭数据库
+        // 但通常建议在Application中管理
+        dbDao.close();
+    }
+
     private void initViews() {
         btnInsert = findViewById(R.id.btn_insert);
         btnQuery = findViewById(R.id.btn_query);
