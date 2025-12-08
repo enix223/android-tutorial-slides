@@ -95,7 +95,7 @@ importers:
         specifier: ^52.1.0
         version: 52.1.0(@babel/parser@7.28.4)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@22.15.34)(@vue/compiler-sfc@3.5.21)(less@4.4.2)(lightningcss@1.22.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.0)(postcss@8.5.6)(react@18.3.1)(terser@5.44.0)
 
-  slides/lesson-00-FAQ:
+  slides/lesson-00-faq:
     dependencies:
       '@katzumi/slidev-addon-qrcode':
         specifier: ^0.0.17
