@@ -5,7 +5,7 @@ layout: cover
 routerMode: hash
 ---
 
-# Android Sqlite
+# Android Sqlite数据库
 
 ---
 src: ./pages/sqlite-intro.md

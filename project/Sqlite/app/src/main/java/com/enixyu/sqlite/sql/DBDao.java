@@ -79,7 +79,7 @@ public class DBDao {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
         try {
-            db.delete(TABLE_NAME, null, null);
+            db.delete(TABLE_NAME, "id = ?", new String[]{"1"});
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();

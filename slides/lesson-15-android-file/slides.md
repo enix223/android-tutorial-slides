@@ -5,7 +5,7 @@ layout: cover
 routerMode: hash
 ---
 
-# Android File Read/Write
+# Android 文件读写
 
 ---
 src: ./pages/file-intro.md
