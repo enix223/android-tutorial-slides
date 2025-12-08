@@ -570,6 +570,10 @@ importers:
       vue:
         specifier: ^3.5.18
         version: 3.5.21(typescript@5.9.2)
+    devDependencies:
+      playwright-chromium:
+        specifier: ^1.56.0
+        version: 1.56.0
 
   slides/lesson-18-android-graphic-drawing:
     dependencies:
@@ -591,6 +595,10 @@ importers:
       vue:
         specifier: ^3.5.18
         version: 3.5.21(typescript@5.9.2)
+    devDependencies:
+      playwright-chromium:
+        specifier: ^1.56.0
+        version: 1.56.0
 
   slides/shared:
     dependencies:

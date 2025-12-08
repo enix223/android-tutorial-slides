@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../dist/lesson-18/slides.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.1.0",
@@ -14,5 +14,8 @@
     "shared": "workspace:*",
     "slidev-theme-android-theme": "workspace:*",
     "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.56.0"
   }
 }
