@@ -14,3 +14,7 @@ src: ./pages/sqlite-intro.md
 ---
 src: ./pages/sqlite-common.md
 ---
+
+---
+src: ./pages/practise.md
+---
