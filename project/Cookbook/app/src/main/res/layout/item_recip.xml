@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:gravity="center"
+  android:clipChildren="true"
+  android:clipToPadding="true"
+  android:layout_width="match_parent"
+  android:layout_height="180dp">
+  <ImageView
+    android:scaleType="centerCrop"
+    android:src="@drawable/salad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+  <LinearLayout
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+      android:id="@+id/tv_title"
+      android:text="水果沙拉"
+      android:textSize="48sp"
+      android:textColor="@color/white"
+      android:shadowColor="@color/black"
+      android:shadowRadius="50"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+    <TextView
+      android:id="@+id/tv_desc"
+      android:layout_marginTop="20dp"
+      android:text="健康美味，适合大人小孩"
+      android:textColor="@color/white"
+      android:textSize="24sp"
+      android:shadowColor="@color/black"
+      android:shadowRadius="50"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:padding="20dp"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <!-- 食谱名称 -->
+  <TextView
+    android:text="食谱名称"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:labelFor="@id/edit_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <EditText
+    android:id="@+id/edit_title"
+    android:background="#FFF0F0F0"
+    android:padding="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <!-- 难易程度 -->
+  <TextView
+    android:text="难易程度"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginTop="20dp"
+    android:labelFor="@id/rating_level"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <RatingBar
+    android:id="@+id/rating_level"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:numStars="5"
+    android:rating="2"
+    android:stepSize="1" />
+
+  <!-- 用时 -->
+  <TextView
+    android:text="用时 (分钟)"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginTop="20dp"
+    android:labelFor="@id/seekbar_time_cost"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <SeekBar
+    android:min="1"
+    android:max="60"
+    android:layout_marginTop="10dp"
+    android:id="@+id/seekbar_time_cost"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <!-- 描述 -->
+  <TextView
+    android:text="食谱描述"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginTop="20dp"
+    android:labelFor="@id/edit_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <EditText
+    android:id="@+id/edit_description"
+    android:background="#FFF0F0F0"
+    android:padding="10dp"
+    android:maxLines="5"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>
