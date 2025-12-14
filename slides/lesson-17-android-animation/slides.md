@@ -5,7 +5,7 @@ layout: cover
 routerMode: hash
 ---
 
-# Android Animation
+# Android Animation动画入门
 
 ---
 src: ./pages/animation-intro.md

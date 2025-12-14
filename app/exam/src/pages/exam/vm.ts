@@ -1,4 +1,5 @@
 import { useSharedContext } from "@/context/SharedContext";
+import { useModal } from "@/hooks/useModal";
 import { Question } from "@/model/model";
 import { useLocalObservable } from "mobx-react-lite";
 import { useEffect } from "react";
@@ -6,6 +7,7 @@ import { sprintf } from "sprintf-js";
 
 export const useExamPageVm = () => {
   const { examService } = useSharedContext();
+  const { dialog } = useModal();
 
   const vm = useLocalObservable(() => ({
     currentQuestion_: null as Question | null,
@@ -76,7 +78,16 @@ export const useExamPageVm = () => {
       this.currentQuestion = question;
     },
 
-    submit() {},
+    submit() {
+      dialog
+        .showConfirm({ title: "提示", message: "是否确定提交答卷?" })
+        .then(async (ok) => {
+          if (ok) {
+            const res = await examService.submitExam();
+            console.log("total score", res.totalScore);
+          }
+        });
+    },
 
     async start() {
       await examService.startExam();

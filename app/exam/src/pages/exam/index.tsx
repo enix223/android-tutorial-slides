@@ -4,16 +4,25 @@ import { Button } from "primereact/button";
 import { RadioButton } from "primereact/radiobutton";
 import { useExamPageVm } from "./vm";
 import Navbar from "@/components/Navbar";
+import { useMemo } from "react";
 
 const ExamPage = observer(() => {
   const vm = useExamPageVm();
+  const trailing = useMemo(
+    () => (
+      <div className="flex flex-row gap-2 items-center">
+        <div className="text-red-500 text-bold">{vm.remainTime}</div>
+        <Button size="small" onClick={vm.submit.bind(vm)}>
+          交卷
+        </Button>
+      </div>
+    ),
+    [vm.remainTime]
+  );
   return (
     <div className="w-full h-full bg-slate-200 flex flex-col">
       {/* header */}
-      <Navbar
-        leading={vm.headerTitle}
-        trailing={<div className="text-red-500 text-bold">{vm.remainTime}</div>}
-      />
+      <Navbar leading={vm.headerTitle} trailing={trailing} />
 
       {/* body */}
       <div className="flex flex-col flex-1 bg-white p-5 drop-shadow-sm gap-10">
