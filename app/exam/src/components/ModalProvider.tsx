@@ -40,14 +40,16 @@ export function ModalProvider(props: PropsWithChildren) {
       {props.children}
       <ConfirmDialog
         header={title}
-        message={message}
+        message={<div className="my-5">{message}</div>}
+        contentStyle={{ padding: 0 }}
         visible={showDialog}
         accept={onConfirm}
         reject={onClose}
         acceptLabel="确定"
         rejectLabel="取消"
         closeOnEscape={false}
-        style={{ minWidth: 300 }}
+        showCloseIcon={false}
+        style={{ minWidth: 300, background: "white" }}
       />
     </ModalContext.Provider>
   );

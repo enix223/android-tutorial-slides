@@ -5,7 +5,12 @@ export default defineConfig({
     { path: "/", component: "index" },
     { path: "/review", component: "review" },
     { path: "/exam", component: "exam" },
+    { path: "/score", component: "score" },
   ],
+  hash: true,
+  history: {
+    type: "hash",
+  },
   npmClient: "pnpm",
   tailwindcss: {},
   vite: {},

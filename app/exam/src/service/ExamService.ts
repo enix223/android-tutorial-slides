@@ -24,4 +24,8 @@ export type ExamService = {
   get totalQuestions(): number;
 
   get currentQuestionNumber(): number;
+
+  get myScore(): number;
+
+  get totalScore(): number;
 };

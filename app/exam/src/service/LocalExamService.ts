@@ -11,6 +11,18 @@ export const useLocalExamService = () => {
     currentIndex_: 0,
     score: 0,
 
+    set currentIndex(v: number) {
+      this.currentIndex_ = v;
+    },
+
+    get myScore() {
+      return this.score;
+    },
+
+    get totalScore() {
+      return this.questions_.reduce((a, b) => a + b.score, 0);
+    },
+
     get totalSeconds(): number {
       return this.totalTimes_;
     },
@@ -45,19 +57,19 @@ export const useLocalExamService = () => {
       this.timer_ = setInterval(() => {
         this.increaseElapsed();
       }, 1000);
-      this.currentIndex_ = -1;
+      this.currentIndex = -1;
     },
 
     async prevQuestioin(): Promise<Question> {
       if (this.currentIndex_ >= 1) {
-        this.currentIndex_--;
+        this.currentIndex = this.currentIndex_ - 1;
       }
       return this.questions_[this.currentIndex_];
     },
 
     async nextQuestioin(): Promise<Question> {
       if (this.currentIndex_ < this.totalQuestions - 1) {
-        this.currentIndex_++;
+        this.currentIndex = this.currentIndex_ + 1;
       }
       return this.questions_[this.currentIndex_];
     },
@@ -67,16 +79,13 @@ export const useLocalExamService = () => {
         clearInterval(this.timer_);
         this.timer_ = null;
       }
-      this.currentIndex_ = -1;
-      this.elapsed_ = 0;
-      this.score = 0;
-      this.setQuestions([]);
     },
 
     async resetExam(): Promise<void> {
-      this.currentIndex_ = -1;
+      this.currentIndex = -1;
       this.elapsed_ = 0;
       this.questions_ = [];
+      this.score = 0;
     },
 
     async submitQuestionResult(answer?: number): Promise<void> {
