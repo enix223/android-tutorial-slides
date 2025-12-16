@@ -5,7 +5,7 @@ layout: cover
 routerMode: hash
 ---
 
-# Android Graphic Drawing
+# Android 图形绘制
 
 
 ---
