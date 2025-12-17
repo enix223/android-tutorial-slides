@@ -118,14 +118,3 @@ http://localhost:5173/api/login?username=admin&password=admin#section1
 ```
 username=admin&password=admin
 ```
-
----
-
-# 网络分层模型（简化）
-
-- 应用层：HTTP  
-- 传输层：TCP（可靠传输）  
-- 网络层：IP（寻址）  
-- 数据链路层：局域网通信  
-- 物理层：信号传输  
-
