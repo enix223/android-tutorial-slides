@@ -2,18 +2,30 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
+
 android {
     namespace 'com.enixyu.cookbook'
     compileSdk 36
+    buildFeatures {
+        buildConfig true
+    }
 
     defaultConfig {
         applicationId "com.enixyu.cookbook"
-        minSdk 24
+        minSdk 26
         targetSdk 36
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'HEWEATHER_URL', "\"${secretsProperties.getProperty('HEWEATHER_URL', '')}\""
+        buildConfigField 'String', 'HEWEATHER_PRIVATE_KEY', "\"${secretsProperties.getProperty('HEWEATHER_PRIVATE_KEY', '')}\""
+        buildConfigField 'String', 'HEWEATHER_KEY_ID', "\"${secretsProperties.getProperty('HEWEATHER_KEY_ID', '')}\""
+        buildConfigField 'String', 'HEWEATHER_APP_ID', "\"${secretsProperties.getProperty('HEWEATHER_APP_ID', '')}\""
     }
 
     buildTypes {
@@ -34,6 +46,8 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.31'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.80'
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

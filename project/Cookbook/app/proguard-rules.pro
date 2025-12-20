@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# 保留 BouncyCastle 提供者类和其静态初始化块
+-keep class org.bouncycastle.jce.provider.BouncyCastleProvider {
+    public <init>();
+    static ** *();
+}
+
+# 保留所有算法实现类，防止出现 "no such algorithm" 错误
+-keep class org.bouncycastle.** { *; }
+-dontwarn org.bouncycastle.**

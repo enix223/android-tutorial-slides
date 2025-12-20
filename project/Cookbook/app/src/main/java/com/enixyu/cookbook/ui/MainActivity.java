@@ -19,16 +19,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.enixyu.cookbook.R;
 import com.enixyu.cookbook.model.Recipe;
+import com.enixyu.cookbook.model.Weather;
+import com.enixyu.cookbook.port.QWeather;
 import com.enixyu.cookbook.repo.RecipeRepo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
+  private QWeather qWeather;
   private List<Recipe> mData;
   private RecipeListAdapter mAdapter;
   private TextView emptyView;
   private ListView listView;
+
+  private TextView tvTemp;
+  private TextView tvHumidity;
+  private TextView tvWindSpeed;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +44,13 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     setTitle("爱厨房");
 
+    qWeather = new QWeather();
+
     listView = findViewById(R.id.list_view);
     emptyView = findViewById(R.id.tv_empty);
+    tvTemp = findViewById(R.id.tv_temp);
+    tvHumidity = findViewById(R.id.tv_humidity);
+    tvWindSpeed = findViewById(R.id.tv_wind_spped);
 
     mData = new ArrayList<>();
     mAdapter = new RecipeListAdapter(this, mData);
@@ -59,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
       }
     });
+
+    getWeather();
   }
 
   @Override
@@ -101,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
           @Override
           public void onClick(DialogInterface dialogInterface, int i) {
             // 执行删除操作
-            if (RecipeRepo.INSTANCE.delete(recipe)){
+            if (RecipeRepo.INSTANCE.delete(recipe)) {
               Toast.makeText(MainActivity.this, "删除成功", Toast.LENGTH_LONG).show();
               reload();
             } else {
@@ -125,6 +140,22 @@ public class MainActivity extends AppCompatActivity {
       listView.setVisibility(View.VISIBLE);
       mData.addAll(recipes);
       mAdapter.notifyDataSetChanged();
+    }
+  }
+
+  private void getWeather() {
+    try {
+      Weather weather = qWeather.getRealtimeWeather().get();
+      if (weather == null) {
+        return;
+      }
+      runOnUiThread(() -> {
+        tvTemp.setText(weather.temperature + "℃");
+        tvHumidity.setText(weather.humidity + "%");
+        tvWindSpeed.setText(weather.windSpeed + "级");
+      });
+    } catch (ExecutionException | InterruptedException e) {
+      throw new RuntimeException(e);
     }
   }
 }
