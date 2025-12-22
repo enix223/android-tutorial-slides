@@ -1,12 +1,12 @@
 import { ExamResult, Question } from "@/model/model";
-import questions from "@/model/exam.json";
+import questionSet from "@/model/exam.json";
 import { useLocalObservable } from "mobx-react-lite";
 
 export const useLocalExamService = () => {
   return useLocalObservable(() => ({
     timer_: null as NodeJS.Timeout | null,
     elapsed_: 0,
-    totalTimes_: 7200,
+    totalTimes_: 2700,
     questions_: [] as Question[],
     currentIndex_: 0,
     score: 0,
@@ -48,12 +48,22 @@ export const useLocalExamService = () => {
     },
 
     async getAllQuestions(): Promise<Question[]> {
-      return questions;
+      return questionSet;
     },
 
     async startExam(): Promise<void> {
-      const q = await this.getAllQuestions();
-      this.setQuestions(this.shuffle(q));
+      let q = await this.getAllQuestions();
+      q = this.shuffle(q);
+      const qs: Question[] = [];
+      let sum = 0;
+      for (let i = 0; i < q.length; i++) {
+        sum += q[i].score;
+        if (sum > 100) {
+          break;
+        }
+        qs.push(q[i]);
+      }
+      this.setQuestions(qs);
       this.timer_ = setInterval(() => {
         this.increaseElapsed();
       }, 1000);

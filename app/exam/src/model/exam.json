@@ -1,6 +1,17 @@
 [
   {
-    "title": "Android系统中通过什么来区分不同的APP",
+    "title": "Android App打包后生成的程序文件后缀是什么:",
+    "answers": [
+      "A. ipa",
+      "B. app",
+      "C. apk",
+      "D. exe"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "Android系统中通过什么来区分不同的APP:",
     "answers": [
       "A. AppId",
       "B. App名称",
@@ -8,32 +19,103 @@
       "D. App图标"
     ],
     "correctAnswer": 0,
-    "score": 2
+    "score": 4
   },
   {
-    "title": "创建App项目时，Minimum SDK设置的是什么",
+    "title": "创建App项目时，Minimum SDK设置的是什么:",
     "answers": [
       "A. APP编译的版本",
       "B. APP支持的最低系统版本",
-      "C. ",
-      "D. "
+      "C. Java的sdk版本",
+      "D. Gradle的版本"
     ],
-    "correctAnswer": 0,
-    "score": 2
+    "correctAnswer": 1,
+    "score": 4
   },
   {
-    "title": "Android中下列属于Intent的作用的是",
+    "title": "Android studio中通过哪个工具可以查看app的运行日志:",
     "answers": [
-      "A. 实现应用程序间的数据共享",
-      "B. 是一段长的生命周期，没有用户界面的程序，可以保持应用在后台运行，而不会因为切换页面而消失",
-      "C. 可以实现界面间的切换，可以包含动作和动作数据，连接四大组件的纽带",
-      "D. 处理一个应用程序整体性的工作"
+      "A. gradle",
+      "B. logcat",
+      "C. Git",
+      "D. Profiler"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "以下哪个Java关键字用于声明类:",
+    "answers": [
+      "A. object",
+      "B. interface",
+      "C. extends",
+      "D. class"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "以下哪个Java关键字用于声明类继承:",
+    "answers": [
+      "A. implements",
+      "B. interface",
+      "C. extends",
+      "D. class"
     ],
     "correctAnswer": 2,
-    "score": 2
+    "score": 4
   },
   {
-    "title": "下列哪个不是Activity的生命周期方法之一",
+    "title": "以下哪个不是Java的基本类型:",
+    "answers": [
+      "A. int",
+      "B. boolean",
+      "C. long",
+      "D. int32"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题：Java语法中要声明方法为私有访问权限，可以使用关键字private。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "判断题：在一个Java文件中，可以声明一个public的类名字与文件名不一样。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "ArrayList<String> arr = new ArrayList<>(), 该语句的作用是:",
+    "answers": [
+      "A. 新建一个ArrayList对象",
+      "B. 新建一个ArrayList类",
+      "C. 新建一个ArrayList界面",
+      "D. 新建一个ArrayList Activity"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "判断题：Java interface接口中可以不定义方法的具体实现。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "下列哪个不是Activity的生命周期方法之一:",
     "answers": [
       "A. onCreate",
       "B. startActivity",
@@ -41,17 +123,294 @@
       "D. onResume"
     ],
     "correctAnswer": 1,
-    "score": 2
+    "score": 4
   },
   {
-    "title": "关于适配器的说法正确的有",
+    "title": "Android中下列属于Intent的作用的是:",
     "answers": [
-      "A. 它主要是用来存储数据",
-      "B. 它主要用来把数据绑定到组件上",
-      "C. 它主要用来解析数据",
-      "D. 它主要用来存储 xml 数据"
+      "A. 实现应用程序间的数据共享",
+      "B. 是一段长的生命周期，没有用户界面的程序，可以保持应用在后台运行，而不会因为切换页面而消失",
+      "C. 可以实现界面间的切换，可以包含动作和动作数据，连接四大组件的纽带",
+      "D. 处理一个应用程序整体性的工作"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "Android activity类中要实现页面跳转，可以调用以下哪个方法:",
+    "answers": [
+      "A. onCreate",
+      "B. startActivity",
+      "C. onStart",
+      "D. onResume"
     ],
     "correctAnswer": 1,
-    "score": 2
+    "score": 4
+  },
+  {
+    "title": "Android开发中，新建一个Activity后，需要同时在以下哪个文件中注册声明该Activity:",
+    "answers": [
+      "A. build.gradle",
+      "B. activity_main.xml",
+      "C. strings.xml",
+      "D. AndroidManifest.xml"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题: Intent intent = new Intent(MainActivity.this, SecondActivity.class)，该语句声明了一个隐式intent。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "以下哪个组件属于容器组件:",
+    "answers": [
+      "A. TextView",
+      "B. Button",
+      "C. Image",
+      "D. LinearLayout"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题: Button组件添加一个事件处理器可以调用setOnClickListener函数:",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "以下哪个属性用来设置ImageView的图片缩放模式:",
+    "answers": [
+      "A. src",
+      "B. layout_width",
+      "C. scaleType",
+      "D. layout_height"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "判断题: android中单位dp是像素的意思。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "以下哪个属性用来设置组件的外边距:",
+    "answers": [
+      "A. layout_width",
+      "B. layout_height",
+      "C. layout_margin",
+      "D. padding"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "以下哪个属性用来设置组件的背景颜色:",
+    "answers": [
+      "A. background",
+      "B. alpha",
+      "C. visibility",
+      "D. padding"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "LinearLayout哪个属性用于设置子组件的排列方向:",
+    "answers": [
+      "A. layout_width",
+      "B. layout_height",
+      "C. visibility",
+      "D. orientation"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "LinearLayout的gravity设置为以下哪个值时，可实现子组件右下角对齐:",
+    "answers": [
+      "A. top|left",
+      "B. top|right",
+      "C. bottom|left",
+      "D. bottom|right"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题: LinearLayout的layout_weight用于设置子组件所占空间的比例。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "以下哪个容器组件可实现子组件的层叠显示效果:",
+    "answers": [
+      "A. LinearLayout",
+      "B. FrameLayout",
+      "C. ListView",
+      "D. TableLayout"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "判断题: android开发中我们可以使用Toast实现用户操作的询问操作，并可以让用户选择取消或确定。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "ListView开发中，需要配合哪个类实现数组的遍历与每行视图的渲染:",
+    "answers": [
+      "A. ArrayAdapter",
+      "B. List",
+      "C. Array",
+      "D. Activity"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "ListView的数据变更后，需要调用哪个方法通知ListView实现刷新:",
+    "answers": [
+      "A. notifyDataSetChanged",
+      "B. getCount",
+      "C. getView",
+      "D. getItem"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "当app需要访问用户摄像头时，需要申请以下哪个权限:",
+    "answers": [
+      "A. android.permission.CAMERA",
+      "B. android.permission.BLUETOOTH",
+      "C. android.permission.RECORD_AUDIO",
+      "D. android.permission.INTERNET"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "Android开发中，如果需要使用系统权限，需要在以下哪个文件中声明:",
+    "answers": [
+      "A. theme.xml",
+      "B. strings.xml",
+      "C. build.gradle",
+      "D. AndroidManifest.xml"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题: 用户APP可以随意发送系统广播。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "判断题: 在有序广播中，允许广播接收者截断消息传播，中止消息往后传递。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "以下哪个类型，不能通过SharedPreferences直接保存：",
+    "answers": [
+      "A. int",
+      "B. boolean",
+      "C. String",
+      "D. Activity"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "判断题: SharedPreferences内部是使用xml来保存数据。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "判断题: sqlite不是关系数据库。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "以下哪个类型不是sqlite支持的数据类型:",
+    "answers": [
+      "A. INTEGER 整数",
+      "B. REAL 浮点数",
+      "C. DATETIME 日期",
+      "D. TEXT 文本"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "判断题: \"SELECT * FROM student WHERE\", 该SQL语句语法正确。",
+    "answers": [
+      "A. 正确",
+      "B. 错误"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "以下哪个SQL语句实现数据的更新操作:",
+    "answers": [
+      "A. SELECT",
+      "B. INSERT",
+      "C. CREATE TABLE",
+      "D. UPDATE"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "以下哪个HTTP状态码表示请求成功:",
+    "answers": [
+      "A. 200",
+      "B. 404",
+      "C. 500",
+      "D. 403"
+    ],
+    "correctAnswer": 0,
+    "score": 4
   }
 ]

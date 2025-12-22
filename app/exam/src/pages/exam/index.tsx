@@ -5,6 +5,9 @@ import { RadioButton } from "primereact/radiobutton";
 import { useExamPageVm } from "./vm";
 import Navbar from "@/components/Navbar";
 import { useMemo } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 const ExamPage = observer(() => {
   const vm = useExamPageVm();
@@ -26,7 +29,14 @@ const ExamPage = observer(() => {
 
       {/* body */}
       <div className="flex flex-col flex-1 bg-white p-5 drop-shadow-sm gap-10">
-        <div className="flex text-2xl">{vm.questionTitle}</div>
+        <div className="flex flex-col text-2xl">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeHighlight]}
+          >
+            {vm.questionTitle}
+          </ReactMarkdown>
+        </div>
         <div className="flex flex-col gap-8">
           {vm.questionChoices.map((choice) => (
             <div className="flex flex-row items-center" key={choice.value}>

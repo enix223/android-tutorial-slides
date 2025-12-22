@@ -1,6 +1,8 @@
 import { defineConfig } from "umi";
 
 export default defineConfig({
+  title: "Android应用开发考试",
+  publicPath: "/exam/",
   routes: [
     { path: "/", component: "index" },
     { path: "/review", component: "review" },
