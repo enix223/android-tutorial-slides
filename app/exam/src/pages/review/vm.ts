@@ -30,7 +30,7 @@ export const useReviewVm = () => {
       const questions = await examService.getAllQuestions();
       this.questions = questions.map((e, idx) => ({
         ...e,
-        title: `${idx + 1}. ${e.title}`,
+        title: `(${idx + 1}.) ${e.title}`,
         choices: e.answers.map((a, i) => ({
           label: a,
           value: i,

@@ -115,6 +115,61 @@
     "score": 4
   },
   {
+    "title": "以下哪个语句实现子类ElectricCar类继承自父类Car",
+    "answers": [
+      "class ElectricCar implements Car",
+      "class ElectricCar extends Car",
+      "interface ElectricCar implements Car",
+      "interface ElectricCar extends Car"
+    ],
+    "correctAnswer": 1,
+    "score": 4
+  },
+  {
+    "title": "运行以下Java程序后，输出什么结果?\n ```java\nint a = 5;\nint b = a++;\nint c = ++a;\n```",
+    "answers": [
+      "A. a=5, b=6, c=6",
+      "B. a=5, b=5, c=7",
+      "C. a=7, b=5, c=7",
+      "D. a=7, b=6, c=7"
+    ],
+    "correctAnswer": 2,
+    "score": 4
+  },
+  {
+    "title": "运行以下Java程序后，i等于多少?\n ```java\nfor(int i = 0;i < 10; i ++)\n{\n}\n```",
+    "answers": [
+      "A. 变量未定义",
+      "B. 1",
+      "C. 9",
+      "D. 10"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
+    "title": "运行以下Java程序后，i等于多少?\n ```java\nint i = 1;\ndo\n{\n\ti ++;\n} while(i <= 3);\n```",
+    "answers": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "correctAnswer": 3,
+    "score": 4
+  },
+  {
+    "title": "Java语言中，使用以下哪个语法可以捕获异常:",
+    "answers": [
+      "A. try catch",
+      "B. do while",
+      "C. if else",
+      "D. for in"
+    ],
+    "correctAnswer": 0,
+    "score": 4
+  },
+  {
     "title": "下列哪个不是Activity的生命周期方法之一:",
     "answers": [
       "A. onCreate",

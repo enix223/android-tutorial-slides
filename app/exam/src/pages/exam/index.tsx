@@ -37,7 +37,7 @@ const ExamPage = observer(() => {
             {vm.questionTitle}
           </ReactMarkdown>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-3 ml-3">
           {vm.questionChoices.map((choice) => (
             <div className="flex flex-row items-center" key={choice.value}>
               <RadioButton
