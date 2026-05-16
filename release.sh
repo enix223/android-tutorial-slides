@@ -32,4 +32,5 @@ if [ -d "$dir" ]; then
 fi
 done
 
-ossutil cp -rf catalog.html oss://ey-course/index.html
+ossutil cp -rf public/index.html oss://ey-course/index.html
+ossutil cp -rf public/robots.txt oss://ey-course/robots.txt
